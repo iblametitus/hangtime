@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-app = FastAPI(title="Gym Buddy")
+app = FastAPI(title="Hangtime")
 
 
 @app.get("/healthz")

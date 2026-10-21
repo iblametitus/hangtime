@@ -16,7 +16,7 @@ export REGION_ID=eu-north1                   # oder die Region des Projekts
 
 ```bash
 export REGISTRY_PATH=$(nebius registry create \
-  --name gym-buddy \
+  --name hangtime \
   --format json | jq -r ".metadata.id" | cut -d- -f 2)
 ```
 
@@ -26,7 +26,7 @@ export REGISTRY_PATH=$(nebius registry create \
 nebius iam get-access-token | docker login "cr.${REGION_ID}.nebius.cloud" \
   --username iam --password-stdin
 
-export IMAGE="cr.${REGION_ID}.nebius.cloud/${REGISTRY_PATH}/gym-buddy:latest"
+export IMAGE="cr.${REGION_ID}.nebius.cloud/${REGISTRY_PATH}/hangtime:latest"
 docker build -t "$IMAGE" .
 docker push "$IMAGE"
 ```
@@ -37,7 +37,7 @@ CPU reicht (die Modelle laufen auf Token Factory, nicht im Container):
 
 ```bash
 nebius ai endpoint create \
-  --name gym-buddy \
+  --name hangtime \
   --image "$IMAGE" \
   --platform cpu-e2 \
   --container-port 8000/http \

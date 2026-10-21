@@ -20,7 +20,7 @@ class Settings(BaseSettings):
     model_reason: str = "nvidia/Nemotron-3-Ultra-550b-a55b"
     model_audio: str = ""
 
-    db_path: str = "data/gym_buddy.db"
+    db_path: str = "data/hangtime.db"
 
 
 @lru_cache

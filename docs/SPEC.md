@@ -1,6 +1,6 @@
-# SPEC – Gym Buddy
+# SPEC – Hangtime
 
-Stand: 19.10.2026. Technische Spezifikation. Fachliche Grundlage ist das Konzeptdokument „Gym Buddy – Konzept Nebius x NVIDIA Hackathon“.
+Stand: 19.10.2026. Technische Spezifikation. Fachliche Grundlage ist das Konzept im Second Brain unter `02 Projekte/Hangtime/`.
 
 ---
 
@@ -268,7 +268,7 @@ Nächste Einheit: erste Session mit `weekday` ≥ heute, sonst erste Session im 
 | GET | `/api/exercises` | Übungsdatenbank |
 | GET | `/healthz` | Health-Check für Nebius |
 
-Session: anonymes Cookie `gb_session`, alles in SQLite unter dieser ID. Für das Demo-Video: Route `/demo` lädt ein vorbereitetes Profil + Plan.
+Session: anonymes Cookie `ht_session`, alles in SQLite unter dieser ID. Für das Demo-Video: Route `/demo` lädt ein vorbereitetes Profil + Plan.
 
 ---
 
@@ -295,4 +295,4 @@ Session: anonymes Cookie `gb_session`, alles in SQLite unter dieser ID. Für das
 - [ ] Nimmt das Vision-Modell 12 Bilder in einem Aufruf? Sonst weniger Bilder oder Collage
 - [ ] Persistentes Volume auf Nebius Serverless Endpoints verfügbar?
 - [ ] Regeln und Gewichte des Tausch-Algorithmus von Titus bestätigt
-- [ ] Name der App
+- [x] Name der App: Hangtime

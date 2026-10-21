@@ -1,4 +1,4 @@
-# PLAN – Gym Buddy
+# PLAN – Hangtime
 
 **Abgabe: Freitag, 30.10.2026, 18:00 Uhr deutscher Zeit.** Kein fester Zeitplan: Die Meilensteine werden der Reihe nach so schnell wie möglich abgearbeitet.
 Einzige Regel zur Zeit: Video, README und Einreichung (M8) brauchen erfahrungsgemäß ein bis zwei Tage. Sie dürfen nicht hinten runterfallen.
@@ -6,7 +6,7 @@ Einzige Regel zur Zeit: Video, README und Einreichung (M8) brauchen erfahrungsge
 Jeder Meilenstein gilt erst als fertig, wenn alle Abnahmekriterien erfüllt sind, die Tests grün sind und committet und gepusht wurde.
 „Titus“ = Aufgabe, die nur Titus erledigen kann.
 
-**Repo:** Gym Buddy ist von Anfang an ein **eigenes, öffentliches Git-Repo** auf GitHub. Der Ordner liegt im Code Brain, ist dort aber per `.gitignore` ausgeschlossen.
+**Repo:** Hangtime ist von Anfang an ein **eigenes, öffentliches Git-Repo** auf GitHub. Der Ordner liegt im Code Brain, ist dort aber per `.gitignore` ausgeschlossen.
 
 ---
 
@@ -14,8 +14,8 @@ Jeder Meilenstein gilt erst als fertig, wenn alle Abnahmekriterien erfüllt sind
 
 Ziel: Alle technischen Unbekannten sind geklärt, eine leere App ist auf Nebius live, das Repo ist öffentlich.
 
-- `git init` im Ordner `gym-buddy`, eigene `.gitignore` (mindestens `.env`, `.venv/`, `__pycache__/`, `data/raw/`, `*.db`, Videos)
-- Öffentliches GitHub-Repo `gym-buddy` anlegen, Remote setzen, erster Push
+- `git init` im Ordner `hangtime`, eigene `.gitignore` (mindestens `.env`, `.venv/`, `__pycache__/`, `data/raw/`, `*.db`, Videos)
+- Öffentliches GitHub-Repo `hangtime` anlegen, Remote setzen, erster Push
 - **Vor jedem Push prüfen:** keine `.env`, keine Keys, keine Studien-PDFs, keine Videos im Commit
 - MIT-Lizenz im Root, Struktur aus `CLAUDE.md`
 - `scripts/check_models.py`: listet alle Modelle des Accounts, testet für jeden Nemotron-Kandidaten

@@ -1,5 +1,5 @@
 [project]
-name = "gym-buddy"
+name = "hangtime"
 version = "0.1.0"
 description = "Evidence-checked, personalized exercise swaps from a single video."
 requires-python = ">=3.12"

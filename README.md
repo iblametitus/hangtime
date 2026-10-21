@@ -1,4 +1,4 @@
-# Gym Buddy
+# Hangtime
 
 > Placeholder README. The full English README for the hackathon submission is written in milestone M8 (see `docs/PLAN.md`).
 

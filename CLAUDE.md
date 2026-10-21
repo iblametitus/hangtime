@@ -1,13 +1,13 @@
-# CLAUDE.md – Gym Buddy
+# CLAUDE.md – Hangtime
 
 Diese Datei liest Claude Code zu Beginn jeder Session. Sie beschreibt, worum es geht und nach welchen Regeln gebaut wird.
 
-**Einordnung:** Liegt im Code Brain unter `hackathons/2026-10 Nebius x NVIDIA/gym-buddy/`. Es gelten zusätzlich `../../../CLAUDE.md` (Code Brain) und die Root-`CLAUDE.md`. Als Ausnahme laut Code-Brain-Regel ist Gym Buddy **von Anfang an ein eigenes, öffentliches Git-Repo** auf GitHub. Im Code-Brain-Repo ist der Ordner per `.gitignore` ausgeschlossen. **Alles, was committet wird, ist sofort öffentlich:** vor jedem Push prüfen, dass keine `.env`, Keys, Studien-PDFs oder Videos dabei sind.
-Hackathon-Unterlagen (Ausschreibung, Idee, Start-Prompt) liegen eine Ebene höher. Das Konzept liegt im Second Brain unter `02 Projekte/Gym Buddy/`.
+**Einordnung:** Liegt im Code Brain unter `hackathons/2026-10 Nebius x NVIDIA/hangtime/`. Es gelten zusätzlich `../../../CLAUDE.md` (Code Brain) und die Root-`CLAUDE.md`. Als Ausnahme laut Code-Brain-Regel ist Hangtime **von Anfang an ein eigenes, öffentliches Git-Repo** auf GitHub. Im Code-Brain-Repo ist der Ordner per `.gitignore` ausgeschlossen. **Alles, was committet wird, ist sofort öffentlich:** vor jedem Push prüfen, dass keine `.env`, Keys, Studien-PDFs oder Videos dabei sind.
+Hackathon-Unterlagen (Ausschreibung, Idee, Start-Prompt) liegen eine Ebene höher. Das Konzept liegt im Second Brain unter `02 Projekte/Hangtime/`.
 
 ## Worum es geht
 
-Gym Buddy ist ein „schlauerer Trainingspartner“ für Sprungkraft und Athletik. Der Nutzer schickt ein Video einer Übung (z. B. aus TikTok oder Instagram). Gym Buddy antwortet in drei Stufen:
+Hangtime ist ein „schlauerer Trainingspartner“ für Sprungkraft und Athletik. Der Nutzer schickt ein Video einer Übung (z. B. aus TikTok oder Instagram). Hangtime antwortet in drei Stufen:
 
 1. **Allgemein:** Taugt die Übung was? Evidenz-Urteil mit geprüften Quellen.
 2. **Für dich:** Passt sie zu Ziel, Stand und Plan des Nutzers?
