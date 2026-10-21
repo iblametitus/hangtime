@@ -29,7 +29,7 @@ _PLACEHOLDER_PNG = (
 CANDIDATES = {
     "FAST": [
         "nvidia/Nemotron-3_5-Lightning",
-        "nvidia/nemotron-3-nano-30b-a3b",
+        "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B",
     ],
     "VISION": [
         "nvidia/Nemotron-3.5-Super-VL",
