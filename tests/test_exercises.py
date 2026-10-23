@@ -59,7 +59,7 @@ def test_load_cost_bounds():
 @pytest.mark.skipif(not DATA_FILE.exists(), reason="data/exercises.json not seeded yet")
 def test_exercise_database_is_valid():
     exercises = load_exercises(DATA_FILE)
-    assert 60 <= len(exercises) <= 80
+    assert 60 <= len(exercises) <= 90
     ids = [e.id for e in exercises]
     assert len(ids) == len(set(ids))
     for e in exercises:

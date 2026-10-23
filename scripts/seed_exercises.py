@@ -105,6 +105,18 @@ EXERCISES: dict[str, str] = {
     "pallof-press": "Pallof Press",
     "dead-bug": "Dead Bug",
     "hanging-leg-raise": "Hanging Leg Raise",
+    # social media favourites and research protocols
+    "atg-split-squat": "ATG Split Squat",
+    "sissy-squat": "Sissy Squat",
+    "heel-elevated-squat": "Heel-Elevated Squat",
+    "lateral-step-down": "Lateral Step-Down",
+    "backward-sled-drag": "Backward Sled Drag",
+    "weighted-vest-jump": "Weighted Vest Jump",
+    "barbell-jump-squat": "Barbell Jump Squat",
+    "flywheel-squat": "Flywheel Squat",
+    "single-leg-depth-jump": "Single-Leg Depth Jump",
+    "isometric-mid-thigh-pull": "Isometric Mid-Thigh Pull",
+    "power-skip": "Power Skip",
 }
 
 SYSTEM_PROMPT = f"""You are a strength and conditioning coach building an exercise database for

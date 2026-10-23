@@ -287,7 +287,7 @@ Session: anonymes Cookie `ht_session`, alles in SQLite unter dieser ID. Für das
 
 ## 8. Daten
 
-- `data/exercises.json`: 60–80 Übungen für Sprungkraft/Athletik. Entwurf per `scripts/seed_exercises.py` (LLM), dann Prüfung durch Titus.
+- `data/exercises.json`: 60–90 Übungen (Stand 23.10.: 82) für Sprungkraft/Athletik. Entwurf per `scripts/seed_exercises.py` (LLM), dann Prüfung durch Titus.
 - `data/evidence_cards/*.json`: eine Datei pro Studie. Erzeugt per `scripts/ingest_studies.py data/raw/<datei>.pdf` (PDF-Text → FAST/REASON-Modell → Karte mit `reviewed: false`). Titus prüft jede Karte. Quelle: `Titus KI Brain/Archiv/pausiert/Jump-Trainer RAG/Korpus/` (Stand 20.10.: 14 PDFs + 2 Abstract-Notizen). Ziel: diese Studien + so viele zusätzliche, wie bis M2 geprüft werden können.
 - `eval/testset.yaml`: 15–20 Einträge `{video, expected_rating, expected_fit, expected_swap_replaces, notes}`. Videos lokal, nicht im Repo.
 
