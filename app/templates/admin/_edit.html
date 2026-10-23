@@ -1,0 +1,74 @@
+<tr id="row-{{ e.id }}" class="bg-sky-50">
+  <td colspan="13" class="px-3 py-3">
+    <form class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+          hx-post="/admin/exercises/{{ e.id }}" hx-target="closest tr" hx-swap="outerHTML">
+      {% if error %}
+      <p class="rounded bg-red-100 px-3 py-2 text-sm text-red-800 sm:col-span-2 lg:col-span-4">{{ error }}</p>
+      {% endif %}
+      <label class="text-xs font-medium">Name
+        <input name="name" value="{{ e.name }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="text-xs font-medium sm:col-span-1 lg:col-span-3">Aliases (comma-separated)
+        <input name="aliases" value="{{ e.aliases | join(', ') }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+
+      {% for field, options in enum_fields.items() %}
+      <label class="text-xs font-medium">{{ field }}
+        <select name="{{ field }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+          {% for o in options %}
+          <option value="{{ o }}" {% if e[field].value == o %}selected{% endif %}>{{ o }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      {% endfor %}
+
+      <label class="text-xs font-medium">Fatigue (1–3)
+        <input type="number" name="fatigue" min="1" max="3" value="{{ e.load_cost.fatigue }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="text-xs font-medium">Joint stress (1–3)
+        <input type="number" name="joint_stress" min="1" max="3" value="{{ e.load_cost.joint_stress }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="text-xs font-medium">Ground contacts / rep
+        <input type="number" name="ground_contacts_per_rep" min="0" value="{{ e.load_cost.ground_contacts_per_rep }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="text-xs font-medium">Min. training age (years)
+        <input type="number" step="0.5" min="0" name="min_training_age_years" value="{{ e.min_training_age_years }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="text-xs font-medium">Rep min
+        <input type="number" min="1" name="rep_min" value="{{ e.rep_min }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="text-xs font-medium">Rep max
+        <input type="number" min="1" name="rep_max" value="{{ e.rep_max }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+
+      <fieldset class="text-xs sm:col-span-2">
+        <legend class="font-medium">Equipment</legend>
+        <div class="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+          {% for o in equipment_options %}
+          <label class="inline-flex items-center gap-1"><input type="checkbox" name="equipment" value="{{ o }}" {% if o in e.equipment %}checked{% endif %}>{{ o }}</label>
+          {% endfor %}
+        </div>
+      </fieldset>
+      <fieldset class="text-xs sm:col-span-2">
+        <legend class="font-medium">Contraindications</legend>
+        <div class="mt-1 flex flex-wrap gap-x-3 gap-y-1">
+          {% for o in contraindication_options %}
+          <label class="inline-flex items-center gap-1"><input type="checkbox" name="contraindications" value="{{ o }}" {% if o in e.contraindications %}checked{% endif %}>{{ o }}</label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <label class="text-xs font-medium sm:col-span-2">Evidence card IDs (comma-separated)
+        <input name="evidence_card_ids" value="{{ e.evidence_card_ids | join(', ') }}" class="mt-1 w-full rounded border border-slate-300 px-2 py-1 text-sm">
+      </label>
+      <label class="inline-flex items-center gap-2 self-end text-sm font-medium">
+        <input type="checkbox" name="reviewed" {% if e.reviewed %}checked{% endif %} class="h-4 w-4"> Reviewed
+      </label>
+      <div class="flex gap-2 self-end">
+        <button type="submit" class="rounded bg-slate-900 px-3 py-1.5 text-sm text-white">Save</button>
+        <button type="button" class="rounded border border-slate-300 px-3 py-1.5 text-sm"
+                hx-get="/admin/exercises/{{ e.id }}/row" hx-target="closest tr" hx-swap="outerHTML">Cancel</button>
+      </div>
+    </form>
+  </td>
+</tr>

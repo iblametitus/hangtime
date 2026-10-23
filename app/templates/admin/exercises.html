@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Exercise review · Hangtime{% endblock %}
+{% block body %}
+<main class="mx-auto max-w-screen-2xl p-4">
+  <header class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+    <h1 class="text-xl font-semibold">Exercise review</h1>
+    <p class="text-sm text-slate-600">{{ reviewed }} of {{ total }} reviewed</p>
+  </header>
+
+  <form class="mb-4 flex flex-wrap gap-2"
+        hx-get="/admin/exercises" hx-target="#rows" hx-swap="outerHTML" hx-push-url="true"
+        hx-trigger="input changed delay:300ms from:input, change from:select">
+    <input type="search" name="q" value="{{ q }}" placeholder="Search name or alias"
+           class="w-full rounded border border-slate-300 px-3 py-2 sm:w-64">
+    <select name="pattern" class="rounded border border-slate-300 px-3 py-2">
+      <option value="">All patterns</option>
+      {% for p in enum_fields.pattern %}
+      <option value="{{ p }}" {% if p == pattern %}selected{% endif %}>{{ p }}</option>
+      {% endfor %}
+    </select>
+    <select name="status" class="rounded border border-slate-300 px-3 py-2">
+      <option value="">All</option>
+      <option value="open" {% if status == "open" %}selected{% endif %}>Not reviewed</option>
+      <option value="reviewed" {% if status == "reviewed" %}selected{% endif %}>Reviewed</option>
+    </select>
+  </form>
+
+  <div class="overflow-x-auto rounded border border-slate-200 bg-white">
+    <table class="min-w-full text-left text-sm">
+      <thead class="bg-slate-100 text-xs uppercase text-slate-600">
+        <tr>
+          <th class="px-3 py-2">OK</th>
+          <th class="px-3 py-2">Exercise</th>
+          <th class="px-3 py-2">Pattern</th>
+          <th class="px-3 py-2">FV zone</th>
+          <th class="px-3 py-2">SSC</th>
+          <th class="px-3 py-2">Emphasis</th>
+          <th class="px-3 py-2">Side</th>
+          <th class="px-3 py-2" title="fatigue / joint stress / ground contacts per rep">Load</th>
+          <th class="px-3 py-2">Equipment</th>
+          <th class="px-3 py-2">Min. yrs</th>
+          <th class="px-3 py-2">Reps</th>
+          <th class="px-3 py-2">Contraindications</th>
+          <th class="px-3 py-2"></th>
+        </tr>
+      </thead>
+      {% include "admin/_rows.html" %}
+    </table>
+  </div>
+</main>
+{% endblock %}

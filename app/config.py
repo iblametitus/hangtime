@@ -21,6 +21,11 @@ class Settings(BaseSettings):
     model_audio: str = ""
 
     db_path: str = "data/hangtime.db"
+    exercises_path: str = "data/exercises.json"
+
+    # Review pages under /admin edit data files. Off by default so the public
+    # deployment never exposes them; set ENABLE_ADMIN=true locally.
+    enable_admin: bool = False
 
 
 @lru_cache

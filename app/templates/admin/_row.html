@@ -1,0 +1,24 @@
+<tr id="row-{{ e.id }}" class="{% if e.reviewed %}bg-emerald-50{% endif %} align-top">
+  <td class="px-3 py-2">
+    <input type="checkbox" {% if e.reviewed %}checked{% endif %} class="h-4 w-4"
+           hx-post="/admin/exercises/{{ e.id }}/reviewed" hx-target="closest tr" hx-swap="outerHTML">
+  </td>
+  <td class="px-3 py-2">
+    <div class="font-medium">{{ e.name }}{% if e.auto_profiled %} <span class="text-xs text-amber-600">auto</span>{% endif %}</div>
+    <div class="text-xs text-slate-500">{{ e.id }}{% if e.aliases %} · {{ e.aliases | join(", ") }}{% endif %}</div>
+  </td>
+  <td class="px-3 py-2">{{ e.pattern.value }}</td>
+  <td class="px-3 py-2">{{ e.fv_zone.value }}</td>
+  <td class="px-3 py-2">{{ e.ssc.value }}</td>
+  <td class="px-3 py-2">{{ e.emphasis.value }}</td>
+  <td class="px-3 py-2">{{ e.laterality.value }}</td>
+  <td class="px-3 py-2 whitespace-nowrap">{{ e.load_cost.fatigue }} / {{ e.load_cost.joint_stress }} / {{ e.load_cost.ground_contacts_per_rep }}</td>
+  <td class="px-3 py-2">{{ e.equipment | join(", ") }}</td>
+  <td class="px-3 py-2">{{ e.min_training_age_years }}</td>
+  <td class="px-3 py-2 whitespace-nowrap">{{ e.rep_min }}–{{ e.rep_max }}</td>
+  <td class="px-3 py-2">{{ e.contraindications | join(", ") or "–" }}</td>
+  <td class="px-3 py-2">
+    <button class="rounded border border-slate-300 px-2 py-1 text-xs hover:bg-slate-100"
+            hx-get="/admin/exercises/{{ e.id }}/edit" hx-target="closest tr" hx-swap="outerHTML">Edit</button>
+  </td>
+</tr>

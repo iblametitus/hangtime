@@ -1,0 +1,7 @@
+<tbody id="rows" class="divide-y divide-slate-100">
+  {% for e in exercises %}
+  {% include "admin/_row.html" %}
+  {% else %}
+  <tr><td colspan="13" class="px-3 py-6 text-center text-slate-500">No exercises match.</td></tr>
+  {% endfor %}
+</tbody>

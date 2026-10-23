@@ -1,0 +1,2432 @@
+[
+  {
+    "id": "a-skip",
+    "name": "A-Skip",
+    "aliases": [
+      "A-Skip Drill",
+      "High Knee Skip"
+    ],
+    "pattern": "bound",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 6,
+    "rep_max": 12,
+    "contraindications": [
+      "achilles_tendinopathy",
+      "patellar_tendinopathy",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "acceleration-sprint",
+    "name": "Acceleration Sprint (10-20 m)",
+    "aliases": [
+      "Acceleration Sprint",
+      "Acceleration Sprint 10-20m",
+      "Start Sprint"
+    ],
+    "pattern": "sprint",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 10
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "hamstring_strain",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "approach-jump",
+    "name": "Approach Jump",
+    "aliases": [
+      "run-up jump",
+      "approach vertical jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "slow",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "assisted-band-jump",
+    "name": "Band-Assisted Overspeed Jump",
+    "aliases": [
+      "Assisted Band Jump",
+      "Overspeed Band Jump",
+      "Band Assisted Vertical Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "band",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "band"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 4,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "back-squat",
+    "name": "Back Squat",
+    "aliases": [
+      "Back Squat",
+      "High Bar Squat",
+      "Back Rack Squat"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 8,
+    "contraindications": [
+      "knee_pain",
+      "low_back_pain",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "band-resisted-jump",
+    "name": "Band-Resisted Jump",
+    "aliases": [
+      "Band Resisted Vertical Jump",
+      "Elastic Resisted Jump",
+      "Band Loaded Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "band",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "band"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 5,
+    "rep_max": 8,
+    "contraindications": [
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "block-power-clean",
+    "name": "Block Power Clean",
+    "aliases": [
+      "Block Clean",
+      "Clean from Blocks",
+      "Elevated Clean"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack",
+      "box"
+    ],
+    "min_training_age_years": 3.0,
+    "rep_min": 1,
+    "rep_max": 3,
+    "contraindications": [
+      "low_back_pain",
+      "shoulder_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "bounding",
+    "name": "Bounding",
+    "aliases": [
+      "alternate leg bounds",
+      "bounding for distance"
+    ],
+    "pattern": "bound",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "ankle_instability",
+      "achilles_tendinopathy",
+      "knee_pain",
+      "hamstring_strain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "box-jump",
+    "name": "Box Jump",
+    "aliases": [
+      "Box Step-Up Jump",
+      "Plyo Box Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "slow",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "broad-jump",
+    "name": "Broad Jump",
+    "aliases": [
+      "standing long jump",
+      "broad jump"
+    ],
+    "pattern": "jump_horizontal",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "bulgarian-split-squat",
+    "name": "Bulgarian Split Squat",
+    "aliases": [
+      "bulgarian split squat",
+      "rear-foot elevated split squat",
+      "bulgarian squat"
+    ],
+    "pattern": "lunge",
+    "laterality": "unilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "bench",
+      "dumbbell",
+      "kettlebell"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "clean-pull",
+    "name": "Clean Pull",
+    "aliases": [
+      "Clean Pull from Floor",
+      "Clean Deadlift",
+      "First Pull"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 2,
+    "rep_max": 5,
+    "contraindications": [
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "conventional-deadlift",
+    "name": "Conventional Deadlift",
+    "aliases": [
+      "barbell deadlift",
+      "deadlift",
+      "conventional DL"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 1,
+    "rep_max": 6,
+    "contraindications": [
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "copenhagen-plank",
+    "name": "Copenhagen Plank",
+    "aliases": [
+      "Copenhagen Plank",
+      "Copenhagen Adduction Plank",
+      "Side Plank Adduction"
+    ],
+    "pattern": "other",
+    "laterality": "unilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "isometric",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "bench"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 10,
+    "rep_max": 30,
+    "contraindications": [
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "countermovement-jump",
+    "name": "Countermovement Jump",
+    "aliases": [
+      "dip jump",
+      "counter-movement jump",
+      "CMJ"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "slow",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "dead-bug",
+    "name": "Dead Bug",
+    "aliases": [
+      "Dead Bug Hold",
+      "Supine Contralateral Limb Hold"
+    ],
+    "pattern": "core",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "isometric",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 1,
+      "joint_stress": 1,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 20,
+    "rep_max": 60,
+    "contraindications": [
+      "low_back_pain",
+      "shoulder_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "depth-jump",
+    "name": "Depth Jump",
+    "aliases": [
+      "Depth Drop Jump",
+      "Drop-and-Go Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 5,
+    "contraindications": [
+      "knee_pain",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "drop-jump",
+    "name": "Drop Jump",
+    "aliases": [
+      "Drop-and-Jump",
+      "Shock Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 5,
+    "contraindications": [
+      "knee_pain",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "drop-landing",
+    "name": "Drop Landing",
+    "aliases": [
+      "altitude landing",
+      "box drop",
+      "depth landing"
+    ],
+    "pattern": "landing",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "eccentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 5,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability",
+      "patellar_tendinopathy",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "dumbbell-squat-jump",
+    "name": "Dumbbell Squat Jump",
+    "aliases": [
+      "DB Squat Jump",
+      "Dumbbell Jump Squat",
+      "Loaded Squat Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "dumbbell"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "flying-sprint",
+    "name": "Flying Sprint (20-30 m)",
+    "aliases": [
+      "Flying Sprint",
+      "Flying Sprint 20-30m",
+      "Max Velocity Sprint"
+    ],
+    "pattern": "sprint",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 12
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 5,
+    "contraindications": [
+      "hamstring_strain",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "front-squat",
+    "name": "Front Squat",
+    "aliases": [
+      "Front Squat",
+      "Front Rack Squat",
+      "Zercher Squat"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 8,
+    "contraindications": [
+      "knee_pain",
+      "low_back_pain",
+      "shoulder_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "glute-ham-raise",
+    "name": "Glute-Ham Raise",
+    "aliases": [
+      "glute-ham raise",
+      "glute ham raise",
+      "hip extension raise"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "top",
+    "load_cost": {
+      "fatigue": 1,
+      "joint_stress": 1,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 8,
+    "rep_max": 15,
+    "contraindications": [
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "goblet-squat",
+    "name": "Goblet Squat",
+    "aliases": [
+      "goblet squat",
+      "cup squat",
+      "front rack squat"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "dumbbell",
+      "kettlebell"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 5,
+    "rep_max": 10,
+    "contraindications": [
+      "knee_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "half-squat-dead-stop",
+    "name": "Dead-Stop Half Squat",
+    "aliases": [
+      "Dead Stop Half Squat",
+      "Pin Half Squat",
+      "Box Half Squat",
+      "Anderson Half Squat"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 1,
+    "rep_max": 5,
+    "contraindications": [
+      "knee_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "hang-power-clean",
+    "name": "Hang Power Clean",
+    "aliases": [
+      "Hang Clean",
+      "Power Clean from Hang",
+      "Hang Power Clean Pull"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 2,
+    "rep_max": 5,
+    "contraindications": [
+      "low_back_pain",
+      "shoulder_pain",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "hanging-leg-raise",
+    "name": "Hanging Leg Raise",
+    "aliases": [
+      "Hanging Knee Raise",
+      "Hanging Leg Lift"
+    ],
+    "pattern": "core",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "top",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "rack"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 5,
+    "rep_max": 15,
+    "contraindications": [
+      "shoulder_pain",
+      "low_back_pain",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "hill-sprint",
+    "name": "Hill Sprint",
+    "aliases": [
+      "Uphill Sprint",
+      "Incline Sprint"
+    ],
+    "pattern": "sprint",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 10
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 4,
+    "rep_max": 10,
+    "contraindications": [
+      "hamstring_strain",
+      "achilles_tendinopathy",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "hip-thrust",
+    "name": "Hip Thrust",
+    "aliases": [
+      "hip thrust",
+      "glute bridge",
+      "hip bridge",
+      "glute thrust"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "top",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 6,
+    "rep_max": 12,
+    "contraindications": [
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "hurdle-hops",
+    "name": "Hurdle Hops",
+    "aliases": [
+      "hurdle hops",
+      "hurdle jumps"
+    ],
+    "pattern": "jump_horizontal",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "hurdle"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "ankle_instability",
+      "achilles_tendinopathy",
+      "patellar_tendinopathy",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "isometric-squat-hold",
+    "name": "Isometric Squat Hold",
+    "aliases": [
+      "isometric squat hold",
+      "wall sit",
+      "static squat hold",
+      "squat iso hold"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "isometric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 20,
+    "rep_max": 60,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "jump-rope",
+    "name": "Jump Rope",
+    "aliases": [
+      "skipping rope",
+      "rope skipping",
+      "double unders"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 30,
+    "rep_max": 100,
+    "contraindications": [
+      "achilles_tendinopathy",
+      "patellar_tendinopathy",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "jump-shrug",
+    "name": "Jump Shrug",
+    "aliases": [
+      "Shrug Jump",
+      "Jump Shrugs",
+      "Vertical Jump Shrug"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 5,
+    "rep_max": 10,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "kettlebell-swing",
+    "name": "Kettlebell Swing",
+    "aliases": [
+      "KB Swing",
+      "Kettlebell Hip Swing",
+      "Two-Hand Kettlebell Swing"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "kettlebell"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 8,
+    "rep_max": 12,
+    "contraindications": [
+      "low_back_pain",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "lateral-bound",
+    "name": "Lateral Bound",
+    "aliases": [
+      "Side Bound",
+      "Lateral Single-Leg Bound"
+    ],
+    "pattern": "bound",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "ankle_instability",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "leg-press",
+    "name": "Leg Press",
+    "aliases": [
+      "leg press",
+      "machine leg press",
+      "sled press"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "machine",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 1,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "machine"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 6,
+    "rep_max": 12,
+    "contraindications": [
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "line-hops",
+    "name": "Line Hops",
+    "aliases": [
+      "lateral line hops",
+      "side-to-side hops",
+      "line jumps"
+    ],
+    "pattern": "jump_horizontal",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 10,
+    "rep_max": 20,
+    "contraindications": [
+      "achilles_tendinopathy",
+      "patellar_tendinopathy",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "medicine-ball-overhead-throw",
+    "name": "Medicine Ball Backward Overhead Throw",
+    "aliases": [
+      "Med Ball Backward Throw",
+      "Overhead Medicine Ball Throw",
+      "Backward Overhead Toss"
+    ],
+    "pattern": "other",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "medicine_ball"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "shoulder_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "medicine-ball-scoop-toss",
+    "name": "Medicine Ball Scoop Toss",
+    "aliases": [
+      "Med Ball Scoop Toss",
+      "Underhand Medicine Ball Throw",
+      "Scoop Throw"
+    ],
+    "pattern": "other",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "medicine_ball"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "shoulder_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "nordic-hamstring-curl",
+    "name": "Nordic Hamstring Curl",
+    "aliases": [
+      "Nordic curl",
+      "Nordic hamstring curl",
+      "eccentric hamstring curl"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "eccentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "hamstring_strain",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "pallof-press",
+    "name": "Pallof Press",
+    "aliases": [
+      "Single-Arm Landmine Press",
+      "Split-Stance Press"
+    ],
+    "pattern": "other",
+    "laterality": "unilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 5,
+    "rep_max": 10,
+    "contraindications": [
+      "shoulder_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "pistol-squat",
+    "name": "Pistol Squat",
+    "aliases": [
+      "pistol squat",
+      "single-leg box squat",
+      "pistol"
+    ],
+    "pattern": "squat",
+    "laterality": "unilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "box",
+      "bench"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "pogo-hops",
+    "name": "Pogo Hops",
+    "aliases": [
+      "ankle hops",
+      "stiff-leg hops",
+      "pogos"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 10,
+    "rep_max": 20,
+    "contraindications": [
+      "achilles_tendinopathy",
+      "patellar_tendinopathy",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "poliquin-step-up",
+    "name": "Poliquin Step-Up",
+    "aliases": [
+      "Poliquin Step-Up",
+      "Poliquin Step Up",
+      "Explosive Step-Up"
+    ],
+    "pattern": "lunge",
+    "laterality": "unilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 5,
+    "rep_max": 10,
+    "contraindications": [
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "power-snatch",
+    "name": "Power Snatch",
+    "aliases": [
+      "Snatch",
+      "Hang Power Snatch",
+      "Power Snatch from Hang"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 1,
+    "rep_max": 3,
+    "contraindications": [
+      "low_back_pain",
+      "shoulder_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "push-press",
+    "name": "Push Press",
+    "aliases": [
+      "Overhead Press",
+      "Strict Press",
+      "Military Press"
+    ],
+    "pattern": "other",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "shoulder_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "repeated-broad-jump",
+    "name": "Repeated Broad Jump",
+    "aliases": [
+      "multiple broad jumps",
+      "repeated standing long jumps"
+    ],
+    "pattern": "jump_horizontal",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "reverse-lunge",
+    "name": "Reverse Lunge",
+    "aliases": [
+      "reverse lunge",
+      "backward lunge",
+      "step-back lunge"
+    ],
+    "pattern": "lunge",
+    "laterality": "unilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "slow",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "reverse-nordic",
+    "name": "Reverse Nordic",
+    "aliases": [
+      "Reverse Nordic",
+      "Reverse Nordic Curl",
+      "Concentric Nordic"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 8,
+    "contraindications": [
+      "hamstring_strain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "romanian-deadlift",
+    "name": "Romanian Deadlift",
+    "aliases": [
+      "RDL",
+      "stiff-leg deadlift",
+      "Romanian DL",
+      "stiff-legged deadlift"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "eccentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "low_back_pain",
+      "hamstring_strain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "seated-box-jump",
+    "name": "Seated Box Jump",
+    "aliases": [
+      "Seated Box Jump-Up",
+      "Box Sit-to-Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "seated-calf-raise",
+    "name": "Seated Calf Raise",
+    "aliases": [
+      "Seated Calf Raise",
+      "Seated Calf Extension"
+    ],
+    "pattern": "calf_ankle",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 1,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "bench",
+      "dumbbell"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 8,
+    "rep_max": 15,
+    "contraindications": [],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "single-leg-box-jump",
+    "name": "Single-Leg Box Jump",
+    "aliases": [
+      "single leg box jump",
+      "unilateral box jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "unilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "single-leg-calf-raise",
+    "name": "Single-Leg Calf Raise",
+    "aliases": [
+      "Single-Leg Calf Raise",
+      "Unilateral Calf Raise",
+      "Single-Leg Calf Extension"
+    ],
+    "pattern": "calf_ankle",
+    "laterality": "unilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "step"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 8,
+    "rep_max": 15,
+    "contraindications": [
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "single-leg-drop-landing",
+    "name": "Single-Leg Drop Landing",
+    "aliases": [
+      "unilateral drop landing",
+      "single-leg altitude landing",
+      "1-leg box drop"
+    ],
+    "pattern": "landing",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "eccentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 2,
+    "rep_max": 4,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability",
+      "patellar_tendinopathy",
+      "achilles_tendinopathy",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "single-leg-hop",
+    "name": "Single-Leg Hop",
+    "aliases": [
+      "single leg hops",
+      "unilateral hops"
+    ],
+    "pattern": "hop_unilateral",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "ankle_instability",
+      "achilles_tendinopathy",
+      "patellar_tendinopathy",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "single-leg-pogo",
+    "name": "Single-Leg Pogo Hops",
+    "aliases": [
+      "single leg pogos",
+      "unilateral pogo hops"
+    ],
+    "pattern": "hop_unilateral",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "isometric",
+    "resistance": "bodyweight",
+    "hardest_point": "even",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 10,
+    "rep_max": 20,
+    "contraindications": [
+      "ankle_instability",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "single-leg-rdl",
+    "name": "Single-Leg Romanian Deadlift",
+    "aliases": [
+      "single-leg RDL",
+      "unilateral RDL",
+      "1-leg Romanian deadlift"
+    ],
+    "pattern": "hinge",
+    "laterality": "unilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "eccentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "dumbbell",
+      "kettlebell"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "low_back_pain",
+      "hamstring_strain",
+      "hip_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "skater-jump",
+    "name": "Skater Jump",
+    "aliases": [
+      "Lateral Skater Bound",
+      "Side-to-Side Bound"
+    ],
+    "pattern": "bound",
+    "laterality": "unilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "bodyweight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "ankle_instability",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "sled-push",
+    "name": "Sled Push",
+    "aliases": [
+      "Prowler Push",
+      "Sled Drive"
+    ],
+    "pattern": "sprint",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "sled"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 6,
+    "rep_max": 15,
+    "contraindications": [
+      "knee_pain",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "sled-sprint",
+    "name": "Resisted Sled Sprint",
+    "aliases": [
+      "Sled Sprint",
+      "Resisted Sprint"
+    ],
+    "pattern": "sprint",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "fast",
+    "emphasis": "mixed",
+    "resistance": "free_weight",
+    "hardest_point": "mid",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 10
+    },
+    "equipment": [
+      "sled"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 4,
+    "rep_max": 10,
+    "contraindications": [
+      "hamstring_strain",
+      "achilles_tendinopathy",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "snap-down",
+    "name": "Snap Down",
+    "aliases": [
+      "active drop",
+      "pull-down",
+      "depth snap"
+    ],
+    "pattern": "landing",
+    "laterality": "bilateral",
+    "fv_zone": "reactive",
+    "ssc": "fast",
+    "emphasis": "eccentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "box"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 5,
+    "contraindications": [
+      "knee_pain",
+      "ankle_instability",
+      "patellar_tendinopathy",
+      "achilles_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "spanish-squat",
+    "name": "Spanish Squat",
+    "aliases": [
+      "spanish squat",
+      "wide-stance squat",
+      "sumo squat"
+    ],
+    "pattern": "squat",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "dumbbell",
+      "kettlebell"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 5,
+    "rep_max": 10,
+    "contraindications": [
+      "hip_pain",
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "split-squat-jump",
+    "name": "Split Squat Jump",
+    "aliases": [
+      "Staggered Squat Jump",
+      "Split Stance Jump"
+    ],
+    "pattern": "lunge",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 4,
+    "rep_max": 8,
+    "contraindications": [
+      "knee_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "squat-jump",
+    "name": "Squat Jump",
+    "aliases": [
+      "static jump",
+      "pause jump",
+      "squat vertical jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy",
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "standing-calf-raise",
+    "name": "Heavy Standing Calf Raise",
+    "aliases": [
+      "standing calf raise",
+      "heavy calf raise",
+      "standing calf press"
+    ],
+    "pattern": "calf_ankle",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "barbell",
+      "dumbbell",
+      "machine",
+      "step"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 6,
+    "rep_max": 12,
+    "contraindications": [
+      "achilles_tendinopathy",
+      "ankle_instability"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "step-up",
+    "name": "Step-Up",
+    "aliases": [
+      "step-up",
+      "box step-up",
+      "step up"
+    ],
+    "pattern": "lunge",
+    "laterality": "unilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "box",
+      "step"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 6,
+    "rep_max": 10,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "tibialis-raise",
+    "name": "Tibialis Raise",
+    "aliases": [
+      "Tibialis Raise",
+      "Tibialis Anterior Raise",
+      "Dorsiflexion Raise"
+    ],
+    "pattern": "calf_ankle",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "band",
+    "hardest_point": "top",
+    "load_cost": {
+      "fatigue": 1,
+      "joint_stress": 1,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "band"
+    ],
+    "min_training_age_years": 0.0,
+    "rep_min": 15,
+    "rep_max": 25,
+    "contraindications": [],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "trap-bar-deadlift",
+    "name": "Trap Bar Deadlift",
+    "aliases": [
+      "hex bar deadlift",
+      "trap bar DL",
+      "shrug bar deadlift"
+    ],
+    "pattern": "hinge",
+    "laterality": "bilateral",
+    "fv_zone": "max_strength",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 0
+    },
+    "equipment": [
+      "trap_bar",
+      "rack"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 1,
+    "rep_max": 6,
+    "contraindications": [
+      "low_back_pain"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "trap-bar-jump",
+    "name": "Trap Bar Jump",
+    "aliases": [
+      "Hex Bar Jump",
+      "Trap Bar Vertical Jump",
+      "Loaded Trap Bar Jump"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "strength_speed",
+    "ssc": "none",
+    "emphasis": "concentric",
+    "resistance": "free_weight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 3,
+      "joint_stress": 3,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "trap_bar"
+    ],
+    "min_training_age_years": 2.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  },
+  {
+    "id": "tuck-jump",
+    "name": "Tuck Jump",
+    "aliases": [
+      "Knee Tuck Jump",
+      "Tuck Jump Squat"
+    ],
+    "pattern": "jump_vertical",
+    "laterality": "bilateral",
+    "fv_zone": "speed_strength",
+    "ssc": "slow",
+    "emphasis": "concentric",
+    "resistance": "bodyweight",
+    "hardest_point": "bottom",
+    "load_cost": {
+      "fatigue": 2,
+      "joint_stress": 2,
+      "ground_contacts_per_rep": 1
+    },
+    "equipment": [
+      "none"
+    ],
+    "min_training_age_years": 1.0,
+    "rep_min": 3,
+    "rep_max": 6,
+    "contraindications": [
+      "knee_pain",
+      "patellar_tendinopathy"
+    ],
+    "evidence_card_ids": [],
+    "reviewed": false,
+    "auto_profiled": false
+  }
+]
