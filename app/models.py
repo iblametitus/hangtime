@@ -77,6 +77,11 @@ class Rating(str, Enum):
     myth = "myth"
 
 
+class EvidencePath(str, Enum):
+    direct = "direct"  # measures jump, sprint or strength outcomes
+    indirect = "indirect"  # injury risk, tendon health, pain, availability
+
+
 class Fit(str, Enum):
     good_fit = "good_fit"
     conditional = "conditional"
@@ -143,6 +148,7 @@ class EvidenceCard(BaseModel):
     effect_direction: str  # "positive" | "no_effect" | "mixed" | "negative"
     effect_size: str | None  # verbatim from the study, if reported
     exercise_tags: list[str]  # Pattern and FVZone values + exercise IDs
+    evidence_path: EvidencePath  # indirect evidence never backs a specific performance promise
     limitations: str
     reviewed: bool = False
 

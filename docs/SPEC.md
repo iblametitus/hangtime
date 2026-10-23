@@ -148,6 +148,7 @@ class EvidenceCard(BaseModel):
     effect_direction: str   # "positive" | "no_effect" | "mixed" | "negative"
     effect_size: str | None # wörtlich aus der Studie, falls berichtet
     exercise_tags: list[str]  # Pattern- und FVZone-Werte + Übungs-IDs
+    evidence_path: str      # "direct" (misst Sprung/Sprint/Kraft) | "indirect" (Verletzung, Sehne, Schmerz, Verfügbarkeit)
     limitations: str
     reviewed: bool = False
 
@@ -263,7 +264,7 @@ Nächste Einheit: erste Session mit `weekday` ≥ heute, sonst erste Session im 
 - **scan (VISION, nur > 20 s):** „You see 8 low-resolution frames spread evenly over a fitness video, in order. Return the indices of the frames where the exercise is actually being performed (not talking, intro or outro). Transcribe all on-screen text exactly, from every frame. Set multiple_exercises if more than one different exercise is shown.“
 - **understand (VISION):** „You see 8 frames from a short fitness video in order. Describe the movement precisely (start position, action, landing, tempo, ground contact time if visible). Transcribe all on-screen text exactly. List equipment. Do not judge the exercise.“
 - **exercise (FAST):** bekommt `VideoUnderstanding`, die optionale Caption und die Liste `id: name, aliases`. „Identify the exercise and the claim. The claim may be in the on-screen text, the caption, or both; prefer the most specific promise. If it matches a known exercise, return its id. Otherwise return null and fill a full ExerciseProfile.“
-- **verdict (REASON):** bekommt Claim, Profil, Evidenz-Karten (nur `id`, `citation`, `summary`, `key_findings`, `limitations`), externe Quellen, UserProfile, Ergebnis von `swap.py`. Regeln im Prompt: „Only cite by source_id. Every quote must be copied verbatim from key_findings, summary or snippet. Do not invent studies. Explain the given swap; never propose a different swap. Be direct, max. 4 sentences reasoning. If evidence is thin, say so.“
+- **verdict (REASON):** bekommt Claim, Profil, Evidenz-Karten (nur `id`, `citation`, `summary`, `key_findings`, `limitations`), externe Quellen, UserProfile, Ergebnis von `swap.py`. Regeln im Prompt: „Only cite by source_id. Every quote must be copied verbatim from key_findings, summary or snippet. Do not invent studies. Explain the given swap; never propose a different swap. Be direct, max. 4 sentences reasoning. If evidence is thin, say so. Evidence marked indirect (injury prevention, tendon health, pain, availability) can support a long-term benefit, never a specific performance promise such as '+10 cm in 4 weeks'.“
 
 ---
 
