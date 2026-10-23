@@ -12,6 +12,7 @@ Stand: 19.10.2026. Technische Spezifikation. Fachliche Grundlage ist das Konzept
    - Trainingsplan: Text einfügen **oder** Foto hochladen → wird strukturiert → Nutzer bestätigt oder korrigiert
 2. **Übung prüfen**
    - Video hochladen (mp4/mov, max. 60 s, max. 100 MB)
+   - Optional: Caption/Videobeschreibung aus der App einfügen (Freitext, max. 2.000 Zeichen). Enthält oft den eigentlichen Claim.
    - Fortschrittsanzeige mit den Pipeline-Schritten (sichtbar im Demo-Video)
 3. **Ergebnis-Karte**
    - Stufe 1: Urteil (`well_supported` | `partly_supported` | `unsupported` | `myth`) + Begründung + geprüfte Quellen
@@ -19,7 +20,7 @@ Stand: 19.10.2026. Technische Spezifikation. Fachliche Grundlage ist das Konzept
    - Stufe 3: Tausch-Vorschlag mit **sichtbarem Plan-Diff** (alte Übung durchgestrichen, neue hervorgehoben, Volumen umgerechnet)
    - Button „Apply swap to next session“ → Plan wird aktualisiert
 
-**Bewusst nicht:** Links von TikTok/Instagram automatisch auslesen, YouTube-Download, Login, mehrere Nutzer, andere Ziele als Athletik.
+**Bewusst nicht (Hackathon):** Links von TikTok/Instagram automatisch auslesen (Instagram braucht Login, TikTok blockt Server-IPs, verstößt gegen die Nutzungsbedingungen; Stretch Goal siehe PLAN), YouTube-Download, Login, mehrere Nutzer, andere Ziele als Athletik.
 
 ---
 
@@ -34,7 +35,12 @@ Alle IDs in `app/config.py` über Env-Variablen. Die Standardwerte unten stammen
 | Reasoning | `MODEL_REASON` | `nvidia/Nemotron-3-Ultra-550b-a55b`, Fallback `nvidia/nemotron-3-super-120b-a12b` | Urteil, persönliche Passung, Begründung des Tauschs |
 | Audio (optional) | `MODEL_AUDIO` | nur falls ein Nemotron-Omni-Modell Audio per API annimmt | Gesprochenes transkribieren |
 
-**Video-Eingabe:** Token Factory nimmt laut Doku Bilder (`image_url`, URL oder base64), aber keine Videos. Deshalb zieht `video.py` mit ffmpeg **12 gleichmäßig verteilte Einzelbilder** (max. 768 px Kantenlänge, JPEG) und schickt sie in einem Aufruf an `MODEL_VISION`.
+**Video-Eingabe:** Token Factory nimmt laut Doku Bilder (`image_url`, URL oder base64), aber keine Videos. `MODEL_VISION` (Super-VL) nimmt laut M0-Test **max. 8 Bilder pro Aufruf** (12 → HTTP 400). Deshalb:
+
+- **Kurze Videos (≤ 20 s):** `video.py` zieht mit ffmpeg **8 gleichmäßig verteilte Einzelbilder** (max. 768 px Kantenlänge, JPEG) übers ganze Video.
+- **Längere Videos (> 20 s): Grob-Scan zuerst.** `scan.py` zieht 8 Bilder übers ganze Video in niedriger Auflösung (max. 384 px) und fragt `MODEL_VISION`, auf welchen Bildern die Übung ausgeführt wird, und schreibt dabei allen eingeblendeten Text ab (der Claim steht oft im Intro außerhalb der Übung). Daraus ergibt sich ein Zeitfenster (+ ein Bildabstand Puffer davor und danach). Danach zieht `video.py` die 8 Bilder in voller Auflösung **nur aus diesem Fenster**.
+- Mehrere Übungen im Video: die am längsten gezeigte nehmen, im Ergebnis vermerken.
+- Findet der Grob-Scan keine Übung: Fallback auf 8 Bilder übers ganze Video.
 
 **Strukturierte Ausgabe:** `response_format={"type": "json_schema", "json_schema": {"name": ..., "schema": ..., "strict": true}}`. Schema zusätzlich in den System-Prompt schreiben (Empfehlung der Token-Factory-Doku). In M0 testen, welche Nemotron-Modelle JSON-Schema zuverlässig einhalten.
 
@@ -50,9 +56,10 @@ Profil + Plan (DB) ────────────────────�
 
 | Schritt | Eingabe | Ausgabe | Modell |
 |---|---|---|---|
-| `video.py` | Videodatei | 12 JPEG-Bilder, Dauer | – |
-| `understand.py` | Bilder | `VideoUnderstanding` | VISION |
-| `exercise.py` | `VideoUnderstanding`, Übungsliste (Namen + IDs) | `Claim` + `ExerciseProfile` (DB-Treffer oder `auto_profiled`) | FAST |
+| `scan.py` (nur > 20 s) | Videodatei | `CoarseScan` (Zeitfenster, Bildtext) | VISION |
+| `video.py` | Videodatei, optional Zeitfenster | 8 JPEG-Bilder, Dauer | – |
+| `understand.py` | Bilder, Bildtext aus dem Grob-Scan | `VideoUnderstanding` | VISION |
+| `exercise.py` | `VideoUnderstanding`, Caption (optional), Übungsliste (Namen + IDs) | `Claim` + `ExerciseProfile` (DB-Treffer oder `auto_profiled`) | FAST |
 | `evidence.py` | `ExerciseProfile`, `Claim` | 1–5 `EvidenceCard`, ggf. Tavily-Treffer | FAST + Tavily |
 | `swap.py` | `ExerciseProfile`, `TrainingPlan`, `UserProfile` | `SwapProposal` oder `null` | – (deterministisch) |
 | `verdict.py` | alles oben | `Verdict` | REASON |
@@ -167,6 +174,11 @@ class Session(BaseModel):
 class TrainingPlan(BaseModel):
     sessions: list[Session]
 
+class CoarseScan(BaseModel):
+    exercise_frames: list[int]  # Indizes 0–7 der Bilder, auf denen die Übung läuft
+    on_screen_text: list[str]   # sämtlicher eingeblendeter Text im ganzen Video
+    multiple_exercises: bool
+
 class VideoUnderstanding(BaseModel):
     movement_description: str
     on_screen_text: list[str]
@@ -248,8 +260,9 @@ Nächste Einheit: erste Session mit `weekday` ≥ heute, sonst erste Session im 
 
 ## 6. Prompts (Kern, englisch)
 
-- **understand (VISION):** „You see 12 frames from a short fitness video in order. Describe the movement precisely (start position, action, landing, tempo, ground contact time if visible). Transcribe all on-screen text exactly. List equipment. Do not judge the exercise.“
-- **exercise (FAST):** bekommt `VideoUnderstanding` und die Liste `id: name, aliases`. „Identify the exercise and the claim. If it matches a known exercise, return its id. Otherwise return null and fill a full ExerciseProfile.“
+- **scan (VISION, nur > 20 s):** „You see 8 low-resolution frames spread evenly over a fitness video, in order. Return the indices of the frames where the exercise is actually being performed (not talking, intro or outro). Transcribe all on-screen text exactly, from every frame. Set multiple_exercises if more than one different exercise is shown.“
+- **understand (VISION):** „You see 8 frames from a short fitness video in order. Describe the movement precisely (start position, action, landing, tempo, ground contact time if visible). Transcribe all on-screen text exactly. List equipment. Do not judge the exercise.“
+- **exercise (FAST):** bekommt `VideoUnderstanding`, die optionale Caption und die Liste `id: name, aliases`. „Identify the exercise and the claim. The claim may be in the on-screen text, the caption, or both; prefer the most specific promise. If it matches a known exercise, return its id. Otherwise return null and fill a full ExerciseProfile.“
 - **verdict (REASON):** bekommt Claim, Profil, Evidenz-Karten (nur `id`, `citation`, `summary`, `key_findings`, `limitations`), externe Quellen, UserProfile, Ergebnis von `swap.py`. Regeln im Prompt: „Only cite by source_id. Every quote must be copied verbatim from key_findings, summary or snippet. Do not invent studies. Explain the given swap; never propose a different swap. Be direct, max. 4 sentences reasoning. If evidence is thin, say so.“
 
 ---
@@ -262,7 +275,7 @@ Nächste Einheit: erste Session mit `weekday` ≥ heute, sonst erste Session im 
 | POST | `/api/profile` | Profil speichern |
 | POST | `/api/plan/parse` | Text oder Bild → `TrainingPlan`-Entwurf |
 | PUT | `/api/plan` | bestätigten Plan speichern |
-| POST | `/api/analyses` | Video hochladen → `{id}` |
+| POST | `/api/analyses` | Video hochladen (+ optional `caption`) → `{id}` |
 | GET | `/api/analyses/{id}` | Status + Teilergebnisse (HTMX-Partial) |
 | POST | `/api/analyses/{id}/apply-swap` | Tausch in den Plan übernehmen |
 | GET | `/api/exercises` | Übungsdatenbank |
@@ -292,7 +305,7 @@ Session: anonymes Cookie `ht_session`, alles in SQLite unter dieser ID. Für das
 ## 10. Offene Punkte
 
 - [ ] Exakte Modell-IDs und JSON-Schema-Tauglichkeit (M0)
-- [ ] Nimmt das Vision-Modell 12 Bilder in einem Aufruf? Sonst weniger Bilder oder Collage
+- [x] Nimmt das Vision-Modell 12 Bilder in einem Aufruf? Nein, max. 8 → 8 Einzelbilder + Grob-Scan bei > 20 s (entschieden 23.10.)
 - [ ] Persistentes Volume auf Nebius Serverless Endpoints verfügbar?
 - [ ] Regeln und Gewichte des Tausch-Algorithmus von Titus bestätigt
 - [x] Name der App: Hangtime

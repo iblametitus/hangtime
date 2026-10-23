@@ -67,12 +67,13 @@ Ziel: Alle technischen Unbekannten sind geklärt, eine leere App ist auf Nebius 
 
 ## M3 – Video verstehen
 
-- `video.py` (ffmpeg, 12 Bilder), `understand.py` (VISION), `exercise.py` (FAST)
+- `video.py` (ffmpeg, 8 Bilder, optional aus Zeitfenster), `scan.py` (Grob-Scan bei > 20 s, VISION), `understand.py` (VISION), `exercise.py` (FAST)
 - CLI: `uv run python -m app.pipeline.run_cli video.mp4` gibt `VideoUnderstanding`, `Claim` und `ExerciseProfile` aus
 
 **Abnahme**
 - [ ] Für 5 Testset-Videos wird die Übung korrekt erkannt
 - [ ] Eingeblendeter Text wird ausgelesen
+- [ ] Bei einem Video > 20 s mit Intro findet der Grob-Scan das Übungsfenster, und der Text aus dem Intro landet trotzdem im Ergebnis
 
 **Titus:** Mindestens 10 Testset-Videos mit erwartetem Urteil in `eval/testset.yaml`.
 
@@ -123,6 +124,7 @@ Ziel: Alle technischen Unbekannten sind geklärt, eine leere App ist auf Nebius 
 - `eval.py` über alle 15–20 Testset-Videos, schlechteste Fälle analysieren und Prompts/Daten verbessern
 - Fehlerfälle sauber abfangen (kein Video, unbekannte Übung, Timeout)
 - Optional, nur wenn alles andere fertig ist: teilbare Ergebnis-Karte als Bild
+- Optional, nur wenn alles andere fertig ist: Link-Import (TikTok/YouTube Shorts) über `yt-dlp`, holt Video + Beschreibung. Upload + Caption-Feld bleiben immer als Ausweg. Instagram vermutlich nicht machbar (Login).
 
 **Abnahme**
 - [ ] Eval-Ergebnis notiert (Zahl fürs README und Video)
@@ -143,9 +145,10 @@ Ziel: Alle technischen Unbekannten sind geklärt, eine leere App ist auf Nebius 
 
 ## Wenn es eng wird – Streichliste in dieser Reihenfolge
 
-1. Teilbare Ergebnis-Karte als Bild
-2. Foto-Eingabe für den Plan (Text bleibt)
-3. Admin-Seiten (Prüfen direkt in den JSON-Dateien)
-4. Tavily-Fallback (nur kuratierte Karten) – kostet die Chance auf den Tavily-Bonus
+1. Link-Import über `yt-dlp`
+2. Teilbare Ergebnis-Karte als Bild
+3. Foto-Eingabe für den Plan (Text bleibt)
+4. Admin-Seiten (Prüfen direkt in den JSON-Dateien)
+5. Tavily-Fallback (nur kuratierte Karten) – kostet die Chance auf den Tavily-Bonus
 
 **Nie streichen:** Tausch-Vorschlag mit Plan-Diff, Zitat-Prüfung, Live-Deployment, Video.
