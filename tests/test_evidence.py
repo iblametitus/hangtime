@@ -30,7 +30,7 @@ def make_card(card_id: str, tags: list[str], **overrides) -> EvidenceCard:
 
 def make_verdict(citations: list[Citation]) -> Verdict:
     return Verdict(
-        promise="+10 cm", rating="well_supported", headline="Works.", reasoning="Plyometrics help.", citations=citations,
+        promise="+10 cm", exercise_take="Solid plyometric.", rating="well_supported", headline="Works.", reasoning="Plyometrics help.", citations=citations,
         personal_fit="good_fit", personal_fit_reason="Fits.", swap_explanation=None, safety_notes=[],
     )
 

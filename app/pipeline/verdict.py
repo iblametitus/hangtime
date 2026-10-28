@@ -43,7 +43,15 @@ Rules:
 - Evidence marked indirect (injury prevention, tendon health, pain, availability) can support a long-term
   benefit, never a specific performance promise such as '+10 cm in 4 weeks'.
 - Web sources are not curated: prefer evidence cards, and name web sources as web sources.
-- headline: one direct sentence. reasoning: max. 4 sentences.
+- exercise_take: one sentence on whether this is a good exercise for jump/athletic training and what it
+  is good for, independent of the promise. Always fill it in.
+- Tone: never accuse the creator or call the video a lie. Results in videos can be real; the athlete may well
+  have improved a lot, partly through these exercises (together with everything else they did: strength
+  training, playing, growth, years of practice). Put the promise into perspective instead: say what these
+  exercises alone can realistically do in a manageable time frame, based on the evidence. Example: "The
+  athlete may well have gained a lot, partly through these drills, but 6 inches from these exercises alone
+  in a few weeks is unrealistic; studies show about X."
+- headline: one direct, fair sentence. reasoning: max. 4 sentences.
 - personal_fit: good_fit | conditional | not_recommended for this athlete's goal, level, injuries and
   equipment. personal_fit_reason: one or two sentences.
 - swap_explanation: explain the given swap in one or two sentences; never propose a different swap.

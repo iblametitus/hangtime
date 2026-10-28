@@ -251,6 +251,7 @@ class Citation(BaseModel):
 
 class Verdict(BaseModel):
     promise: str  # the video's promise as judged ("" if none); often about the whole routine
+    exercise_take: str  # one sentence: is this a good exercise, independent of the promise
     rating: Rating
     headline: str  # one sentence
     reasoning: str  # max. 4 sentences

@@ -33,6 +33,7 @@ def main() -> None:
     print(f"Exercises in video: {[s.name for s in result.segments]} (analysed #{result.selected_segment})")
     print(f"Exercise: {result.profile.name} ({result.profile.id}{', auto-profiled' if result.profile.auto_profiled else ''})")
     print(f"Promise:  {v.promise!r}")
+    print(f"Exercise: {v.exercise_take}")
     print(f"Rating:   {v.rating.value} - {v.headline}")
     print(f"Why:      {v.reasoning}")
     print(f"Fit:      {v.personal_fit.value} - {v.personal_fit_reason}")
