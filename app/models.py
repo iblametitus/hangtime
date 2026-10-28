@@ -189,10 +189,32 @@ class TrainingPlan(BaseModel):
     sessions: list[Session]
 
 
+class SeenExercise(BaseModel):
+    name: str  # as the vision model calls it; the exercise step maps it to the database
+    frames: list[int]  # indices of the scan frames that show this exercise being performed
+
+
+class ScanPart(BaseModel):
+    """Vision answer for one batch of 8 scan frames (indices 0-7 within the batch)."""
+
+    exercises: list[SeenExercise]
+    on_screen_text: list[str]
+
+
 class CoarseScan(BaseModel):
-    exercise_frames: list[int]  # indices 0-7 of frames that show the exercise
+    """Merged result of all scan batches; frame indices are global (0-15)."""
+
+    exercises: list[SeenExercise]
     on_screen_text: list[str]  # all on-screen text across the whole video
-    multiple_exercises: bool
+
+
+class Segment(BaseModel):
+    """One exercise in the video and the time window its 8 full-res frames come from."""
+
+    name: str
+    start_s: float
+    end_s: float
+    frame_count: int  # scan frames that showed it; the main exercise has the most
 
 
 class VideoUnderstanding(BaseModel):

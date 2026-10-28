@@ -38,8 +38,8 @@ Alle IDs in `app/config.py` über Env-Variablen. Die Standardwerte unten stammen
 **Video-Eingabe:** Token Factory nimmt laut Doku Bilder (`image_url`, URL oder base64), aber keine Videos. `MODEL_VISION` (Super-VL) nimmt laut M0-Test **max. 8 Bilder pro Aufruf** (12 → HTTP 400). Deshalb:
 
 - **Kurze Videos (≤ 20 s):** `video.py` zieht mit ffmpeg **8 gleichmäßig verteilte Einzelbilder** (max. 768 px Kantenlänge, JPEG) übers ganze Video.
-- **Längere Videos (> 20 s): Grob-Scan zuerst.** `scan.py` zieht 8 Bilder übers ganze Video in niedriger Auflösung (max. 384 px) und fragt `MODEL_VISION`, auf welchen Bildern die Übung ausgeführt wird, und schreibt dabei allen eingeblendeten Text ab (der Claim steht oft im Intro außerhalb der Übung). Daraus ergibt sich ein Zeitfenster (+ ein Bildabstand Puffer davor und danach). Danach zieht `video.py` die 8 Bilder in voller Auflösung **nur aus diesem Fenster**.
-- Mehrere Übungen im Video: die am längsten gezeigte nehmen, im Ergebnis vermerken.
+- **Längere Videos (> 20 s): Grob-Scan zuerst.** `scan.py` zieht **16 Bilder** übers ganze Video in niedriger Auflösung (max. 384 px) und schickt sie in **zwei Aufrufen à 8** an `MODEL_VISION` (der zweite bekommt die Namen aus dem ersten). Ergebnis: **alle Übungen** im Video, je mit den Bildern, auf denen sie ausgeführt werden, plus aller eingeblendeter Text (der Claim steht oft im Intro). Pro Übung ein Zeitfenster: längster zusammenhängender Bildblock + ein Bildabstand Puffer, **max. 8 s** (8 Bilder über 40 s verpassen jeden Sprung, Test 28.10.). Danach zieht `video.py` die 8 Bilder in voller Auflösung **nur aus diesem Fenster**.
+- **Mehrere Übungen im Video (entschieden 28.10., Variante A):** analysiert wird die Hauptübung (die auf den meisten Scan-Bildern). Die anderen werden als „Also in this video“ angezeigt und lassen sich einzeln prüfen, ohne neuen Scan. Der Claim bezieht sich meist aufs ganze Video, das ist in Ordnung und wird im Urteil so benannt.
 - Findet der Grob-Scan keine Übung: Fallback auf 8 Bilder übers ganze Video.
 
 **Strukturierte Ausgabe:** `response_format={"type": "json_schema", "json_schema": {"name": ..., "schema": ..., "strict": true}}`. Schema zusätzlich in den System-Prompt schreiben (Empfehlung der Token-Factory-Doku). In M0 testen, welche Nemotron-Modelle JSON-Schema zuverlässig einhalten.
@@ -56,7 +56,7 @@ Profil + Plan (DB) ────────────────────�
 
 | Schritt | Eingabe | Ausgabe | Modell |
 |---|---|---|---|
-| `scan.py` (nur > 20 s) | Videodatei | `CoarseScan` (Zeitfenster, Bildtext) | VISION |
+| `scan.py` (nur > 20 s) | Videodatei | `CoarseScan` (alle Übungen mit Bildern, Bildtext) → `Segment`-Liste | VISION (2×) |
 | `video.py` | Videodatei, optional Zeitfenster | 8 JPEG-Bilder, Dauer | – |
 | `understand.py` | Bilder, Bildtext aus dem Grob-Scan | `VideoUnderstanding` | VISION |
 | `exercise.py` | `VideoUnderstanding`, Caption (optional), Übungsliste (Namen + IDs) | `Claim` + `ExerciseProfile` (DB-Treffer oder `auto_profiled`) | FAST |
@@ -261,7 +261,7 @@ Nächste Einheit: erste Session mit `weekday` ≥ heute, sonst erste Session im 
 
 ## 6. Prompts (Kern, englisch)
 
-- **scan (VISION, nur > 20 s):** „You see 8 low-resolution frames spread evenly over a fitness video, in order. Return the indices of the frames where the exercise is actually being performed (not talking, intro or outro). Transcribe all on-screen text exactly, from every frame. Set multiple_exercises if more than one different exercise is shown.“
+- **scan (VISION, nur > 20 s, 2 Aufrufe):** „You see 8 low-resolution frames from part {part} of 2 of a fitness video, in order, indices 0-7. List every different exercise that is actually being performed (not talking, intro, outro or a static pose), each with the indices of the frames that show it. Use short common exercise names. Transcribe all on-screen text exactly, from every frame.“ Teil 2 bekommt zusätzlich die Namen aus Teil 1.
 - **understand (VISION):** „You see 8 frames from a short fitness video in order. Describe the movement precisely (start position, action, landing, tempo, ground contact time if visible). Transcribe all on-screen text exactly. List equipment. Do not judge the exercise.“
 - **exercise (FAST):** bekommt `VideoUnderstanding`, die optionale Caption und die Liste `id: name, aliases`. „Identify the exercise and the claim. The claim may be in the on-screen text, the caption, or both; prefer the most specific promise. If it matches a known exercise, return its id. Otherwise return null and fill a full ExerciseProfile.“
 - **verdict (REASON):** bekommt Claim, Profil, Evidenz-Karten (nur `id`, `citation`, `summary`, `key_findings`, `limitations`), externe Quellen, UserProfile, Ergebnis von `swap.py`. Regeln im Prompt: „Only cite by source_id. Every quote must be copied verbatim from key_findings, summary or snippet. Do not invent studies. Explain the given swap; never propose a different swap. Be direct, max. 4 sentences reasoning. If evidence is thin, say so. Evidence marked indirect (injury prevention, tendon health, pain, availability) can support a long-term benefit, never a specific performance promise such as '+10 cm in 4 weeks'.“

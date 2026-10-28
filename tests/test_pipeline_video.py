@@ -3,10 +3,10 @@ import subprocess
 
 import pytest
 
-from app.models import Claim, CoarseScan, VideoUnderstanding
+from app.models import Claim, CoarseScan, ScanPart, SeenExercise, VideoUnderstanding
 from app.pipeline import exercise as exercise_step
 from app.pipeline.exercise import identify, slugify
-from app.pipeline.scan import MAX_WINDOW_S, exercise_window, longest_run
+from app.pipeline.scan import MAX_WINDOW_S, exercise_window, longest_run, merge_parts, segments
 from app.pipeline.understand import merge_text
 from app.pipeline.video import extract_frames, frame_times, probe_duration
 from app.profiling import ExerciseDraft
@@ -34,25 +34,41 @@ def test_longest_run_prefers_longest_then_latest():
 
 def test_exercise_window_pads_one_frame_spacing_and_clamps():
     times = frame_times(0.0, 24.0, 8)  # 1.5, 4.5, ..., 22.5; spacing 3 s
-    one = CoarseScan(exercise_frames=[4], on_screen_text=[], multiple_exercises=False)
-    assert exercise_window(one, times, 24.0) == (10.5, 16.5)
-
-    edge = CoarseScan(exercise_frames=[0], on_screen_text=[], multiple_exercises=False)
-    assert exercise_window(edge, times, 24.0) == (0.0, 4.5)
+    assert exercise_window([4], times, 24.0) == (10.5, 16.5)
+    assert exercise_window([0], times, 24.0) == (0.0, 4.5)
 
 
 def test_exercise_window_caps_long_runs_around_their_centre():
     times = frame_times(0.0, 51.6, 8)  # the army demo from the 28.10. test
-    scan = CoarseScan(exercise_frames=[2, 5, 6, 7], on_screen_text=[], multiple_exercises=False)
-    start, end = exercise_window(scan, times, 51.6)
+    start, end = exercise_window([2, 5, 6, 7], times, 51.6)
     assert end - start == pytest.approx(MAX_WINDOW_S)
     assert start > 35  # inside the 5-7 block, not the isolated frame 2
 
 
-def test_exercise_window_ignores_bad_indices_and_returns_none_without_exercise():
-    times = frame_times(0.0, 40.0, 8)
-    bad = CoarseScan(exercise_frames=[-1, 8, 99], on_screen_text=[], multiple_exercises=False)
-    assert exercise_window(bad, times, 40.0) is None
+def test_exercise_window_ignores_bad_indices():
+    assert exercise_window([-1, 8, 99], frame_times(0.0, 40.0, 8), 40.0) is None
+
+
+def test_merge_parts_maps_to_global_indices_and_joins_same_name():
+    part1 = ScanPart(exercises=[SeenExercise(name="Box Jump", frames=[5, 6, 7, 9])], on_screen_text=["+10 cm"])
+    part2 = ScanPart(
+        exercises=[SeenExercise(name="box jump ", frames=[0, 1]), SeenExercise(name="Pogo Hops", frames=[4, 5, 6])],
+        on_screen_text=["Day 1"],
+    )
+    scan = merge_parts([part1, part2])
+    assert [(e.name, e.frames) for e in scan.exercises] == [("Box Jump", [5, 6, 7, 8, 9]), ("Pogo Hops", [12, 13, 14])]
+    assert scan.on_screen_text == ["+10 cm", "Day 1"]
+
+
+def test_segments_put_main_exercise_first():
+    scan = CoarseScan(
+        exercises=[SeenExercise(name="Pogo Hops", frames=[1, 2]), SeenExercise(name="Box Jump", frames=[8, 9, 10, 11])],
+        on_screen_text=[],
+    )
+    segs = segments(scan, 48.0)  # 16 frames, 3 s apart
+    assert [s.name for s in segs] == ["Box Jump", "Pogo Hops"]
+    assert segs[0].end_s - segs[0].start_s <= MAX_WINDOW_S
+    assert (segs[1].start_s, segs[1].end_s) == (2.0, 10.0)  # 1.5-10.5 s padded, capped to 8 s
 
 
 def test_merge_text_keeps_intro_text_and_drops_duplicates():
