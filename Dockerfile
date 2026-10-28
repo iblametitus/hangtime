@@ -11,7 +11,12 @@ WORKDIR /app
 COPY pyproject.toml ./
 RUN uv pip install --system --no-cache -r pyproject.toml
 
-COPY . .
+# Non-root user with UID 1000 (required by Hugging Face Spaces, harmless elsewhere)
+RUN useradd -m -u 1000 user
+
+COPY --chown=user . .
+
+USER user
 
 EXPOSE 8000
 

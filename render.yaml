@@ -1,0 +1,22 @@
+# Render Blueprint: one free Docker web service built from this repo.
+# Deploy: https://render.com/deploy?repo=https://github.com/iblametitus/hangtime
+services:
+  - type: web
+    name: hangtime
+    runtime: docker
+    plan: free
+    region: frankfurt
+    healthCheckPath: /healthz
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: NEBIUS_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: MODEL_FAST
+        value: nvidia/Nemotron-3_5-Lightning
+      - key: MODEL_VISION
+        value: nvidia/Nemotron-3.5-Super-VL
+      - key: MODEL_REASON
+        value: nvidia/Nemotron-3-Ultra-550b-a55b

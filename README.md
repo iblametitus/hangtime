@@ -8,7 +8,7 @@
 
 **Core feature:** Three-step answer for every exercise: evidence verdict with verified citations, personal fit, deterministic swap proposal with converted volume.
 
-**Stack:** Python 3.12, FastAPI, HTMX, SQLite, NVIDIA Nemotron models via Nebius Token Factory, Tavily, deployed on Nebius Serverless Endpoints.
+**Stack:** Python 3.12, FastAPI, HTMX, SQLite, NVIDIA Nemotron models via Nebius Token Factory, Tavily, deployed as a Docker web service on Render.
 
 **Definition of done:** Live demo URL, public repo with MIT license, demo video under 3 minutes, submission on Devpost by Oct 30, 2026.
 
