@@ -52,14 +52,14 @@ Ziel: Alle technischen Unbekannten sind geklärt, eine leere App ist auf Nebius 
 
 - `scripts/ingest_studies.py`: PDF → Text → Evidenz-Karte (`reviewed: false`)
 - Lauf über alle Studien in `data/raw/`
-- Prüf-Seite `/admin/evidence` analog zu M1
+- ~~Prüf-Seite `/admin/evidence` analog zu M1~~ (gestrichen 28.10. nach Streichliste Punkt 4: Karten direkt in `data/evidence_cards/*.json` prüfen)
 - `app/pipeline/evidence.py` mit Tag-Vorfilter, FAST-Auswahl und Tavily-Fallback
 - `app/pipeline/citations.py` mit Tests
 
 **Abnahme**
-- [ ] Alle Studien als Karten vorhanden
-- [ ] `tests/test_citations.py`: erfundenes Zitat wird entfernt, wörtliches bleibt
-- [ ] Tavily-Fallback greift bei einer Übung ohne passende Karte
+- [x] Alle Studien als Karten vorhanden (39/39, 28.10.)
+- [x] `tests/test_citations.py`: erfundenes Zitat wird entfernt, wörtliches bleibt
+- [x] Tavily-Fallback greift bei einer Übung ohne passende Karte (live getestet 28.10.)
 
 **Titus:** Karten prüfen. Weitere Studien nur hinzufügen, wenn sie auch geprüft werden können.
 
