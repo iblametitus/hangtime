@@ -1,64 +1,16 @@
-"""Run the video-understanding part of the pipeline on one file (milestone M3).
+"""Run the full pipeline on one video file for the demo athlete.
 
-    uv run python -m app.pipeline.run_cli video.mp4 [--caption "..."] [--segment 1]
+    uv run python -m app.pipeline.run_cli video.mp4 [--caption "..."] [--segment 1] [--json]
 
-Prints the exercises found in the video (segments), and for the chosen one (default: the main
-exercise) VideoUnderstanding, Claim and ExerciseProfile as JSON, plus timings per step.
+Default output is a short readable summary; --json prints the whole AnalysisResult.
 """
 
 import argparse
-import json
-import time
+import sys
 from pathlib import Path
 
-from app.exercises import load_exercises
-from app.models import CoarseScan, Segment
-from app.pipeline.exercise import identify
-from app.pipeline.scan import SCAN_THRESHOLD_S, coarse_scan, segments
-from app.pipeline.understand import understand
-from app.pipeline.video import extract_frames, frame_times, probe_duration
-
-
-def understand_video(
-    path: Path, caption: str | None = None, segment: int = 0, scan: CoarseScan | None = None
-) -> dict:
-    """Analyse one exercise of the video. `segment` picks it from the segment list (0 = main
-    exercise). Pass the `scan` of an earlier run to check another exercise without scanning again."""
-    timings: dict[str, float] = {}
-    t0 = time.monotonic()
-
-    duration = probe_duration(path)
-    if scan is None and duration > SCAN_THRESHOLD_S:
-        scan = coarse_scan(path, duration)
-        timings["scan"] = time.monotonic() - t0
-    segs: list[Segment] = segments(scan, duration) if scan else []
-    if not segs:  # short video, or the scan found no exercise: whole video, one segment
-        segs = [Segment(name="", start_s=0.0, end_s=round(duration, 2), frame_count=0)]
-    chosen = segs[min(segment, len(segs) - 1)]
-
-    t1 = time.monotonic()
-    frames = extract_frames(path, frame_times(chosen.start_s, chosen.end_s))
-    timings["frames"] = time.monotonic() - t1
-
-    t2 = time.monotonic()
-    understanding = understand(frames, scan.on_screen_text if scan else None)
-    timings["understand"] = time.monotonic() - t2
-
-    t3 = time.monotonic()
-    claim, profile = identify(understanding, caption, load_exercises())
-    timings["exercise"] = time.monotonic() - t3
-    timings["total"] = time.monotonic() - t0
-
-    return {
-        "duration_s": round(duration, 1),
-        "segments": [s.model_dump() for s in segs],
-        "selected_segment": segs.index(chosen),
-        "coarse_scan": scan.model_dump() if scan else None,
-        "understanding": understanding.model_dump(),
-        "claim": claim.model_dump(),
-        "profile": profile.model_dump(mode="json"),
-        "timings_s": {k: round(v, 1) for k, v in timings.items()},
-    }
+from app.demo import DEMO_PROFILE
+from app.pipeline.run import analyse
 
 
 def main() -> None:
@@ -66,8 +18,28 @@ def main() -> None:
     parser.add_argument("video", type=Path)
     parser.add_argument("--caption", default=None)
     parser.add_argument("--segment", type=int, default=0, help="0 = main exercise, 1 = next, ...")
+    parser.add_argument("--json", action="store_true", help="print the full result as JSON")
     args = parser.parse_args()
-    print(json.dumps(understand_video(args.video, args.caption, args.segment), indent=2, ensure_ascii=False))
+
+    result = analyse(
+        args.video, DEMO_PROFILE, args.caption, args.segment,
+        on_step=lambda key, label: print(f"... {label}", file=sys.stderr),
+    )
+    if args.json:
+        print(result.model_dump_json(indent=2))
+        return
+
+    v = result.verdict
+    print(f"Exercises in video: {[s.name for s in result.segments]} (analysed #{result.selected_segment})")
+    print(f"Exercise: {result.profile.name} ({result.profile.id}{', auto-profiled' if result.profile.auto_profiled else ''})")
+    print(f"Promise:  {v.promise!r}")
+    print(f"Rating:   {v.rating.value} - {v.headline}")
+    print(f"Why:      {v.reasoning}")
+    print(f"Fit:      {v.personal_fit.value} - {v.personal_fit_reason}")
+    for c in v.citations:
+        print(f"  [{c.source_id}] \"{c.quote}\"")
+    print(f"Evidence: {len(result.cards)} cards, {len(result.web)} web sources, {result.removed_citations} citations removed")
+    print(f"Timings:  {result.timings_s}")
 
 
 if __name__ == "__main__":

@@ -250,6 +250,7 @@ class Citation(BaseModel):
 
 
 class Verdict(BaseModel):
+    promise: str  # the video's promise as judged ("" if none); often about the whole routine
     rating: Rating
     headline: str  # one sentence
     reasoning: str  # max. 4 sentences
