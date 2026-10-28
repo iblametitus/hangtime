@@ -60,6 +60,14 @@ def test_merge_parts_maps_to_global_indices_and_joins_same_name():
     assert scan.on_screen_text == ["+10 cm", "Day 1"]
 
 
+def test_merge_parts_drops_dunks_and_game_play():
+    part = ScanPart(
+        exercises=[SeenExercise(name="Basketball Dunk", frames=[0, 1, 2]), SeenExercise(name="Depth Jump", frames=[4])],
+        on_screen_text=[],
+    )
+    assert [e.name for e in merge_parts([part]).exercises] == ["Depth Jump"]
+
+
 def test_segments_put_main_exercise_first():
     scan = CoarseScan(
         exercises=[SeenExercise(name="Pogo Hops", frames=[1, 2]), SeenExercise(name="Box Jump", frames=[8, 9, 10, 11])],

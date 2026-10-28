@@ -23,14 +23,24 @@ MAX_WINDOW_S = 8.0
 SCAN_PROMPT = (
     "You see 8 low-resolution frames from part {part} of 2 of a fitness video, in order, indices 0-7. "
     "List every different exercise that is actually being performed (not talking, intro, outro or a "
-    "static pose), each with the indices of the frames that show it. Use short common exercise names. "
+    "static pose), each with the indices of the frames that show it. Only training exercises: ignore "
+    "dunks, game play, shooting and other sport action shown as a result. Use short common exercise names. "
     "Transcribe all on-screen text exactly, from every frame."
 )
 KNOWN_NAMES = " Exercises already seen in part 1: {names}. If you see one of them again, use exactly that name."
 
 
+# Sport action shown as the result ("look how high I dunk"), not a training exercise. The prompt
+# says to skip it, but the model still lists dunks now and then (test 28.10.).
+NOT_EXERCISES = ("dunk", "basketball", "game play", "gameplay", "shooting")
+
+
 def _key(name: str) -> str:
     return " ".join(name.lower().split())
+
+
+def is_exercise(name: str) -> bool:
+    return not any(word in _key(name) for word in NOT_EXERCISES)
 
 
 def merge_parts(parts: list[ScanPart], batch_size: int = FRAME_COUNT) -> CoarseScan:
@@ -39,6 +49,8 @@ def merge_parts(parts: list[ScanPart], batch_size: int = FRAME_COUNT) -> CoarseS
     text: list[str] = []
     for offset, part in enumerate(parts):
         for ex in part.exercises:
+            if not is_exercise(ex.name):
+                continue
             frames = [offset * batch_size + i for i in ex.frames if 0 <= i < batch_size]
             if not frames:
                 continue
@@ -107,6 +119,7 @@ def coarse_scan(path: Path, duration: float) -> CoarseScan:
                 system_prompt=prompt,
                 user_content=content,
                 schema_model=ScanPart,
+                thinking=False,
             )
         )
     return merge_parts(parts)

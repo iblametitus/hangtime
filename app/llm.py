@@ -53,8 +53,13 @@ def call_json_schema(
     schema_model: type[T],
     max_retries: int = 1,
     temperature: float = 0.2,
+    thinking: bool = True,
 ) -> T:
     """Call Token Factory and return a validated instance of schema_model.
+
+    thinking=False switches off the model's reasoning trace. Use it for simple extraction steps:
+    Nemotron Lightning wrote ~3,000 reasoning tokens (27-94 s) for a 70-token answer, and
+    answered the same in ~1 s without (test 28.10.).
 
     On a schema-validation failure, retries once by feeding the broken output
     and the error back to the model and asking for a corrected JSON object.
@@ -77,6 +82,7 @@ def call_json_schema(
             messages=messages,
             temperature=temperature,
             response_format=_response_format(schema_model),
+            **({} if thinking else {"extra_body": {"chat_template_kwargs": {"enable_thinking": False}}}),
         )
         raw = response.choices[0].message.content
         if not raw:

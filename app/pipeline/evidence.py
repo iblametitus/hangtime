@@ -48,6 +48,7 @@ def select_cards(claim: Claim, profile: ExerciseProfile, candidates: list[Eviden
             f"Claim: {claim.promised_effect or '(no specific promise)'}\n\nCandidates:\n{listing}"
         ),
         schema_model=CardSelection,
+        thinking=False,
     )
     by_id = {c.id: c for c in candidates}
     picked = [by_id[i] for i in dict.fromkeys(selection.card_ids) if i in by_id]

@@ -15,8 +15,11 @@ from app.profiling import PROFILE_PROMPT, ExerciseDraft, to_profile
 EXERCISE_PROMPT = (
     "Identify the exercise and the claim. The claim may be in the on-screen text, the caption, or both; "
     "prefer the most specific promise. If it matches a known exercise, return its id as "
-    "matched_exercise_id. Otherwise return null. match_confidence is between 0 and 1. If there is no "
-    "promise, set promised_effect to an empty string."
+    "matched_exercise_id. Otherwise return null. match_confidence is between 0 and 1. promised_effect "
+    "is a promised result or benefit that is actually written in the on-screen text or the caption "
+    "(e.g. '+6 inches vertical', 'jump higher in 4 weeks', 'bulletproof knees'). Exercise names, sets, "
+    "reps and instructions ('3X20 SECONDS', 'DOUBLE JUMP ROPES') are not promises. Never infer a promise "
+    "from the exercise itself. If there is none, use an empty string."
 )
 
 
@@ -58,6 +61,7 @@ def identify(
         system_prompt=EXERCISE_PROMPT,
         user_content=build_user_message(understanding, caption, exercises),
         schema_model=Claim,
+        thinking=False,
     )
     by_id = {e.id: e for e in exercises}
     if claim.matched_exercise_id in by_id:
@@ -75,6 +79,7 @@ def identify(
             f"What the video shows: {understanding.movement_description}"
         ),
         schema_model=ExerciseDraft,
+        thinking=False,
     )
     draft.id = new_id
     return claim, to_profile(draft, name=claim.exercise_name, auto_profiled=True)

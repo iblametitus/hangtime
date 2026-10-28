@@ -32,6 +32,7 @@ def understand(frames: list[bytes], scan_text: list[str] | None = None) -> Video
         system_prompt=UNDERSTAND_PROMPT,
         user_content=content,
         schema_model=VideoUnderstanding,
+        thinking=False,
     )
     # Text from the intro (found by the coarse scan) must survive even if the window cut it off.
     result.on_screen_text = merge_text(scan_text or [], result.on_screen_text)
