@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.git
+.venv
+.pytest_cache
+__pycache__
+.devcontainer
+data/raw
+tests
+*.db
+*.mp4
+*.mov
