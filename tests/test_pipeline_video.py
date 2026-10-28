@@ -6,7 +6,7 @@ import pytest
 from app.models import Claim, CoarseScan, VideoUnderstanding
 from app.pipeline import exercise as exercise_step
 from app.pipeline.exercise import identify, slugify
-from app.pipeline.scan import exercise_window
+from app.pipeline.scan import MAX_WINDOW_S, exercise_window, longest_run
 from app.pipeline.understand import merge_text
 from app.pipeline.video import extract_frames, frame_times, probe_duration
 from app.profiling import ExerciseDraft
@@ -26,13 +26,27 @@ def test_frame_times_are_centred_and_inside_window():
     assert frame_times(10.0, 14.0, 4) == [10.5, 11.5, 12.5, 13.5]
 
 
-def test_exercise_window_pads_one_frame_spacing_and_clamps():
-    times = frame_times(0.0, 40.0, 8)  # 2.5, 7.5, ..., 37.5; spacing 5 s
-    scan = CoarseScan(exercise_frames=[3, 4, 5], on_screen_text=[], multiple_exercises=False)
-    assert exercise_window(scan, times, 40.0) == (12.5, 32.5)
+def test_longest_run_prefers_longest_then_latest():
+    assert longest_run([2, 5, 6, 7]) == [5, 6, 7]
+    assert longest_run([0, 1, 4, 5]) == [4, 5]
+    assert longest_run([]) == []
 
-    edge = CoarseScan(exercise_frames=[0, 7], on_screen_text=[], multiple_exercises=False)
-    assert exercise_window(edge, times, 40.0) == (0.0, 40.0)
+
+def test_exercise_window_pads_one_frame_spacing_and_clamps():
+    times = frame_times(0.0, 24.0, 8)  # 1.5, 4.5, ..., 22.5; spacing 3 s
+    one = CoarseScan(exercise_frames=[4], on_screen_text=[], multiple_exercises=False)
+    assert exercise_window(one, times, 24.0) == (10.5, 16.5)
+
+    edge = CoarseScan(exercise_frames=[0], on_screen_text=[], multiple_exercises=False)
+    assert exercise_window(edge, times, 24.0) == (0.0, 4.5)
+
+
+def test_exercise_window_caps_long_runs_around_their_centre():
+    times = frame_times(0.0, 51.6, 8)  # the army demo from the 28.10. test
+    scan = CoarseScan(exercise_frames=[2, 5, 6, 7], on_screen_text=[], multiple_exercises=False)
+    start, end = exercise_window(scan, times, 51.6)
+    assert end - start == pytest.approx(MAX_WINDOW_S)
+    assert start > 35  # inside the 5-7 block, not the isolated frame 2
 
 
 def test_exercise_window_ignores_bad_indices_and_returns_none_without_exercise():

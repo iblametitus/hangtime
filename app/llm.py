@@ -79,6 +79,20 @@ def call_json_schema(
             response_format=_response_format(schema_model),
         )
         raw = response.choices[0].message.content
+        if not raw:
+            # Empty content (seen with reasoning models): nothing to correct, so just ask again.
+            logger.warning(
+                "Empty response from %s (attempt %d/%d, finish_reason=%s)",
+                model,
+                attempt + 1,
+                max_retries + 1,
+                response.choices[0].finish_reason,
+            )
+            last_error = ValidationError.from_exception_data(
+                schema_model.__name__,
+                [{"type": "missing", "loc": ("response",), "input": None}],
+            )
+            continue
         try:
             return schema_model.model_validate_json(raw)
         except ValidationError as exc:

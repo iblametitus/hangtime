@@ -1,6 +1,6 @@
 """Identify the exercise and the claim, and get a profile for it.
 
-Known exercise -> profile from data/exercises.json. Unknown exercise -> FAST drafts a full profile
+Known exercise -> profile from data/exercises.json. Unknown exercise -> REASON drafts a full profile
 (auto_profiled=True, reviewed=False). It is not written to the database: drafts only enter the
 database after Titus reviewed them.
 """
@@ -64,10 +64,11 @@ def identify(
         return claim, by_id[claim.matched_exercise_id]
 
     # Model returned null or an id that does not exist: profile the exercise from scratch.
+    # REASON, like scripts/seed_exercises.py: FAST returned empty output for this large schema.
     claim.matched_exercise_id = None
     new_id = slugify(claim.exercise_name)
     draft = call_json_schema(
-        model=settings.model_fast,
+        model=settings.model_reason,
         system_prompt=PROFILE_PROMPT,
         user_content=(
             f"Profile this exercise:\n- id: {new_id}, name: {claim.exercise_name}\n\n"
