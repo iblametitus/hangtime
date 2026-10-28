@@ -50,7 +50,10 @@ Rules:
   training, playing, growth, years of practice). Put the promise into perspective instead: say what these
   exercises alone can realistically do in a manageable time frame, based on the evidence. Example: "The
   athlete may well have gained a lot, partly through these drills, but 6 inches from these exercises alone
-  in a few weeks is unrealistic; studies show about X."
+  in a few weeks is unrealistic; studies show about X." If the promise is a personal result ("I added ...")
+  that the evidence does not back at that size, the reasoning MUST contain both parts: that the result can
+  be real and these exercises may have contributed, and what they alone realistically do.
+- In headline and reasoning, refer to studies by author and year, not by source_id.
 - headline: one direct, fair sentence. reasoning: max. 4 sentences.
 - personal_fit: good_fit | conditional | not_recommended for this athlete's goal, level, injuries and
   equipment. personal_fit_reason: one or two sentences.
