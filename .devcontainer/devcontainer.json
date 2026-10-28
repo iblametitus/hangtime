@@ -1,8 +1,5 @@
 {
   "name": "hangtime-deploy",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y jq && curl -sSL https://storage.eu-north1.nebius.cloud/cli/install.sh | bash"
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postCreateCommand": "curl -sSL https://storage.eu-north1.nebius.cloud/cli/install.sh | bash"
 }
