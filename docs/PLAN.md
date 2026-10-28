@@ -25,9 +25,9 @@ Ziel: Alle technischen Unbekannten sind geklärt, eine leere App ist auf Nebius 
 - Dockerfile, Deployment auf Nebius Serverless Endpoint, `/healthz` erreichbar
 
 **Abnahme**
-- [ ] Repo öffentlich auf GitHub, Lizenz im About-Bereich sichtbar
-- [ ] `check_models.py` gibt eine Tabelle aus: Modell-ID, JSON ok, Vision ok, Latenz
-- [ ] `.env.example` enthält die bestätigten Modell-IDs (ohne Keys)
+- [x] Repo öffentlich auf GitHub, Lizenz im About-Bereich sichtbar
+- [x] `check_models.py` gibt eine Tabelle aus: Modell-ID, JSON ok, Vision ok, Latenz
+- [x] `.env.example` enthält die bestätigten Modell-IDs (ohne Keys) (Render: https://hangtime-88yw.onrender.com/healthz, 28.10.)
 - [ ] Öffentliche URL antwortet auf `/healthz`
 
 **Titus:** Nebius-API-Key und Tavily-Key in `.env` eintragen. GitHub-Login für den ersten Push. Studien-PDFs aus `Archiv/pausiert/Jump-Trainer RAG/Korpus/` nach `data/raw/` kopieren. Mit dem Sammeln der Testset-Videos beginnen.
