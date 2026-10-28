@@ -1,0 +1,29 @@
+{
+  "id": "lin-2026-backward-walking-knee-oa-meta",
+  "citation": "Lin LH, Peng YL, Yen LW, Tsai YL, Cheng CH. (2026). Effectiveness of backward walking exercises combined with conventional rehabilitation programs on managing pain intensity and disability in patients with knee osteoarthritis: A systematic review and meta-analysis of randomized controlled trials. Physiotherapy theory and practice.",
+  "url": "https://doi.org/10.1080/09593985.2025.2550532",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Patients with knee osteoarthritis (age, sex, and training level not specified in abstract)",
+  "intervention": "Backward walking exercise (BWE) combined with conventional rehabilitation programs",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "pain intensity (Hedges' g)",
+    "disability (Hedges' g)"
+  ],
+  "summary": "This systematic review and meta-analysis of 13 randomized controlled trials evaluated the effect of adding backward walking exercise to conventional rehabilitation for knee osteoarthritis. The combined intervention produced moderate-to-large reductions in pain intensity and disability compared to control conditions. Subgroup analyses suggested greater benefits at comfortable walking speeds and on treadmills.",
+  "key_findings": [
+    "13 randomized controlled trials were included in the meta-analysis.",
+    "Combining backward walking exercise with conventional rehabilitation significantly reduced pain intensity (Hedges' g = -0.997, 95% CI = -1.373 to -0.620).",
+    "The same combination significantly improved disability (Hedges' g = -1.015, 95% CI = -1.326 to -0.703).",
+    "Subgroup analyses revealed larger effect sizes for comfortable walking speed and treadmill walking.",
+    "Significant differences were observed across all control group comparisons."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Pain: Hedges' g = -0.997, 95% CI = -1.373 to -0.620; Disability: Hedges' g = -1.015, 95% CI = -1.326 to -0.703",
+  "exercise_tags": [
+    "other"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Only the abstract is available; full-text details on risk of bias, heterogeneity, and participant characteristics are not accessible. The analysis included 13 RCTs but sample sizes and populations are not described in the abstract.",
+  "reviewed": false
+}

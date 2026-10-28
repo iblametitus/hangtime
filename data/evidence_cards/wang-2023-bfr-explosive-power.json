@@ -1,0 +1,38 @@
+{
+  "id": "wang-2023-bfr-explosive-power",
+  "citation": "Wang X, Qin X-M, Ji S, Dong D (2023). Effects of Resistance Training with Blood Flow Restriction on Explosive Power of Lower Limbs: A Systematic Review and Meta-Analysis. Journal of Human Kinetics.",
+  "url": "https://doi.org/10.5114/jhk/168308",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Healthy individuals aged 13–34 years, predominantly young adult athletes and physically active adults; both sexes included.",
+  "intervention": "Blood flow restriction training (BFRT) at 20–35% 1RM with cuff occlusion at proximal thigh (cuff width ≥10 cm, pressure individualized to arterial occlusion pressure) during exercise, 2–4 resistance exercises per session, 2–3 sessions/week for 3–4 weeks, compared to traditional resistance training (TRT).",
+  "duration_weeks": 4,
+  "outcome_measures": [
+    "jump performance",
+    "sprint performance",
+    "peak power",
+    "rate of force development"
+  ],
+  "summary": "This systematic review and meta-analysis of 12 controlled trials (262 participants) found that blood flow restriction training (BFRT) produced significantly greater improvements in lower-limb explosive power than traditional resistance training (TRT). BFRT showed small-to-moderate benefits for jump (SMD 0.36), sprint (SMD 0.54), and power (SMD 0.54) performance, with wide cuffs (≥10 cm) applied during exercise yielding the largest effects.",
+  "key_findings": [
+    "Jump performance improved more with BFRT than TRT: SMD = 0.36 (95% CI 0.02 to 0.69), p < 0.05, based on 8 studies.",
+    "Sprint performance improved more with BFRT than TRT: SMD = 0.54 (95% CI 0.00 to 1.07), p = 0.05, based on 6 studies.",
+    "Power performance improved more with BFRT than TRT: SMD = 0.54 (95% CI 0.17 to 1.27), p = 0.01, based on 5 studies.",
+    "BFRT with wide cuffs (≥10 cm) during training produced greater explosive power gains than narrow cuffs or restriction only during rest intervals.",
+    "Training periods as short as 8 days to 3–4 weeks elicited significant improvements in explosive power with BFRT."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Jump: SMD = 0.36 (95% CI 0.02, 0.69); Sprint: SMD = 0.54 (95% CI 0.00, 1.07); Power: SMD = 0.54 (95% CI 0.17, 1.27)",
+  "exercise_tags": [
+    "squat",
+    "jump_vertical",
+    "sprint",
+    "countermovement-jump",
+    "hurdle-hops",
+    "drop-jump",
+    "squat-jump",
+    "leg-press"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only 12 studies (262 participants) were included, with moderate methodological quality (PEDro median 5/10). The small number of trials limits the precision of pooled estimates and precludes robust subgroup analyses.",
+  "reviewed": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "bertochi-2024-weighted-vest-meta",
+  "citation": "Bertochi GF, Tasinafo Júnior MF, Santos IA, Sasaki JE, Mota GR, Jordão GG, Puggina EF (2024). The use of wearable resistance and weighted vest for sprint performance and kinematics: a systematic review and meta-analysis. Scientific Reports.",
+  "url": "https://doi.org/10.1038/s41598-024-54282-8",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Adult athletes (mean age 21.5 years, range 18-26), including sprinters, rugby players, soccer players, and other field sport athletes; 406 total participants across 25 studies.",
+  "intervention": "Acute (cross-over) and chronic (longitudinal, 8 days to 7 weeks) sprinting with wearable resistance (WR, 0.55-5% body mass on limbs) or weighted vests (WV, 7-40% body mass on trunk).",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "sprint time",
+    "ground contact time",
+    "flight time",
+    "step frequency",
+    "step length"
+  ],
+  "summary": "This systematic review and meta-analysis of 25 studies (406 athletes) compared acute and chronic effects of wearable resistance (WR) and weighted vests (WV) on sprint performance and kinematics. Acute WR loading increased sprint time and ground contact time while decreasing step frequency; acute WV loading increased sprint time and ground contact time to a larger magnitude. Chronic evidence is limited to one WR study showing benefit and four WV studies showing no clear advantage.",
+  "key_findings": [
+    "Cross-over WR increased sprint time vs unloaded: SMD 0.38 (95% CI 0.08 to 0.68), p = 0.01.",
+    "Cross-over WR increased ground contact time vs unloaded: SMD 0.50 (95% CI 0.18 to 0.82), p < 0.01.",
+    "Cross-over WR decreased step frequency vs unloaded: SMD -0.46 (95% CI -0.83 to -0.10), p = 0.01.",
+    "Cross-over WV increased sprint time vs unloaded: SMD 2.33 (95% CI 1.66 to 3.00), p < 0.01.",
+    "Cross-over WV increased ground contact time vs unloaded: SMD 1.67 (95% CI 0.27 to 3.07), p = 0.02."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "WR sprint time SMD 0.38 (95% CI 0.08-0.68); WR ground contact time SMD 0.50 (95% CI 0.18-0.82); WR step frequency SMD -0.46 (95% CI -0.83 to -0.10); WV sprint time SMD 2.33 (95% CI 1.66-3.00); WV ground contact time SMD 1.67 (95% CI 0.27-3.07)",
+  "exercise_tags": [
+    "sprint",
+    "weighted-vest-jump",
+    "other"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Most studies had small samples (7-24 participants) and moderate methodological quality; only one longitudinal WR study and four WV longitudinal studies; high heterogeneity for some WV outcomes; limited chronic data.",
+  "reviewed": false
+}

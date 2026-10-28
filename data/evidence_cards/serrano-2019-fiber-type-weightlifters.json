@@ -1,0 +1,33 @@
+{
+  "id": "serrano-2019-fiber-type-weightlifters",
+  "citation": "Serrano N, Colenso-Semple LM, Lazauskus KK, et al. (2019). Extraordinary fast-twitch fiber abundance in elite weightlifters. PLOS ONE.",
+  "url": "https://doi.org/10.1371/journal.pone.0207975",
+  "study_type": "cross-sectional",
+  "population": "21 elite American weightlifters (15 female, 6 male) including 6 World-caliber females (WCF), 9 National-caliber females (NCF), and 6 National-caliber males (NCM); age 23-28 years, body mass 66-169 kg, 3-8 years competition experience",
+  "intervention": "Observational study; vastus lateralis biopsies analyzed for myosin heavy chain isoform distribution via single-fiber SDS-PAGE and homogenate methods",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "MHC fiber type percentage (single-fiber)",
+    "MHC isoform composition (homogenate)",
+    "Body mass correlation with MHC IIa/IIx",
+    "Strength measures (snatch 1RM, clean & jerk 1RM)"
+  ],
+  "summary": "This cross-sectional study examined vastus lateralis muscle fiber type distribution in 21 elite American weightlifters using single-fiber and homogenate SDS-PAGE. The athletes displayed the highest pure MHC IIa concentrations ever reported in healthy vastus lateralis (67±13% combined), with World-caliber females reaching 71±17%. No pure MHC IIx fibers were found. Heavy-weight athletes accounted for 91% of MHC IIa/IIx hybrid fibers, correlating with body mass. Homogenate analysis overestimated MHC I and IIx compared to single-fiber analysis. Fiber type differences between World and National caliber athletes showed large effect sizes but did not reach statistical significance.",
+  "key_findings": [
+    "Combined single-fiber MHC distribution was 23±9% I, 5±3% I/IIa, 67±13% IIa, and 6±10% IIa/IIx, with no pure MHC IIx or I/IIa/IIx fibers identified.",
+    "World-caliber females had the highest MHC IIa at 71±17% (NCF 67±8%, NCM 63±16%), the highest ever reported in healthy vastus lateralis.",
+    "Heavyweight athletes (5 lifters) accounted for 91% of MHC IIa/IIx hybrid fibers, producing a significant correlation between body mass and MHC IIa/IIx frequency in WCF (r=0.919, p=0.010) and NCF (r=0.826, p=0.006).",
+    "Homogenate analysis overestimated MHC I (31±9% vs 23±9%) and MHC IIx (3±6% vs 0±0%) compared to single-fiber analysis, with SF vs HG differences significant for MHC I (p=0.005) and MHC IIx (p=0.046).",
+    "WCF had significantly higher MHC IIa by homogenate (74±6%) than NCM (61±11%, p=0.046, d=1.39), but not NCF (65±7%, p=0.145, d=1.28). No correlations existed between fiber type percentages and snatch or clean & jerk 1RM."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "d=0.50 for WCF vs NCM MHC IIa difference (single-fiber); d=1.39 for WCF vs NCM MHC IIa difference (homogenate); r=0.919 for body mass vs MHC IIa/IIx in WCF",
+  "exercise_tags": [
+    "power-snatch",
+    "clean-pull",
+    "max_strength"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Small sample size (n=6-9 per group) limits statistical power; cross-sectional design cannot establish causality between training and fiber type; biopsies taken 2-96 hours post-competition may reflect acute metabolic changes; one participant had prior doping suspension; only vastus lateralis sampled.",
+  "reviewed": false
+}

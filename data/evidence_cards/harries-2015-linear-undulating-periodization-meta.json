@@ -1,0 +1,31 @@
+{
+  "id": "harries-2015-linear-undulating-periodization-meta",
+  "citation": "Harries SK, Lubans DR, Callister R. (2015). Systematic review and meta-analysis of linear and undulating periodized resistance training programs on muscular strength. J Strength Cond Res.",
+  "url": "",
+  "study_type": "meta-analysis",
+  "population": "510 participants across 17 studies; average age 24 years (range 19–39); 12 studies males only, 3 females only, 2 both sexes; training experience: 7 studies untrained (<1 year), 10 trained (≥1 year), none advanced (>5 years); populations included recreational trainers, sedentary adults, American football athletes, judo athletes, and tactical service operators (firefighters/military).",
+  "intervention": "Comparison of linear periodization (LP) vs. undulating periodization (UP; including daily undulating DUP and weekly undulating WUP) resistance training programs. Programs used a mixture of multi-joint and single-joint free-weight and machine-based exercises. Mean duration 12.6 ± 4.1 weeks, frequency 3.2 ± 0.7 sessions/week.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "1RM bench press",
+    "1RM squat",
+    "1RM leg press"
+  ],
+  "summary": "This systematic review and meta-analysis of 17 studies (510 participants) compared linear periodization (LP) and undulating periodization (UP) resistance training programs. Both approaches produced significant strength gains, but meta-analyses found no significant difference between LP and UP for upper-body (bench press) or lower-body (squat/leg press) strength. The authors note that short study durations and participants' prior training history may confound results, and that novelty or training variety may drive further strength development.",
+  "key_findings": [
+    "Meta-analyses of 17 studies (510 participants) found no significant difference between linear and undulating periodization for upper-body strength (bench press 1RM) or lower-body strength (squat/leg press 1RM).",
+    "Sixteen of 17 studies reported statistically significant strength increases for both LP and UP programs.",
+    "Five studies reported significant between-group differences: three favored UP, two favored LP.",
+    "Mean training program duration was 12.6 ± 4.1 weeks, with a frequency of 3.2 ± 0.7 sessions per week.",
+    "Risk of bias was high in 4 studies and medium in 13 studies; no studies had low risk of bias."
+  ],
+  "effect_direction": "no_effect",
+  "effect_size": null,
+  "exercise_tags": [
+    "squat",
+    "other"
+  ],
+  "evidence_path": "direct",
+  "limitations": "The included studies were short-term (mean 12.6 weeks) and mostly involved recreationally trained young adults; no studies examined advanced trainees (>5 years experience) or adolescent athletes. Most studies had medium to high risk of bias, with inadequate randomization reporting and lack of blinding.",
+  "reviewed": false
+}

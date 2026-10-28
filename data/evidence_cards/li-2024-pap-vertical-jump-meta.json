@@ -1,0 +1,31 @@
+{
+  "id": "li-2024-pap-vertical-jump-meta",
+  "citation": "Li J, Soh KG, Loh SP (2024). The impact of post‑activation potentiation on explosive vertical jump after intermittent time: a meta‑analysis and systematic review. Scientific Reports.",
+  "url": "https://doi.org/10.1038/s41598-024-67995-7",
+  "study_type": "meta-analysis",
+  "population": "Athletes aged 18–30 years (both sexes) from various sports (volleyball, rugby, soccer, basketball, track and field)",
+  "intervention": "Post-activation potentiation (PAP) induced by squat, deadlift, or other high-intensity exercises followed by intermittent rest intervals ranging from 10 s to 24 min; countermovement jump (CMJ) height and peak ground reaction force (GRF) measured after rest",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Countermovement jump (CMJ) height",
+    "Peak ground reaction force (GRF)"
+  ],
+  "summary": "This meta-analysis of 21 studies (327 athletes) examined how different rest intervals after PAP-inducing exercises affect explosive vertical jump performance. Rest intervals of 4 min and 5–8 min significantly increased countermovement jump height, while shorter (1–3 min, 10–15 s) and longer (10–24 min) intervals did not. The primary PAP induction method was squat-based exercises at 40–90% 1RM.",
+  "key_findings": [
+    "Intermittent rest of 4 min significantly increased CMJ height (MD = −0.03, 95% CI: −0.04 to −0.01; P = 0.007).",
+    "Intermittent rest of 5–8 min significantly increased CMJ height (MD = −0.03, 95% CI: −0.04 to −0.01; P = 0.002).",
+    "Intermittent rest of 1–3 min did not significantly affect CMJ height (MD = −0.00, 95% CI: −0.01 to 0.01; P = 0.70).",
+    "Intermittent rest of 10–24 min did not significantly affect CMJ height (MD = −0.01, 95% CI: −0.02 to 0.00; P = 0.15).",
+    "Very short rest intervals of 10–15 s showed no significant effect on CMJ height (MD = −0.05, 95% CI: −0.16 to 0.06; P = 0.34)."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "4 min: MD = −0.03, 95% CI −0.04 to −0.01; 5–8 min: MD = −0.03, 95% CI −0.04 to −0.01; 1–3 min: MD = −0.00, 95% CI −0.01 to 0.01; 10–24 min: MD = −0.01, 95% CI −0.02 to 0.00; 10–15 s: MD = −0.05, 95% CI −0.16 to 0.06",
+  "exercise_tags": [
+    "squat",
+    "countermovement-jump",
+    "jump_vertical"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Included studies were pre-post designs with unclear randomization risk; high heterogeneity (I²=98%) for very short intervals; only three studies examined 10–15 s intervals; subgroup analyses limited by small study counts.",
+  "reviewed": false
+}

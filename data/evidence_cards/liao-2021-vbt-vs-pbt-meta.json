@@ -1,0 +1,35 @@
+{
+  "id": "liao-2021-vbt-vs-pbt-meta",
+  "citation": "Liao K-F, Wang X-X, Han M-Y, Li L-L, Nassis GP, Li Y-M (2021). Effects of velocity based training vs. traditional 1RM percentage-based training on improving strength, jump, linear sprint and change of direction speed performance: A Systematic review with meta-analysis. PLoS ONE.",
+  "url": "https://doi.org/10.1371/journal.pone.0259790",
+  "study_type": "systematic review with meta-analysis",
+  "population": "124 participants aged 16-30 years, athletic population",
+  "intervention": "Velocity-based training (VBT) vs traditional percentage-based training (PBT) using back squat as primary exercise, 6-8 weeks, 2-3 sessions per week",
+  "duration_weeks": 7,
+  "outcome_measures": [
+    "back squat 1RM",
+    "load velocity at 60%1RM",
+    "countermovement jump (CMJ)",
+    "linear sprint",
+    "change of direction speed (CODs)"
+  ],
+  "summary": "This systematic review with meta-analysis compared velocity-based training (VBT) to traditional percentage-based training (PBT) across six studies. Both methods effectively improved strength, jump, linear sprint, and change-of-direction speed, but no statistically significant differences were found between groups for any outcome. All pooled effects trended slightly in favor of VBT, which also involved lower training volume and stress.",
+  "key_findings": [
+    "Back squat 1RM: no significant difference between VBT and PBT (MD = 3.03kg, 95%CI: -3.55 to 9.61, p = 0.37, I² = 0%).",
+    "Load velocity at 60%1RM: no significant difference (MD = 0.02m/s, 95%CI: -0.01 to 0.06, p = 0.21, I² = 0%).",
+    "Countermovement jump (CMJ): no significant difference (SMD = 0.27, 95%CI: -0.15 to 0.70, p = 0.21, I² = 0%).",
+    "Linear sprint: no significant difference (MD = 0.01s, 95%CI: -0.06 to 0.07, p = 0.86, I² = 0%).",
+    "Change of direction speed (CODs): no significant difference (SMD = 0.46, 95%CI: -0.14 to 1.07, p = 0.13, I² = 0%)."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Back squat 1RM: MD = 3.03kg (95%CI: -3.55, 9.61); Load velocity 60%1RM: MD = 0.02m/s (95%CI: -0.01, 0.06); CMJ: SMD = 0.27 (95%CI: -0.15, 0.70); Linear sprint: MD = 0.01s (95%CI: -0.06, 0.07); CODs: SMD = 0.46 (95%CI: -0.14, 1.07)",
+  "exercise_tags": [
+    "back-squat",
+    "jump_vertical",
+    "sprint",
+    "acceleration-sprint"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only six studies included, preventing meta-regression and moderator analysis; evidence quality graded as low per GRADE; participants aged 16-30 years limit generalizability; search restricted to English and Chinese languages.",
+  "reviewed": false
+}

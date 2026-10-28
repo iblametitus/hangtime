@@ -1,0 +1,39 @@
+{
+  "id": "ma-2025-training-vertical-jump-meta",
+  "citation": "Ma S, Xu Y, Xu S (2025). Effects of Physical Training Programs on Healthy Athletes' Vertical Jump Height: A Systematic Review With Meta-Analysis. Journal of Sports Science and Medicine.",
+  "url": "https://doi.org/10.52082/jssm.2025.236",
+  "study_type": "systematic review with meta-analysis",
+  "population": "Healthy athletes (male and female) across various sports (soccer, basketball, handball, volleyball, etc.), total sample size 1342 across 44 studies, age range 8.7-25 years.",
+  "intervention": "Four training methods compared: plyometric training (e.g., box jumps, depth jumps), weight resistance training (e.g., squats, deadlifts, leg presses), complex training (alternating resistance and plyometric exercises), and routine training (control).",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "vertical jump height",
+    "countermovement jump",
+    "squat jump",
+    "drop jump",
+    "stationary vertical jump"
+  ],
+  "summary": "This systematic review and meta-analysis of 44 studies (1342 athletes) compared plyometric, weight resistance, complex, and routine training effects on vertical jump performance. Weight resistance training produced the largest improvement in vertical jump height (+9.9 cm), while complex training was most effective for countermovement jumps (+5.0 cm). All three training methods significantly outperformed routine training across jump types, with low heterogeneity.",
+  "key_findings": [
+    "Plyometric training increased vertical jump height by 5.2 cm (95% CI: 2.6, 7.7 cm; I² = 4.7%) compared to routine training.",
+    "Weight resistance training increased vertical jump height by 9.9 cm (95% CI: 6.7, 13.5 cm; I² = 0.0%) compared to routine training.",
+    "Plyometric training improved squat jump by 1.5 cm (95% CI: 0.2, 2.6 cm; I² = 0.0%) and weight resistance training improved squat jump by 3.1 cm (95% CI: 0.2, 2.6 cm; I² = 16.9%) versus routine training.",
+    "For countermovement jump, plyometric training increased height by 2.0 cm (95% CI: 1.4, 3.7 cm; I² = 0.0%), weight resistance by 2.2 cm (95% CI: 1.4, 3.7 cm; I² = 0.0%), and complex training by 5.0 cm (95% CI: 2.5, 7.6 cm; I² = 0.0%) versus routine training.",
+    "Complex training was more effective than weight resistance (2.6 cm; 95% CI: 0.2, 5.5 cm) and plyometric training (2.9 cm; 95% CI: 0.2, 5.8 cm) for countermovement jump, with no significant difference between weight resistance and plyometric training (0.2 cm; 95% CI: -1.0, 2.0 cm)."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Vertical jump: plyometric +5.2 cm (95% CI 2.6-7.7), weight resistance +9.9 cm (95% CI 6.7-13.5); Countermovement jump: plyometric +2.0 cm (95% CI 1.4-3.7), weight resistance +2.2 cm (95% CI 1.4-3.7), complex +5.0 cm (95% CI 2.5-7.6)",
+  "exercise_tags": [
+    "squat",
+    "depth-jump",
+    "box-jump",
+    "conventional-deadlift",
+    "leg-press",
+    "split-squat-jump",
+    "jump_vertical",
+    "reactive"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only one included study used blinded assessors; most studies had small group sizes (6-27 participants); female athletes were underrepresented (only 8 of 44 studies included females); sports distribution was uneven with 19 soccer studies but few other sports.",
+  "reviewed": false
+}

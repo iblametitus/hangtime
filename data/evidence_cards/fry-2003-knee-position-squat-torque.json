@@ -1,0 +1,29 @@
+{
+  "id": "fry-2003-knee-position-squat-torque",
+  "citation": "Fry AC, Smith JC, Schilling BK (2003). Effect of knee position on hip and knee torques during the barbell squat. Journal of strength and conditioning research.",
+  "url": "https://doi.org/10.1519/1533-4287(2003)017<0629:eokpoh>2.0.co;2",
+  "study_type": "controlled trial",
+  "population": "Seven weight-trained men (mean age 27.9 ± 5.2 years)",
+  "intervention": "Two variations of parallel barbell squats with load equal to body weight: unrestricted (knees allowed to move past toes) vs restricted (wooden barrier preventing knees from moving past toes)",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Knee joint torque",
+    "Hip joint torque"
+  ],
+  "summary": "This study compared knee and hip joint torques during barbell squats when forward knee displacement was restricted versus unrestricted. Restricting knee motion reduced knee torque but increased hip and low-back torque, suggesting a trade-off in joint loading.",
+  "key_findings": [
+    "Restricting forward knee movement during the barbell squat reduced knee joint torque compared to unrestricted squatting.",
+    "Restricting forward knee movement increased hip joint torque compared to unrestricted squatting.",
+    "Differences in knee and hip torques between the two squat conditions were statistically significant (p < 0.05).",
+    "The authors concluded that appropriate joint loading during the squat may require the knees to move slightly past the toes."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": null,
+  "exercise_tags": [
+    "squat",
+    "back-squat"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Small sample of seven weight-trained men; acute single-session design with no long-term or performance outcomes; only abstract available, limiting full risk-of-bias assessment.",
+  "reviewed": false
+}

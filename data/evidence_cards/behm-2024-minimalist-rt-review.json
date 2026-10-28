@@ -1,0 +1,37 @@
+{
+  "id": "behm-2024-minimalist-rt-review",
+  "citation": "Behm DG, Granacher U, Warneke K, Aragão-Santos JC, Da Silva-Grigoletto ME, Konrad A (2024). Minimalist Training: Is Lower Dosage or Intensity Resistance Training Effective to Improve Physical Fitness? A Narrative Review. Sports Medicine.",
+  "url": "https://doi.org/10.1007/s40279-023-01949-3",
+  "study_type": "review",
+  "population": "Sedentary individuals, resistance training beginners, and untrained adults (including young adult males, untrained women, youth soccer players, pubescent male baseball players)",
+  "intervention": "Minimalist resistance training protocols: 1 weekly session, <3 sets per exercise, loads below 50% 1RM (range 30-80% 1RM), 6-15 repetitions per set, using multi-joint functional movements",
+  "duration_weeks": 12,
+  "outcome_measures": [
+    "muscle strength",
+    "muscle hypertrophy",
+    "muscle endurance",
+    "dynamic strength",
+    "power"
+  ],
+  "summary": "This narrative review examines minimal-dose resistance training for sedentary individuals and beginners. Evidence suggests that a single weekly session with less than three sets per multi-joint exercise at intensities below 50% of 1RM can produce significant strength and hypertrophy gains for at least 8-12 weeks. Multi-joint exercises yield similar or greater effects than single-joint exercises, though the optimal repetition endpoint (training to failure vs. sub-failure) remains debated.",
+  "key_findings": [
+    "One weekly resistance training session is sufficient to induce strength gains in beginners with <3 sets and loads below 50% 1RM for at least 8-12 weeks.",
+    "Untrained women demonstrated similar strength gains with one set versus two to four sets for the first 12 weeks of a 24-week program.",
+    "Meta-analysis by Ralston et al. found large magnitude effect size gains (exceeding 1.0) with single sets in novice and intermediate male trainees.",
+    "Multi-joint exercises induce similar or even larger effects than single-joint exercises for minimalist training.",
+    "Very low intensity activities such as prolonged static stretching (>10 min per muscle group) can improve strength and hypertrophy but require much longer session durations."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Effect sizes exceeding 1.0 for single sets in untrained individuals (from Ralston et al. meta-analysis)",
+  "exercise_tags": [
+    "squat",
+    "conventional-deadlift",
+    "leg-press",
+    "nordic-hamstring-curl",
+    "hinge",
+    "lunge"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Narrative review design limits quantitative synthesis; high heterogeneity across studies in protocols and outcome measures; minimal research on single weekly sessions beyond 12 weeks; findings primarily apply to sedentary/untrained populations, not trained individuals.",
+  "reviewed": false
+}

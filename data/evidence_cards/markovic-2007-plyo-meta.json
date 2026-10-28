@@ -1,0 +1,33 @@
+{
+  "id": "markovic-2007-plyo-meta",
+  "citation": "Markovic G, et al. (2007). Determining Variables of Plyometric Training for Improving Vertical Jump Height Performance: A Meta-Analysis. Journal of Strength and Conditioning Research.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/19197203/",
+  "study_type": "meta-analysis",
+  "population": "Athletes of varying sport experience levels, both sexes, and varying physical condition (good or bad).",
+  "intervention": "Plyometric training programs for lower-limb muscles, varying in volume (weeks, sessions, jumps per session), intensity, exercise types (squat jump, countermovement jump, drop jump), and added weight.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Vertical jump height (VJH)",
+    "Power performance"
+  ],
+  "summary": "This meta-analysis of 56 studies (225 effect sizes) examined factors influencing plyometric training effects on vertical jump height. Greater improvements were seen in athletes with more sport experience, with optimal training volumes exceeding 10 weeks, 20 sessions, and 50 jumps per session. Combining squat jumps, countermovement jumps, and drop jumps was more effective than single jump types, while added weight provided no extra benefit.",
+  "key_findings": [
+    "Subjects with more sport experience obtained greater enhancements in vertical jump height (p < 0.01).",
+    "Subjects in good or bad physical condition benefited equally from plyometric training (p < 0.05).",
+    "Men tended to obtain better power results than women after plyometric training (p < 0.05).",
+    "Training volumes >10 weeks, >20 sessions, and >50 jumps per session maximized vertical jump height improvements (p < 0.05).",
+    "Combining squat jump, countermovement jump, and drop jump was superior to using only one plyometric form (p < 0.05).",
+    "Added weight during plyometrics provided no extra benefit for vertical jump height."
+  ],
+  "effect_direction": "positive",
+  "effect_size": null,
+  "exercise_tags": [
+    "squat-jump",
+    "countermovement-jump",
+    "drop-jump",
+    "jump_vertical"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only abstract available; full text behind paywall limits detailed risk-of-bias assessment. Meta-analysis includes heterogeneous studies; no pooled effect sizes reported in abstract. Potential publication bias and variability in plyometric program designs.",
+  "reviewed": false
+}

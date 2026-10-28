@@ -1,0 +1,43 @@
+{
+  "id": "zhang-2025-unilateral-bilateral-plyo-meta",
+  "citation": "Zhang Z, Qu W, Peng W, Sun J, Yue J, Guan L, Lu M, Li D (2025). Effect of unilateral and bilateral plyometric training on jumping, sprinting, and change of direction abilities: a meta-analysis. BMC Sports Science, Medicine and Rehabilitation.",
+  "url": "https://doi.org/10.1186/s13102-025-01113-6",
+  "study_type": "meta-analysis",
+  "population": "328 healthy participants (31.7% male, 49.4% female, 18.9% sex not reported) aged 9–65 years, including pre-adolescents (9–12 years), youth (13–18 years), and adults (18–65 years) from sports such as volleyball, basketball, badminton, soccer, and recreational to professional levels.",
+  "intervention": "Unilateral plyometric training (experimental) vs bilateral plyometric training (control); sessions 20–90 min, 2–3 times/week over 6–12 weeks; exercises included single-leg jumps, depth jumps, hurdle jumps, box jumps, squat jumps, countermovement jumps, sprints, broad jumps, and agility drills.",
+  "duration_weeks": 6,
+  "outcome_measures": [
+    "single-leg jump performance (cm)",
+    "double-leg jump performance (cm)",
+    "vertical jump performance (cm)",
+    "horizontal jump performance (cm)",
+    "sprint performance (seconds, 10–30 m)",
+    "change of direction ability (seconds, T-agility test, 505 test)"
+  ],
+  "summary": "This meta-analysis of 11 RCTs (328 healthy participants) compared unilateral versus bilateral plyometric training. Unilateral training significantly improved single-leg jump performance (ES = 0.29) and vertical jump performance (ES = 0.53), while bilateral training was superior for bilateral jump performance (ES = -0.07). Unilateral training also significantly enhanced sprint performance (ES = -0.04) and change of direction ability (ES = -0.07). Low ground contact frequency (<900 total contacts) significantly enhanced vertical jump performance (ES = 0.64).",
+  "key_findings": [
+    "Unilateral training improved single-leg jump performance more than bilateral training (ES = 0.29, 95% CI: 0.06–0.52; Z = 2.46, p = 0.01).",
+    "No significant difference between unilateral and bilateral training for double-leg jump performance (ES = -0.07, 95% CI: -0.23–0.09; Z = 0.88, p = 0.38).",
+    "Unilateral training significantly improved vertical jump performance versus control (ES = 0.53, 95% CI: 0.02–1.04; Z = 2.05, p = 0.04).",
+    "Low ground contact frequency (<900 contacts) significantly enhanced vertical jump performance (ES = 0.64, 95% CI: 0.01–1.27; Z = 2.00, p = 0.05).",
+    "Unilateral training significantly improved sprint performance (ES = -0.04, 95% CI: -0.07 to -0.01; Z = 2.32, p = 0.02) and change of direction ability (ES = -0.07, 95% CI: -0.12 to -0.03; Z = 3.29, p = 0.001).",
+    "Bilateral training showed greater effect on bilateral jump performance (ES = -0.07, 95% CI: -0.12 to -0.03; Z = 3.39, p = 0.0007)."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "ES = 0.29 (single-leg jump), ES = 0.53 (vertical jump), ES = 0.64 (LGCF vertical jump), ES = -0.04 (sprint), ES = -0.07 (COD), ES = -0.07 (bilateral jump favoring BI)",
+  "exercise_tags": [
+    "jump_vertical",
+    "jump_horizontal",
+    "hop_unilateral",
+    "depth-jump",
+    "hurdle-hops",
+    "box-jump",
+    "squat-jump",
+    "countermovement-jump",
+    "broad-jump",
+    "sprint"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Moderate heterogeneity (I² = 49%) in vertical jump analysis; subgroup analyses limited by few studies per category; mixed population across youth to adults with 18.9% sex not reported; only 11 studies met inclusion criteria, some subgroups had <2 studies and were excluded.",
+  "reviewed": false
+}

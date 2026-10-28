@@ -1,0 +1,37 @@
+{
+  "id": "oranchuk-2019-isometric-training-review",
+  "citation": "Oranchuk DJ, Storey AG, Nelson AR, Cronin JB (2019). Isometric training and long-term adaptations; effects of muscle length, intensity and intent: A systematic review. Sports Medicine.",
+  "url": "https://doi.org/10.1111/sms.13375",
+  "study_type": "systematic review",
+  "population": "Healthy adults (mean age 24.3 years), mostly untrained or recreationally active (16/26 studies untrained, 11/26 active), 463 male, 250 female, no competitive athletes",
+  "intervention": "Isometric training variations including joint angle (short vs long muscle length), intensity (≤70% vs >70% MVIC), contraction intent (ballistic vs progressive/sustained), duration (short vs long contractions), volume, rest period, and periodization; interventions 3-14 weeks (mean 8.4 weeks), 2-7 sessions/week",
+  "duration_weeks": 8,
+  "outcome_measures": [
+    "muscle hypertrophy (cross-sectional area, thickness, volume)",
+    "maximal isometric force",
+    "rate of force development",
+    "neuromuscular activation (EMG)",
+    "tendon stiffness and cross-sectional area",
+    "fascicle length and pennation angle"
+  ],
+  "summary": "This systematic review of 26 studies (713 participants) examined medium-to-long-term adaptations (≥3 weeks) to isometric training variations. Training at long muscle lengths (>70° knee flexion) produced greater hypertrophy than short muscle lengths (1.16%/week vs 0.61%/week), while ballistic contraction intent enhanced neuromuscular activation and rapid force production more than progressive intent. High-intensity contractions (≥70% MVIC) were necessary for tendon structural adaptations, whereas hypertrophy was similar across intensities when volume was equated.",
+  "key_findings": [
+    "Training at long muscle lengths (>70° flexion) increased muscle size by 1.16 ± 0.46%/week (ES 0.067 ± 0.032/week) versus 0.61 ± 0.42%/week (ES 0.045 ± 0.034/week) at short muscle lengths (≤70° flexion).",
+    "Ballistic intent contractions improved neuromuscular activation by 1.04–10.5%/week (ES 0.02–0.31/week) compared to progressive/sustained intent at 1.64–5.53%/week (ES 0.03–0.20/week).",
+    "Ballistic intent improved rapid force production by 1.2–13.4%/week (ES 0.05–0.61/week) versus progressive intent at 1.01–8.13%/week (ES 0.06–0.22/week).",
+    "Maximal isometric force increased across 14 studies by 4.34%/week (ES 0.20/week).",
+    "High-intensity contractions (≥70% MVIC) were required for tendon stiffness and cross-sectional area adaptations, while hypertrophy was similar between low (≤70% MVIC: 6.8%/week, ES 0.32/week) and high (>70% MVIC: 8.9%/week, ES 0.36/week) intensity when volume was not equated."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "ES = 0.03-0.09/week for LML hypertrophy; ES = 0.02-0.31/week for ballistic neuromuscular activation; ES = 0.05-0.61/week for ballistic rapid force production; ES = 0.20/week for maximal isometric force",
+  "exercise_tags": [
+    "isometric-squat-hold",
+    "isometric-mid-thigh-pull",
+    "max_strength",
+    "speed_strength",
+    "other"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only 26 studies with small average sample size (27 participants), mostly untrained/recreationally active individuals, no competitive athletes; moderate methodological quality (mean 14.3/20); heterogeneity in training protocols and outcome measures limits precise quantification.",
+  "reviewed": false
+}

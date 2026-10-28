@@ -1,0 +1,39 @@
+{
+  "id": "ding-2026-flywheel-basketball-meta",
+  "citation": "Ding W, Li B, Ma X (2026). Effects of flywheel resistance training on jump, sprint, and change-of-direction performance in basketball players: a systematic review and meta-analysis. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2026.1989504",
+  "study_type": "systematic review and meta-analysis",
+  "population": "119 basketball players (collegiate, youth, amateur, professional; male and female) across 7 randomized controlled trials",
+  "intervention": "Flywheel resistance training (4-8 weeks, 1-2 sessions/week) using lower-body multi-joint exercises (squat, half squat, Romanian deadlift, single-leg squats) vs traditional resistance training",
+  "duration_weeks": 6,
+  "outcome_measures": [
+    "countermovement jump",
+    "squat jump",
+    "drop jump",
+    "linear sprint (5-30 m)",
+    "505 test",
+    "T-test",
+    "Lane Agility Test"
+  ],
+  "summary": "This systematic review and meta-analysis of 7 RCTs (119 basketball players) found that flywheel resistance training produced moderate beneficial effects on jump performance (Hedges' g = 0.65) and change-of-direction performance (Hedges' g = -0.57) compared to traditional resistance training, while the effect on linear sprint performance (Hedges' g = -0.57) did not reach statistical significance.",
+  "key_findings": [
+    "Jump performance favored flywheel training with a moderate effect (Hedges' g = 0.65, 95% CI [0.23, 1.07], p = 0.008) and negligible heterogeneity (I² = 0.0%).",
+    "Change-of-direction performance favored flywheel training with a moderate effect (Hedges' g = -0.57, 95% CI [-1.07, -0.08], p = 0.033) and no detected heterogeneity (I² = 0.0%).",
+    "Linear sprint performance showed a moderate point estimate favoring flywheel training (Hedges' g = -0.57, 95% CI [-1.20, 0.05]) but did not reach statistical significance (p = 0.065).",
+    "Evidence certainty was rated moderate for jump performance and low for sprint and COD performance per GRADE.",
+    "All 7 included studies had some concerns for risk of bias, primarily in randomization and outcome reporting."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Jump: Hedges' g = 0.65 (95% CI 0.23-1.07); COD: Hedges' g = -0.57 (95% CI -1.07 to -0.08); Sprint: Hedges' g = -0.57 (95% CI -1.20 to 0.05)",
+  "exercise_tags": [
+    "squat",
+    "romanian-deadlift",
+    "countermovement-jump",
+    "squat-jump",
+    "drop-jump",
+    "sprint"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only 7 studies with small total sample (n=119) limited statistical power to detect heterogeneity; all studies had some risk-of-bias concerns (randomization, outcome reporting); GRADE certainty low for sprint and COD outcomes.",
+  "reviewed": false
+}

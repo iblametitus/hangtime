@@ -1,0 +1,43 @@
+{
+  "id": "ramirez-delacruz-2022-plyometric-meta",
+  "citation": "Ramírez-delaCruz M, Bravo-Sánchez A, Esteban-García P, Jiménez F, Abián-Vicén J (2022). Effects of Plyometric Training on Lower Body Muscle Architecture, Tendon Structure, Stiffness and Physical Performance: A Systematic Review and Meta-analysis. Sports Medicine - Open.",
+  "url": "https://doi.org/10.1186/s40798-022-00431-0",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Healthy adults (≥18 years) without pathologies from 32 studies (total n=549 for muscle thickness meta-analysis)",
+  "intervention": "Plyometric training programmes of at least 8 sessions, varying in frequency, intensity, duration, and exercise selection (including counter-movement jumps, squat jumps, drop jumps, sprints, and strength exercises)",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "muscle thickness",
+    "fascicle length",
+    "pennation angle",
+    "muscle cross-sectional area",
+    "tendon stiffness",
+    "muscle stiffness",
+    "jump performance (CMJ, SJ, DJ)",
+    "sprint performance",
+    "lower body strength performance"
+  ],
+  "summary": "This systematic review and meta-analysis of 32 studies found that plyometric training produces moderate increases in muscle thickness (SMD 0.59), fascicle length (SMD 0.51), pennation angle (SMD 0.29), and tendon stiffness (SMD 0.55). Jump performance (SMD 0.61) and lower body strength (SMD 0.57) also improved moderately, while muscle cross-sectional area, muscle stiffness, and sprint performance showed no significant changes.",
+  "key_findings": [
+    "Plyometric training increased muscle thickness with a moderate effect (SMD: 0.59; 95% CI 0.47–0.71; n=549; p<0.001).",
+    "Fascicle length increased with a moderate effect (SMD: 0.51; 95% CI 0.26–0.76; n=234; p<0.001).",
+    "Pennation angle increased with a small effect (SMD: 0.29; 95% CI 0.02–0.57).",
+    "Tendon stiffness increased with a moderate effect (SMD: 0.55; 95% CI 0.28–0.82).",
+    "Jump performance improved with a moderate effect (SMD: 0.61; 95% CI 0.47–0.74) and lower body strength improved with a moderate effect (SMD: 0.57; 95% CI 0.42–0.73).",
+    "Muscle cross-sectional area, muscle stiffness, and sprint performance showed no significant changes after plyometric training."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Muscle thickness SMD 0.59 (95% CI 0.47–0.71); fascicle length SMD 0.51 (95% CI 0.26–0.76); pennation angle SMD 0.29 (95% CI 0.02–0.57); tendon stiffness SMD 0.55 (95% CI 0.28–0.82); jump performance SMD 0.61 (95% CI 0.47–0.74); strength performance SMD 0.57 (95% CI 0.42–0.73)",
+  "exercise_tags": [
+    "countermovement-jump",
+    "squat-jump",
+    "drop-jump",
+    "sprint",
+    "max_strength",
+    "strength_speed",
+    "jump_vertical"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Included studies had moderate methodological quality (PEDro 5.29±1.14/10) with most rated as 'some concerns' for risk of bias; heterogeneity was low for muscle thickness (I²=0%) but moderate for fascicle length (I²=41%); subgroup analyses were limited by number of studies.",
+  "reviewed": false
+}

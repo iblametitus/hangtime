@@ -1,0 +1,35 @@
+{
+  "id": "aldrich-2024-resisted-sprint-meta",
+  "citation": "Aldrich EK, Sullivan K, Wingo JE, Esco MR, Leeper J, Richardson MT, Winchester LJ, Fedewa MV (2024). The Effect of Resisted Sprint Training on Acceleration: A Systematic Review and Meta-Analysis. International Journal of Exercise Science.",
+  "url": "https://doi.org/10.70252/VKAV1115",
+  "study_type": "systematic review and meta-analysis",
+  "population": "352 adults (≥18 years) across 15 studies, including recreationally active university students, recreational athletes, and professional field sport athletes (rugby, soccer); mixed sexes (47% men-only, 33% women-only, 13% mixed, 7% not reported).",
+  "intervention": "Resisted sprint (RS) training (sled towing, parachute, weighted vest) vs unresisted running (UR) training; 8–24 sessions over 4–10 weeks (mean 7±1 weeks); resistance loads 6.8–89.1% body mass (mean 34.3±28.9% body mass).",
+  "duration_weeks": 7,
+  "outcome_measures": [
+    "sprint acceleration time",
+    "sprint speed from 0 m",
+    "0–20 m sprint time",
+    "0–30 m sprint time",
+    "0–40 m sprint time"
+  ],
+  "summary": "This systematic review and meta-analysis of 15 studies (50 effects, 352 participants) compared resisted sprint (RS) training to unresisted running (UR) training for improving sprint acceleration. The overall effect was small and non-significant (Hedges' d = 0.11, 95% CI: −0.01 to 0.23, p = 0.08), with low heterogeneity (I² = 0%). Although 74% of individual effects favored RS training, the improvement did not exceed that of UR training.",
+  "key_findings": [
+    "The pooled effect of RS training vs UR training on sprint acceleration was ES = 0.1085 (95% CI: −0.0129 to 0.2300; p = 0.0798), a small non-significant improvement.",
+    "37 of 50 effects (74%) were positive but the overall effect was not statistically significant.",
+    "Heterogeneity was low (Q₄₉ = 29.42, p = 0.988, I² = 0%), indicating consistency across studies.",
+    "Sensitivity analysis removing one outlier reduced the effect to ES = 0.0874 (95% CI: −0.0342 to 0.2090; p = 0.159).",
+    "Training involved 8–24 sessions over 4–10 weeks with resistance loads of 6.8–89.1% body mass."
+  ],
+  "effect_direction": "no_effect",
+  "effect_size": "ES = 0.1085, 95% CI: −0.0129 to 0.2300",
+  "exercise_tags": [
+    "sled-sprint",
+    "sled-push",
+    "sprint",
+    "acceleration-sprint"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Most included studies were rated fair or good quality (none excellent); participants varied widely in training status, sex, and sport; resistance loads ranged from 6.8% to 89.1% body mass, making dose-response unclear.",
+  "reviewed": false
+}

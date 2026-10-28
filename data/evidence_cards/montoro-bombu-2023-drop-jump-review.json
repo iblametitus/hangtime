@@ -1,0 +1,37 @@
+{
+  "id": "montoro-bombu-2023-drop-jump-review",
+  "citation": "Montoro-Bombú R, Sarmento H, Buzzichelli C, Moura NA, Gonzáles Badillo JJ, Santos A and Rama L (2023). Methodological considerations for determining the volume and intensity of drop jump training. A systematic, critical and prepositive review. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2023.1181781",
+  "study_type": "systematic review",
+  "population": "Male and female athletes aged 16–40 years, trained or recreationally active; 329 participants (mean age 25.79 ± 4.76 years) across 22 RCTs, with six female-only groups, 15 male-only groups, and four mixed groups.",
+  "intervention": "Plyometric training programs incorporating drop jumps (DJ) or depth jumps (DeJ) with rebounding or countermovement, lasting more than 4 weeks, with various volumes and intensities.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "jump height",
+    "vertical jump performance",
+    "sprint performance",
+    "acceleration",
+    "strength",
+    "power output"
+  ],
+  "summary": "This systematic review collated 22 randomized controlled trials examining drop jump and depth jump training programs. It identified widespread methodological problems in how training intensity and volume are prescribed and reported, concluding that drop height alone should not define intensity; instead, ground reaction forces, power output, and jump height are more appropriate determinants. The review provides formulas for athlete experience level selection and recommendations for volume variation criteria.",
+  "key_findings": [
+    "The systematic review included 22 randomized controlled trials with 329 participants (mean age 25.79 ± 4.76 years) examining drop jump or depth jump training programs lasting more than 4 weeks.",
+    "42% of plyometric training studies in the literature do not report training intensity, highlighting a major methodological gap.",
+    "The review concludes that drop height should not be used as the sole determinant of plyometric training intensity; intensity is determined by ground reaction forces, power output, and jump height.",
+    "Methodological problems were identified across included studies, including lack of intensity assessment, no volume variation criteria, and insufficient volume distribution.",
+    "The review provides formulas for athlete experience level selection and recommendations for volume variation criteria to improve plyometric training prescription."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": null,
+  "exercise_tags": [
+    "drop-jump",
+    "depth-jump",
+    "countermovement-jump",
+    "jump_vertical",
+    "reactive"
+  ],
+  "evidence_path": "direct",
+  "limitations": "The review only included English-language randomized controlled trials, potentially missing relevant non-English or non-RCT evidence. Many included studies had methodological limitations such as no assessment of training intensity, no volume variation criteria, and small sample sizes.",
+  "reviewed": false
+}

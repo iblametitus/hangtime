@@ -1,0 +1,33 @@
+{
+  "id": "lauersen-2014-injury-prevention-meta",
+  "citation": "Lauersen JB, Bertelsen DM, Andersen LB (2014). The effectiveness of exercise interventions to prevent sports injuries: a systematic review and meta-analysis of randomised controlled trials. British journal of sports medicine.",
+  "url": "https://doi.org/10.1136/bjsports-2013-092538",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Athletes and sports participants across 25 randomized controlled trials (26,610 participants, 3,464 injuries)",
+  "intervention": "Exercise interventions including strength training, stretching, proprioception training, and combinations of these",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Injury incidence (acute and overuse)",
+    "Risk ratios (RR) for injury prevention"
+  ],
+  "summary": "This systematic review and meta-analysis of 25 RCTs found that exercise interventions overall reduced sports injuries, but effects varied by type. Strength training, proprioception training, and multiple-exposure programmes showed significant injury reduction, while stretching alone did not. Both acute and overuse injuries were reduced by physical activity programmes.",
+  "key_findings": [
+    "Overall effect estimate on injury prevention was heterogeneous across studies.",
+    "Stretching showed no beneficial effect: RR 0.963 (95% CI 0.846-1.095).",
+    "Multiple-exposure programmes reduced injuries: RR 0.655 (95% CI 0.520-0.826).",
+    "Proprioception training reduced injuries: RR 0.550 (95% CI 0.347-0.869).",
+    "Strength training reduced injuries to less than one-third: RR 0.315 (95% CI 0.207-0.480).",
+    "Acute injuries reduced: RR 0.647 (95% CI 0.502-0.836).",
+    "Overuse injuries reduced: RR 0.527 (95% CI 0.373-0.746).",
+    "Intention-to-treat sensitivity analyses yielded even more robust effect estimates."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Overall heterogeneous; stretching RR 0.963 (0.846-1.095); multiple exposures RR 0.655 (0.520-0.826); proprioception RR 0.550 (0.347-0.869); strength training RR 0.315 (0.207-0.480); acute injuries RR 0.647 (0.502-0.836); overuse injuries RR 0.527 (0.373-0.746)",
+  "exercise_tags": [
+    "other",
+    "max_strength"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Abstract only; high heterogeneity across trials; 12 studies required adjustment for clustering effects; potential publication bias (Harbord's small-study effects) noted.",
+  "reviewed": false
+}

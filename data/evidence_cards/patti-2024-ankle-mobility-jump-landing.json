@@ -1,0 +1,33 @@
+{
+  "id": "patti-2024-ankle-mobility-jump-landing",
+  "citation": "Patti, A., Gervasi, M., Giustino, V., Figlioli, F., Canzone, A., Drid, P., Thomas, E., Messina, G., Vicari, D.S.S., Palma, A., et al. (2024). The Influence of Ankle Mobility and Foot Stability on Jumping Ability and Landing Mechanics: A Cross-Sectional Study. J. Funct. Morphol. Kinesiol.",
+  "url": "https://doi.org/10.3390/jfmk9030160",
+  "study_type": "cross-sectional",
+  "population": "62 healthy amateur volleyball players (37 females, 25 males), age 16.5 ± 4.25 years, height 166 ± 11.4 cm, weight 61.6 ± 13.7 kg",
+  "intervention": "Observational study measuring ankle range of motion (ROM) via inertial sensor, counter-movement jump (CMJ) performance via Microgate system, and stabilometry during single-leg landings after forward and lateral jumps on a platform at half-height distance with obstacle at 70% CMJ height.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Ankle ROM (°)",
+    "CMJ height (flight time)",
+    "Stabilometry parameters (sway path length, ellipse surface area, CoP coordinates, max oscillation, avg speed)"
+  ],
+  "summary": "This cross-sectional study examined the relationship between ankle mobility and jumping/landing performance in 62 amateur volleyball players. Right ankle ROM showed a strong positive correlation with counter-movement jump height (r = 0.81), while left ankle ROM showed a moderate correlation (r = 0.46). Stabilometry during single-leg landings revealed substantial changes in postural control parameters, particularly during forward hops compared to lateral jumps, indicating that dorsiflexion ROM significantly influences jumping ability and landing stability.",
+  "key_findings": [
+    "Right foot ROM had a strong correlation with CMJ performance (r = 0.81, p < 0.001).",
+    "Left foot ROM showed a moderate correlation with CMJ performance (r = 0.46, p < 0.001).",
+    "The specific jump-landing task revealed substantial changes in stabilometry parameters, particularly during forward hops compared to lateral jumps.",
+    "Dorsiflexion ROM significantly impacts jumping ability."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "r = 0.81 (right foot ROM vs CMJ), r = 0.46 (left foot ROM vs CMJ)",
+  "exercise_tags": [
+    "countermovement-jump",
+    "single-leg-drop-landing",
+    "lateral-bound",
+    "landing",
+    "jump_vertical"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Cross-sectional design cannot establish causation between ankle ROM and jump performance. Sample limited to 62 amateur volleyball players (mostly adolescents), limiting generalizability to other populations or elite athletes. Ankle ROM measured in a single trial after familiarization, which may not capture day-to-day variability.",
+  "reviewed": false
+}

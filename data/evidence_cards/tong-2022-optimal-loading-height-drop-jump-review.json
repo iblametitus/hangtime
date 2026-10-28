@@ -1,0 +1,42 @@
+{
+  "id": "tong-2022-optimal-loading-height-drop-jump-review",
+  "citation": "Tong Z, Chen W, Xu H, Zhai F (2022). Optimal Loading Height: A Practical Research of Drop Jump from Biomechanics. Journal of Healthcare Engineering.",
+  "url": "https://doi.org/10.1155/2022/4173639",
+  "study_type": "review",
+  "population": "Athletes across multiple sports including sprinters, jumpers, volleyball players, rugby players, soccer players, high jumpers, and throwers; both male and female athletes at various levels.",
+  "intervention": "Drop jump (DJ) training at various drop heights to determine optimal loading height based on biomechanical indicators (average power output, reactive strength index, vertical counteracting force, stretch-shortening cycle coupling time).",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "average power output",
+    "reactive strength index",
+    "vertical counteracting force",
+    "stretch-shortening cycle coupling duration",
+    "H-reflex and M-wave of soleus",
+    "sprint performance (20m, 60m, 100m, 400m, 1000m)",
+    "throwing distance",
+    "jump height"
+  ],
+  "summary": "This narrative review traces the historical development of optimal loading height concepts for drop jumps from early biomechanical models (1968) to individualized approaches. It synthesizes findings on two primary indicators—average power output and reactive strength—and discusses biomechanical mechanisms including the stretch-shortening cycle, neural feedback, and muscle-tendon complex regulation. The review notes that while optimal loading height shows promise for injury prevention and explosive power training, individual differences in biomechanical parameters and measurement complexity have limited practical application by coaches.",
+  "key_findings": [
+    "Early studies (Werschoshanskij, 1968) defined drop jump loading height scope at 0.9–2.2 m with optimal height at 0.75 m; later research narrowed the scope to 0.2–0.6 m with max average power output at 0.12–0.4 m (Robber et al., Lee et al., Giminiani & Petricola).",
+    "Byrne et al. first defined optimal loading height for reactive strength at 0.3 m; Barr & Nolte found optimal DJ reactive strength index at 0.24 m with high reliability for 60 m running performance (p<0.001); Byrne et al. later reported a new optimal height of 0.5 m with ICC 0.87 for throwing distance evaluation.",
+    "Campillo et al. applied individualized optimal loading height (0.2–0.4 m for max reactive strength) in a 7-week intervention, significantly improving 20 m acceleration sprint speed (P<0.001, d=0.25).",
+    "Healy et al. reported no significant correlation between DJ reactive strength indicators and short sprint performance; strength indicators and short sprint performance, questioning its reliability.",
+    "H-reflex of soleus increases significantly until optimal loading height is reached; at excessive drop heights, H-reflex and M-wave decline (13.9±7.6%; 8.3±6.5%; p<0.01) due to Golgi inhibition and neural protective strategies."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Various: 20m sprint d=0.25; 60m running p<0.001; throwing ICC 0.87; H-reflex decline 13.9±7.6% and M-wave 8.3±6.5% at excessive heights",
+  "exercise_tags": [
+    "drop-jump",
+    "depth-jump",
+    "jump_vertical",
+    "reactive",
+    "sprint",
+    "bound",
+    "landing",
+    "calf_ankle"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "This is a narrative review, not a systematic review or meta-analysis; it does not quantify heterogeneity or risk of bias across cited studies. Populations, protocols, and outcome measures vary widely across the referenced literature, and few intervention studies have directly tested individualized optimal loading height in training practice.",
+  "reviewed": false
+}

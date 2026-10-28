@@ -1,0 +1,35 @@
+{
+  "id": "androulakis-korakakis-2021-metd-powerlifting",
+  "citation": "Androulakis-Korakakis P, Michalopoulos N, Fisher JP, Keogh J, Loenneke JP, Helms E, Wolf M, Nuckols G, Steele J (2021). The Minimum Effective Training Dose Required for 1RM Strength in Powerlifters. Frontiers in Sports and Active Living.",
+  "url": "https://doi.org/10.3389/fspor.2021.713655",
+  "study_type": "mixed-methods",
+  "population": "Powerlifting athletes and coaches of all levels: elite raw PL athletes (Wilks ≥450, national/international competitors), experienced PL coaches (≥3 years coaching national-level+ athletes), and intermediate-advanced competitive PL athletes.",
+  "intervention": "Minimum effective training dose (METD) protocols for the three powerlifts (squat, bench press, deadlift): ~3–6 working sets of 1–5 repetitions per week per lift, spread across 1–3 sessions, loads >80% 1RM at RPE 7.5–9.5 for 6–12 weeks. Alternative: autoregulated single-repetition sets at RPE 9–9.5, optionally with 2–3 back-off sets at ~80% load. Accessory exercises: 1–3 per powerlift at RPE 7–9 for 6–10 reps.",
+  "duration_weeks": 6,
+  "outcome_measures": [
+    "1-repetition-maximum (1RM) strength in squat, bench press, deadlift",
+    "Wilks score",
+    "competition totals",
+    "perceived meaningful strength change over 6 weeks"
+  ],
+  "summary": "This multi-experiment paper explored the minimum effective training dose (METD) for increasing 1RM strength in powerlifters through five studies: interviews with elite athletes/coaches, surveys of athletes/coaches, two 6-week training interventions, and a survey of competitive athletes' METD practices. The collective evidence indicates that powerlifters can gain meaningful 1RM strength with very low weekly volumes—approximately 3–6 heavy sets of 1–5 reps per lift per week at >80% 1RM and RPE 7.5–9.5—for 6–12 weeks. Autoregulated single-rep sets at RPE 9–9.5 further reduce time but yield less reliable gains; adding 2–3 back-off sets at ~80% load may enhance gains. Accessory work typically involves 1–3 exercises per lift at RPE 7–9 for 6–10 reps.",
+  "key_findings": [
+    "PL athletes and coaches reported that ~3–6 working sets of 1–5 repetitions per week per powerlift at >80% 1RM and RPE 7.5–9.5 for 6–12 weeks can produce meaningful 1RM strength increases.",
+    "Autoregulated single-repetition sets at RPE 9–9.5 further minimize training time but strength gains are less likely to be meaningful.",
+    "Adding 2–3 back-off sets at ~80% of the single-repetition load may produce greater gains over 6 weeks when following a 2–3–1 squat–bench press–deadlift weekly frequency.",
+    "When using accessory exercises, PL athletes typically perform 1–3 accessory exercises per powerlift at RPE 7–9 for ~6–10 repetitions.",
+    "Eighty percent of interviewed elite PL athletes expressed that 'a few heavy sets per week' per powerlift may be enough for meaningful strength increases, with METD considered effective for ~6–12 weeks."
+  ],
+  "effect_direction": "positive",
+  "effect_size": null,
+  "exercise_tags": [
+    "squat",
+    "hinge",
+    "push-press",
+    "conventional-deadlift",
+    "max_strength"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Intervention studies had small samples (n=16 and n=9) with convenience sampling; no control groups described in the provided text; mixed-methods design limits causal inference; population skewed toward male, raw, IPF-affiliated lifters; qualitative themes based on <50% representativeness for some subthemes.",
+  "reviewed": false
+}

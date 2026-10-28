@@ -1,0 +1,33 @@
+{
+  "id": "xie-2024-plyo-jump-sprint-meta",
+  "citation": "Xie L, Chen J, Dai J, et al. (2024). Exploring the potent enhancement effects of plyometric training on vertical jumping and sprinting ability in sports individuals. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2024.1435011",
+  "study_type": "meta-analysis",
+  "population": "Athletes with ≥1 year sports experience (293 participants: 163 males, 21 females, 109 gender not reported)",
+  "intervention": "Plyometric training (post-activation potentiation/PAP training) in various forms: single vs complex, single-session vs multiple-session, with rest intervals categorized as short (0.3–4 min), moderate (5–7 min), and long (>8 min)",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "countermovement jump (CMJ) height",
+    "20-m sprint time"
+  ],
+  "summary": "This meta-analysis of 19 RCTs (293 athletes) examined acute effects of plyometric training on vertical jump and sprint performance. Single plyometric training showed a small positive effect on vertical jump (SMD = −0.24) with optimal rest intervals of 0.3–4 min, while complex plyometric training yielded a moderate effect on vertical jump (SMD = 0.58) with best results at rest intervals >8 min. Sprint performance improved slightly after single training (SMD = 0.27) and substantially after complex training (SMD = 0.80).",
+  "key_findings": [
+    "Single plyometric training on vertical jump: SMD = −0.24, 95% CI (−0.38, −0.10), P = 0.0009 (small effect).",
+    "Optimal rest interval for single plyometric training on vertical jump: 0.3–4 min, SMD = 0.30, P = 0.0008.",
+    "Complex plyometric training on vertical jump: SMD = 0.58, 95% CI (−0.86, −0.23), P = 0.002 (moderate effect), with largest effect at rest >8 min (|SMD| = 0.77).",
+    "Single plyometric training on sprint: SMD = 0.27, 95% CI (0.03, 0.52), P = 0.03 (small effect).",
+    "Complex plyometric training on sprint: SMD = 0.80, 95% CI (0.01, 1.59), P = 0.05 (large effect), but with high heterogeneity (I² = 85%)."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Single PAP vertical jump: SMD = −0.24, 95% CI (−0.38, −0.10); Complex PAP vertical jump: SMD = 0.58, 95% CI (−0.86, −0.23); Single PAP sprint: SMD = 0.27, 95% CI (0.03, 0.52); Complex PAP sprint: SMD = 0.80, 95% CI (0.01, 1.59)",
+  "exercise_tags": [
+    "countermovement-jump",
+    "jump_vertical",
+    "jump_horizontal",
+    "bound",
+    "hop_unilateral"
+  ],
+  "evidence_path": "direct",
+  "limitations": "High heterogeneity in complex plyometric training analyses (I² up to 85%); publication bias detected for some subgroups; limited number of studies for sprint outcomes (only 5 studies for complex PAP); gender not reported for 37% of participants.",
+  "reviewed": false
+}

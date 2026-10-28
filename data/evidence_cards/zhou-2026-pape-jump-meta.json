@@ -1,0 +1,35 @@
+{
+  "id": "zhou-2026-pape-jump-meta",
+  "citation": "Zhou Y, Zhang X, Wang J (2026). Post-activation potentiation enhancement induction strategies with different rest intervals on jump performance: a meta-analysis. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2025.1696129",
+  "study_type": "meta-analysis",
+  "population": "Healthy individuals aged 11–43 years (undergraduate students or athletes in football, track and field, etc.), mixed genders, 468 participants across 22 RCTs",
+  "intervention": "Post-activation potentiation enhancement (PAPE) induction methods including back squat, squat, running, isometric contractions, and plyometric exercises, with rest intervals of 2–20 minutes",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Counter-movement jump (CMJ) height",
+    "Squat jump (SJ) height",
+    "Vertical jump (VJ) height",
+    "Peak power"
+  ],
+  "summary": "This meta-analysis of 22 randomized controlled trials (468 participants) found that post-activation potentiation enhancement (PAPE) significantly improves jump performance (SMD = 1.36, 95% CI 0.89–1.83, p < 0.0001). Subgroup analyses indicated the largest effects for back squat induction (SMD = 2.85), male participants (SMD = 1.53), counter-movement jump outcomes (SMD = 1.34), moderate exercise intensity (SMD = 2.46), and rest intervals of 3–7 minutes (SMD = 1.47).",
+  "key_findings": [
+    "Overall pooled effect: SMD = 1.36, 95% CI (0.89, 1.83), P < 0.0001, indicating PAPE significantly improves jump performance.",
+    "Back squat induction yielded the largest effect size: SMD = 2.85, 95% CI (0.98, 4.73), P = 0.003.",
+    "Male subgroup showed larger effect than female: SMD = 1.53, 95% CI (0.92, 2.14), P < 0.0001.",
+    "Moderate-intensity PAPE produced the largest effect: SMD = 2.46, 95% CI (1.71, 3.22), P < 0.0001.",
+    "Rest interval of 3–7 minutes gave the largest effect: SMD = 1.47, 95% CI (0.79, 2.14), P < 0.0001."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "SMD = 1.36, 95% CI (0.89, 1.83), P < 0.0001",
+  "exercise_tags": [
+    "back-squat",
+    "squat",
+    "sprint",
+    "jump_vertical",
+    "isometric-squat-hold"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Substantial heterogeneity (I² = 51%) across studies; many included RCTs had high risk of bias in allocation concealment and blinding. Sensitivity analysis showed results were stable but heterogeneity remained moderate.",
+  "reviewed": false
+}

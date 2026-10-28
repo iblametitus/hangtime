@@ -1,0 +1,31 @@
+{
+  "id": "hagglund-2013-injuries-team-performance",
+  "citation": "Hägglund M, Waldén M, Magnusson H, et al. (2013). Injuries affect team performance negatively in professional football: an 11-year follow-up of the UEFA Champions League injury study. British journal of sports medicine.",
+  "url": "https://doi.org/10.1136/bjsports-2013-092215",
+  "study_type": "prospective cohort study",
+  "population": "24 male professional football teams from nine European countries, followed over 11 seasons (2001-2012), comprising 155 team-seasons.",
+  "intervention": "Prospective registration of individual training and match exposure and time-loss injuries over 11 seasons; analysis of association between injury rates and team performance.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "final league ranking",
+    "European cup performance",
+    "injury incidence (injuries/1000 h)",
+    "injury burden (injury days lost/1000 h)",
+    "player match availability (%)"
+  ],
+  "summary": "This prospective cohort study tracked 24 professional football teams across 11 seasons to examine how injury rates relate to team performance. Lower injury burden and higher player match availability were significantly associated with better final league rankings. Similarly, lower injury incidence and injury burden were linked to better performance in European cup competitions.",
+  "key_findings": [
+    "Total injury incidence was 7.7 injuries per 1000 exposure hours, injury burden was 130 injury days lost per 1000 hours, and player match availability was 86%.",
+    "Lower injury burden (p=0.011) and higher match availability (p=0.031) were associated with higher final league ranking.",
+    "Lower injury incidence (p=0.035) and lower injury burden (p<0.05) were associated with better performance in European cups."
+  ],
+  "effect_direction": "negative",
+  "effect_size": null,
+  "exercise_tags": [
+    "other",
+    "sprint"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Observational design cannot establish causality; limited to male professional football in Europe; potential confounding factors not controlled for.",
+  "reviewed": false
+}

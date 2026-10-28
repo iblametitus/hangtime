@@ -1,0 +1,29 @@
+{
+  "id": "rio-2017-isometric-analgesia-patellar",
+  "citation": "Rio E, van Ark M, Docking S, et al. (2017). Isometric Contractions Are More Analgesic Than Isotonic Contractions for Patellar Tendon Pain: An In-Season Randomized Clinical Trial. Clinical Journal of Sport Medicine.",
+  "url": "https://doi.org/10.1097/jsm.0000000000000364",
+  "study_type": "RCT",
+  "population": "20 jumping athletes (volleyball and basketball), aged >16 years (mean 22.5 ± 4.7 years), 18 men, with clinically diagnosed patellar tendinopathy, participating in games/trainings 3 times per week.",
+  "intervention": "Isometric leg extension holds at 60° knee flexion (80% maximal voluntary isometric contraction) vs. isotonic leg extension (80% 8-repetition maximum), 4 times per week for 4 weeks; time under load and rest between sets matched.",
+  "duration_weeks": 4,
+  "outcome_measures": [
+    "Pain (0-10 numerical rating score) during single-leg decline squat (SLDS) measured pre- and post-intervention sessions",
+    "VISA-P questionnaire (tendon pain and function) at baseline and after 4 weeks"
+  ],
+  "summary": "This in-season randomized trial compared immediate analgesic effects of isometric versus isotonic quadriceps contractions in 20 jumping athletes with patellar tendinopathy. Both protocols reduced pain over 4 weeks, but isometric holds produced significantly greater immediate analgesia during each session.",
+  "key_findings": [
+    "Baseline median SLDS pain was 5/10 in both groups (isotonic range 1–8, isometric range 2–8).",
+    "Isometric contractions produced significantly greater immediate analgesia than isotonic contractions (P < 0.05).",
+    "Both protocols were efficacious for reducing pain over the 4-week trial.",
+    "Greater immediate analgesia from isometric contractions may increase the ability to load or perform."
+  ],
+  "effect_direction": "positive",
+  "effect_size": null,
+  "exercise_tags": [
+    "isometric-squat-hold",
+    "leg-press"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Small sample size (n=20) limits generalizability; only in-season jumping athletes studied; abstract only with no full-text details on randomization, blinding, or adherence; immediate analgesia measured but long-term tendon health not assessed.",
+  "reviewed": false
+}

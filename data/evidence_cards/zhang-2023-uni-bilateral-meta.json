@@ -1,0 +1,36 @@
+{
+  "id": "zhang-2023-uni-bilateral-meta",
+  "citation": "Zhang W, Chen X, Xu K, Xie H, Li D, Ding S, Sun J (2023). Effect of unilateral training and bilateral training on physical performance: A meta-analysis. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2023.1128250",
+  "study_type": "meta-analysis",
+  "population": "Athletes (327 completed unilateral training, 324 completed bilateral training), training period 6–12 weeks, frequency 2–3 times per week",
+  "intervention": "Unilateral (UNI) training vs bilateral (BI) training including resistance training, rapid stretch complex training, and compound training",
+  "duration_weeks": 9,
+  "outcome_measures": [
+    "jump height (cm)",
+    "sprint time (s)",
+    "maximal force (kg)",
+    "change of direction time (s)",
+    "balance (cm)"
+  ],
+  "summary": "This meta-analysis of 28 studies compared unilateral and bilateral training effects on physical performance in athletes. Unilateral training showed superior effects on jumping ability and unilateral maximal force, while bilateral training was more effective for sprint performance. No clear differences were found for change of direction or balance ability.",
+  "key_findings": [
+    "UNI training improved single-leg jumping ability more than BI training (ES = 0.61, 95% CI 0.23 to 0.99; p = 0.002).",
+    "BI training improved linear sprint performance more than UNI training (ES = −0.02, 95% CI −0.03 to −0.01; p = 0.006).",
+    "UNI training increased unilateral maximal force more than BI training (ES = 8.95 kg, 95% CI 2.30 to 15.61; p = 0.008).",
+    "No statistically significant difference between UNI and BI training for change of direction ability (ES = −0.03, 95% CI −0.06 to 0.00; p = 0.06).",
+    "No statistically significant difference between UNI and BI training for balance performance (ES = 1.41 cm, 95% CI −0.62 to 3.44; p = 0.17)."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Jumping: ES = 0.61 (0.23 to 0.99); Sprint: ES = −0.02 (−0.03 to −0.01); Max force: ES = 8.95 kg (2.30 to 15.61); Change of direction: ES = −0.03 (−0.06 to 0.00); Balance: ES = 1.41 cm (−0.62 to 3.44)",
+  "exercise_tags": [
+    "lunge",
+    "split-squat-jump",
+    "single-leg-drop-landing",
+    "squat",
+    "conventional-deadlift"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Significant publication bias detected for balance outcomes (p = 0.007); moderate heterogeneity for change of direction (I² = 50%); limited number of studies for balance (14 studies from 4 publications) and maximal force (17 studies from 9 publications).",
+  "reviewed": false
+}

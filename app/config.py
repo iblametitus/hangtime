@@ -22,6 +22,7 @@ class Settings(BaseSettings):
 
     db_path: str = "data/hangtime.db"
     exercises_path: str = "data/exercises.json"
+    evidence_dir: str = "data/evidence_cards"
 
     # Review pages under /admin edit data files. Off by default so the public
     # deployment never exposes them; set ENABLE_ADMIN=true locally.

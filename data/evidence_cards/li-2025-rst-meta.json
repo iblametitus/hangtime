@@ -1,0 +1,35 @@
+{
+  "id": "li-2025-rst-meta",
+  "citation": "Li C, Chen L, Zhang Q (2025). Effects of resisted sprint training on sprint, jump, and change-of-direction performance in athletes: a systematic review and meta-analysis. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2025.1711992",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Competitive or recreational athletes (404 participants across 16 studies)",
+  "intervention": "Resisted sprint training (RST) including sled towing, parachute sprinting, uphill sprinting, weighted vest, or tethered sprint protocols",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Linear sprint performance (0-30 m)",
+    "Vertical jump performance (countermovement jump, squat jump)",
+    "Change-of-direction performance (505 test, COD time, T-Half test)"
+  ],
+  "summary": "This systematic review and meta-analysis of 16 studies (404 athletes) found that resisted sprint training (RST) significantly improves linear sprint performance, vertical jump performance, and change-of-direction (COD) ability. Compared to unresisted sprint training (UST), RST provides greater benefits for COD and initial acceleration (0-10 m), particularly in youth athletes, but does not significantly outperform UST for overall linear sprint or vertical jump. Versus regular training, RST yields larger gains in linear sprint and vertical jump but not COD.",
+  "key_findings": [
+    "RST significantly improved linear sprint performance (SMD = 0.65, p < 0.001, I² = 21.2%).",
+    "RST significantly improved vertical jump performance (SMD = -0.38, p = 0.013, I² = 0.0%).",
+    "RST significantly improved COD ability (SMD = 1.10, p < 0.001, I² = 0.0%).",
+    "Compared with UST, RST produced a greater improvement in COD ability (p = 0.043), with no significant differences for linear sprint (p = 0.057) or vertical jump (p = 0.102).",
+    "Subgroup analyses indicated that relative to UST, RST had larger benefits for 0–10 m linear sprint performance (p < 0.001) and among youth athletes (p = 0.000)."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Linear sprint: SMD = 0.65, p < 0.001; Vertical jump: SMD = -0.38, p = 0.013; COD: SMD = 1.10, p < 0.001",
+  "exercise_tags": [
+    "sled-push",
+    "sled-sprint",
+    "weighted-vest-jump",
+    "hill-sprint",
+    "sprint",
+    "jump_vertical"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Subgroup analyses limited by small study counts (e.g., only 2 studies for vertical jump vs regular training, 3 for COD vs UST, 2 for COD vs regular training), reducing interpretability. Risk of bias ratings included 'some concerns' for several studies, and publication bias could not be formally tested for outcomes with fewer than 10 studies.",
+  "reviewed": false
+}

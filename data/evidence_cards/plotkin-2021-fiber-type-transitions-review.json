@@ -1,0 +1,33 @@
+{
+  "id": "plotkin-2021-fiber-type-transitions-review",
+  "citation": "Plotkin, D.L.; Roberts, M.D.; Haun, C.T.; Schoenfeld, B.J. (2021). Muscle Fiber Type Transitions with Exercise Training: Shifting Perspectives. Sports.",
+  "url": "https://doi.org/10.3390/sports9090127",
+  "study_type": "review",
+  "population": "Recreationally trained physical education students, male sprinters, novice runners, competitive bodybuilders, sedentary controls, and twin pairs with divergent training histories (endurance-trained vs sedentary).",
+  "intervention": "Resistance training (>70% 1RM), sprint training, combined ballistic/plyometric plus strength training, stretch-shortening cycle training, and marathon training (13 weeks plus taper).",
+  "duration_weeks": 8,
+  "outcome_measures": [
+    "Myosin heavy chain (MHC) isoform distribution via muscle homogenate SDS-PAGE",
+    "Single-fiber MHC isoform analysis via SDS-PAGE",
+    "Immunohistochemistry of muscle cross-sections"
+  ],
+  "summary": "This narrative review evaluates muscle fiber identification techniques and synthesizes longitudinal and cross-sectional evidence on fiber type transitions with resistance, power, sprint, and endurance training. It emphasizes that single-fiber analysis is required to detect hybrid fibers (co-expressing multiple MHC isoforms) and that training-specific shifts occur: resistance and sprint training increase type IIa at the expense of IIx and type I, while endurance training increases type I and oxidative hybrids. The magnitude of shift appears smaller in already well-trained individuals.",
+  "key_findings": [
+    "Six weeks of maximal strength training in recreationally trained students shifted triceps brachii MHC from 33.4% IIx to 19.5% (p < 0.01) and increased IIa from 49.4% to 66.7% (p < 0.01), with no change in type I proportion.",
+    "Combined ballistic/plyometric plus strength training increased IIa from 47.7% to 62.7% (p < 0.05) and decreased type I from 18.2% to 9.2% (p < 0.05) in the same cohort.",
+    "Eight weeks of sprint training in male sprinters increased vastus lateralis type IIa from 35% to 52% (p < 0.05), decreased type I from 52% to 41% (p < 0.05), and reduced IIa/IIx hybrids from 13% to 5% (p < 0.05).",
+    "Thirteen weeks of marathon training in novice runners increased vastus lateralis type I from 42.6% to 48.6%, increased I/IIa hybrids from 5.1% to 8.2%, decreased IIa from 40.1% to 35.8%, and decreased IIa/IIx hybrids from 11.9% to 6.4%.",
+    "Competitive bodybuilders possessed ~35% type I fibers versus ~48% in controls (p < 0.05), similar IIa (~45% both), but markedly higher pure IIx (~15% vs ~5%, p < 0.05), challenging the typical IIx-to-IIa shift seen in shorter-term resistance training studies."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": null,
+  "exercise_tags": [
+    "squat",
+    "sprint",
+    "jump_vertical",
+    "bound"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "The review is non-systematic and includes studies with heterogeneous methodologies (homogenate vs single-fiber analysis), small sample sizes, and varying training histories. Biopsy sampling variability and undefined fiber counts needed to detect shifts limit quantitative synthesis across studies.",
+  "reviewed": false
+}

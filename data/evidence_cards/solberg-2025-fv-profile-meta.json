@@ -1,0 +1,31 @@
+{
+  "id": "solberg-2025-fv-profile-meta",
+  "citation": "Solberg P, Hopkins WG, Andersen V, Lindberg K, Bjørnsen T, Saeterbakken A, Paulsen G (2025). Force-velocity profile based training to improve vertical jump performance: a systematic review and meta-analysis. Scientific Reports.",
+  "url": "https://doi.org/10.1038/s41598-025-00870-1",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Healthy athletes or strength-trained participants across four intervention studies (total 188 participants distributed across six training groups).",
+  "intervention": "Individually optimized force-velocity (FV) profile-based training (force-oriented, velocity-oriented, well-balanced, opposite-optimized) compared to non-optimized training or usual-practice control groups, using squat jumps (SJ) and countermovement jumps (CMJ) for profiling.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Vertical jump height (cm)",
+    "Maximal power (W/kg)",
+    "FV profile balance (% of optimal)"
+  ],
+  "summary": "This systematic review and meta-analysis of four intervention studies (188 participants) found that optimized FV-profile-based training fully corrected velocity deficits (99% of optimal) and partially corrected force deficits (79% of optimal), but had little effect on already well-balanced profiles. Jump height improvements were small-to-moderate for deficit groups (velocity deficit +10.8%, force deficit +8.4%) but comparable to non-optimized training, and effects on maximal power were small to trivial. Overall, it remains unclear whether FV-profile-based training outperforms standard approaches.",
+  "key_findings": [
+    "Velocity-deficit training fully corrected the FV imbalance (132–33 = 99% points toward well-balanced) with a moderate, likely beneficial effect on jump height (+10.8%, 90% CI 2.5 to 19.9).",
+    "Force-deficit training only partially corrected the FV imbalance (64+15 = 79% points) with a small, likely beneficial effect on jump height (+8.4%, 90% CI 0.9 to 16.5).",
+    "Well-balanced training produced little change in FV profile and a small, possibly beneficial effect on jump height (+5.4%, 90% CI −2.5 to 13.9).",
+    "Effects of optimized training on maximal power were small to trivial and often unclear compared with non-optimized training.",
+    "The overall effect of optimal training versus non-optimal training was likely trivial, and heterogeneity was small to moderate across studies."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Velocity deficit: +10.8% (90% CI 2.5 to 19.9); Force deficit: +8.4% (90% CI 0.9 to 16.5); Well-balanced: +5.4% (90% CI −2.5 to 13.9); Optimal vs non-optimal training: likely trivial",
+  "exercise_tags": [
+    "squat-jump",
+    "jump_vertical"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Only four studies (188 participants) qualified for meta-analysis; all had methodological shortcomings (PEDro scores 2–7, median 4.0), including no blinding, no intention-to-treat analysis, and no dropout reporting. Several effect estimates required imputation of missing variance data, and prediction intervals indicate unclear mean effects in new settings.",
+  "reviewed": false
+}

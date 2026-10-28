@@ -153,6 +153,15 @@ class EvidenceCard(BaseModel):
     reviewed: bool = False
 
 
+class ExternalSource(BaseModel):
+    """Tavily hit, only used when fewer than 2 evidence cards fit. Shown as "web source, not curated"."""
+
+    id: str  # "web-1", "web-2", ...
+    title: str
+    url: str
+    snippet: str
+
+
 class UserProfile(BaseModel):
     goal: Goal
     training_age_years: float

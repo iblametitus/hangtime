@@ -1,0 +1,39 @@
+{
+  "id": "morris-2022-weightlifting-meta",
+  "citation": "Morris SJ, Oliver JL, Pedley JS, Haff GG, Lloyd RS (2022). Comparison of Weightlifting, Traditional Resistance Training and Plyometrics on Strength, Power and Speed: A Systematic Review with Meta-Analysis. Sports Medicine.",
+  "url": "https://doi.org/10.1007/s40279-021-01627-2",
+  "study_type": "systematic review with meta-analysis",
+  "population": "427 participants across 16 studies (athletes of various sports, ages, sexes; weightlifting training groups n=186)",
+  "intervention": "Weightlifting training (WLT) comprising >1 weightlifting exercise per week and ≥1 per session (e.g., hang clean, hang snatch, power clean, power snatch, high pull) plus supplementary strength exercises (e.g., squats, deadlifts), compared to traditional resistance training (TRT), plyometric training (PLYO), or control (CON)",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "weightlifting load lifted",
+    "countermovement jump height",
+    "linear sprint speed",
+    "change of direction speed (CODS)",
+    "squat jump performance",
+    "strength"
+  ],
+  "summary": "This systematic review with meta-analysis of 16 studies (427 participants) found that weightlifting training (WLT) produced significantly greater improvements than traditional resistance training (TRT) in weightlifting load lifted (g=1.35) and countermovement jump height (g=0.95). WLT showed large but non-significant advantages over TRT for linear sprint speed (g=1.04) and change of direction speed (g=1.21). Compared to plyometric training (PLYO), WLT yielded similar improvements across all measures, with negligible to moderate non-significant effects favoring WLT. High heterogeneity and risk of bias were noted.",
+  "key_findings": [
+    "WLT vs TRT: weightlifting load lifted improved significantly more with WLT (4 studies, g = 1.35, 95% CI 0.20–2.51, p = 0.02).",
+    "WLT vs TRT: countermovement jump height improved significantly more with WLT (9 studies, g = 0.95, 95% CI 0.04–1.87, p = 0.00).",
+    "WLT vs TRT: linear sprint speed showed a large but non-significant effect favoring WLT (4 studies, g = 1.04, 95% CI −0.03 to 2.39, p = 0.13).",
+    "WLT vs TRT: change of direction speed showed a large but non-significant effect favoring WLT (2 studies, g = 1.21, 95% CI −1.41 to 3.83, p = 0.36).",
+    "WLT vs PLYO: all comparisons showed negligible to moderate non-significant effects favoring WLT (linear sprint g = 0.20, CODS g = 0.17, CMJ g = 0.31, squat jump g = 0.34, strength g = 0.69)."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "Multiple Hedges' g reported; primary significant effects: g=1.35 (load lifted) and g=0.95 (CMJ) vs TRT",
+  "exercise_tags": [
+    "hang-power-clean",
+    "power-snatch",
+    "clean-pull",
+    "squat",
+    "conventional-deadlift",
+    "jump_vertical",
+    "sprint"
+  ],
+  "evidence_path": "direct",
+  "limitations": "High heterogeneity across studies (I² up to 75%) and methodological limitations including lack of assessor blinding (14/16 studies) and allocation concealment (13/16). Sensitivity analysis removing fair-quality studies reversed WLT vs TRT findings for squat jump and strength. Small sample sizes for PLYO comparisons (total n=61).",
+  "reviewed": false
+}

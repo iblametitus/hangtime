@@ -1,0 +1,34 @@
+{
+  "id": "drew-2017-injury-availability-review",
+  "citation": "Drew MK, Raysmith BP, Charlton PC. (2017). Injuries impair the chance of successful performance by sportspeople: a systematic review. British journal of sports medicine.",
+  "url": "https://doi.org/10.1136/bjsports-2016-096731",
+  "study_type": "systematic review",
+  "population": "Athletic populations (individual and team sports)",
+  "intervention": "Not applicable (systematic review examining association between injury/illness and athletic success/failure)",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "availability of team members",
+    "injury incidence",
+    "injury burden",
+    "squad utilisation",
+    "precompetition injury",
+    "in-competition injury"
+  ],
+  "summary": "This systematic review evaluated the relationship between injury/illness and success or failure in athletic populations. Of 10,546 titles identified, 14 studies met inclusion criteria, with 7 having low risk of bias. The review found strong evidence that increased athlete availability decreases risk of failure, while precompetition and in-competition injuries are associated with increased risk of failure.",
+  "key_findings": [
+    "Increased availability of team members/athletes decreased the risk of failure (strong evidence).",
+    "Precompetition injuries were associated with increased risk of failure (strong evidence).",
+    "In-competition injuries were associated with increased risk of failure (strong evidence).",
+    "Injuries have a detrimental impact on team and individual athletic success.",
+    "Injury prevention should be a priority for maximizing athletic performance."
+  ],
+  "effect_direction": "negative",
+  "effect_size": null,
+  "exercise_tags": [
+    "other",
+    "sprint"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Only abstract available; full text not freely accessible. Limited to 14 included studies with only 7 rated low risk of bias, potential heterogeneity across sports and study designs.",
+  "reviewed": false
+}

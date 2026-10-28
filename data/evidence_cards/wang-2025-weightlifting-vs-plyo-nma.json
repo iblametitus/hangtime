@@ -1,0 +1,38 @@
+{
+  "id": "wang-2025-weightlifting-vs-plyo-nma",
+  "citation": "Wang S, Zhen J, Xiao T (2025). Effects of three strength training methods on lower extremity strength, jump and sprint performance: a network meta-analysis. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2025.1637520",
+  "study_type": "network meta-analysis",
+  "population": "Healthy males and females aged 18–30 years (394 participants across 17 studies)",
+  "intervention": "Weightlifting training (WT), plyometric training (PT), or traditional resistance training (TT) for minimum 6 weeks, ≥2 sessions/week",
+  "duration_weeks": 6,
+  "outcome_measures": [
+    "1RM squat (maximum strength)",
+    "squat jump (SJ)",
+    "countermovement jump (CMJ)",
+    "sprint performance (short-distance sprint)"
+  ],
+  "summary": "A Bayesian network meta-analysis of 17 randomized trials (394 participants) compared weightlifting training (WT), plyometric training (PT), and traditional resistance training (TT) on lower-extremity strength, jump, and sprint performance. No statistically significant differences were found between modalities overall, but surface under the cumulative ranking curve (SUCRA) indicated TT ranked highest for squat jump (SUCRA=0.76) and maximal strength (SUCRA=0.95), WT for sprint (SUCRA=0.77), and PT for countermovement jump (SUCRA=0.76).",
+  "key_findings": [
+    "17 studies (15 two-arm, 2 three-arm) with 394 participants met inclusion criteria.",
+    "Bayesian network meta-analysis showed no significant differences between WT, PT, and TT for any outcome.",
+    "SUCRA rankings: TT most effective for squat jump (0.76) and 1RM squat (0.95); WT for sprint (0.77); PT for countermovement jump (0.76).",
+    "Included studies had moderate methodological quality (mean PEDro score 4.29).",
+    "Funnel plots and Egger’s regression tests indicated no publication bias (p > 0.05)."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "SUCRA: TT 0.95 (1RM squat), TT 0.76 (SJ), WT 0.77 (sprint), PT 0.76 (CMJ)",
+  "exercise_tags": [
+    "squat",
+    "jump_vertical",
+    "sprint",
+    "max_strength",
+    "bounding",
+    "depth-jump",
+    "hurdle-hops",
+    "clean-pull"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Moderate sample size (394 participants across 17 studies) and moderate study quality (mean PEDro 4.29) limit certainty; participants were healthy young adults (18–30 years), limiting generalizability to other populations.",
+  "reviewed": false
+}

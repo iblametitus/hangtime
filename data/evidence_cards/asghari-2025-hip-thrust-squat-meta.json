@@ -1,0 +1,37 @@
+{
+  "id": "asghari-2025-hip-thrust-squat-meta",
+  "citation": "Asghari SH, Wong A, Comfort P, Mirghani SJ, Sharifian S, Ghaderi M. (2025). Comparing the impact of hip thrust versus squat training on lower limb performance in sub-elite athletes: a systematic review and meta-analysis. Sports biomechanics.",
+  "url": "https://doi.org/10.1080/14763141.2025.2553700",
+  "study_type": "systematic review and meta-analysis",
+  "population": "sub-elite athletes",
+  "intervention": "squat (SQ) training vs hip thrust (HT) training",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "vertical jump height (VJH)",
+    "horizontal jump distance (HJD)",
+    "short sprint time (SST)",
+    "short sprint performance (SSP)",
+    "change of direction (COD) performance"
+  ],
+  "summary": "This systematic review and meta-analysis compared squat and hip thrust training effects on lower-body athletic performance in sub-elite athletes. Squat training significantly improved vertical jump height with a medium effect size in the 12-16 session subgroup, while neither exercise significantly improved horizontal jump distance, sprint performance, or change-of-direction ability.",
+  "key_findings": [
+    "SQ training significantly improved vertical jump height (VJH) and was superior to HT training.",
+    "Neither SQ nor HT training had a significant impact on horizontal jump distance (HJD), short sprint time (SST), short sprint performance (SSP), or change of direction (COD) performance.",
+    "In the 12 to 16 sessions subgroup, SQ training significantly improved VJH showing a medium effect size.",
+    "In other subgroups, neither SQ nor HT exercises produced significant improvements in HJD, SSP, SST, or COD performance.",
+    "No conclusive preference can be made between SQ and HT for enhancing HJD, SSP, and SST markers."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "medium ES",
+  "exercise_tags": [
+    "squat",
+    "hip-thrust",
+    "jump_vertical",
+    "jump_horizontal",
+    "sprint",
+    "bound"
+  ],
+  "evidence_path": "direct",
+  "limitations": "The abstract notes the need for higher-quality studies to better elucidate effects, suggesting risk of bias and heterogeneity in included studies. Population limited to sub-elite athletes, limiting generalizability to elite or recreational populations.",
+  "reviewed": false
+}

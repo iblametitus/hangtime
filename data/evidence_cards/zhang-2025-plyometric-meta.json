@@ -1,0 +1,38 @@
+{
+  "id": "zhang-2025-plyometric-meta",
+  "citation": "Zhang J, Wu X, Ye X (2025). The effect of plyometric complex training on lower-limb explosive power in adolescents: a systematic review and meta-analysis. Frontiers in Physiology.",
+  "url": "https://doi.org/10.3389/fphys.2025.1716568",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Healthy adolescents aged 10–19 years (291 male, 20 female), primarily soccer and basketball players, also gymnasts, volleyball, handball, and track athletes.",
+  "intervention": "Plyometric complex training (PT) protocols including countermovement jumps, squat jumps, depth jumps, hurdle hops, box jumps, drop jumps, and single-leg variations; 6–9 weeks, 2–3 sessions/week, 15–40 min/session, low-to-high intensity.",
+  "duration_weeks": 8,
+  "outcome_measures": [
+    "countermovement jump height (cm)",
+    "squat jump height (cm)",
+    "10-m sprint time (s)",
+    "20-m sprint time (s)"
+  ],
+  "summary": "This systematic review and meta-analysis of 11 RCTs (311 adolescents) found that plyometric complex training significantly improves countermovement jump height (MD = 2.20 cm) and squat jump height (MD = 2.13 cm), as well as 20-m sprint time (MD = -0.10 s). Improvements in 10-m sprint time were not statistically significant. Subgroup analysis indicated that intervention durations of ≥8 weeks are a key factor for achieving significant effects.",
+  "key_findings": [
+    "PT significantly improved countermovement jump height (MD = 2.20, 95% CI: 1.46–2.95, p < 0.000001) across 10 studies with 287 participants.",
+    "PT significantly improved squat jump height (MD = 2.13, 95% CI: 1.32–2.94, p < 0.00001) across 6 studies with 141 participants.",
+    "PT significantly improved 20-m sprint performance (MD = -0.10 s, 95% CI: -0.18 to -0.01, p = 0.03) across 5 studies with 165 participants.",
+    "PT did not significantly improve 10-m sprint performance (MD = -0.04 s, 95% CI: -0.10 to 0.01, p = 0.14) across 5 studies with 123 participants.",
+    "Subgroup analysis showed interventions ≥8 weeks produced significantly greater jump improvements than shorter durations (p = 0.01)."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "Overall jump: MD = 2.17, 95% CI 1.62–2.72, p < 0.00001; Overall sprint: MD = -0.06, 95% CI -0.11 to -0.01, p = 0.02",
+  "exercise_tags": [
+    "countermovement-jump",
+    "squat-jump",
+    "depth-jump",
+    "hurdle-hops",
+    "box-jump",
+    "drop-jump",
+    "single-leg-depth-jump",
+    "single-leg-hop"
+  ],
+  "evidence_path": "direct",
+  "limitations": "The sample was predominantly male (291 vs 20 females) and limited to team-sport athletes, reducing generalizability. Risk of bias was unclear for allocation concealment in 9 of 11 studies and blinding in 4 studies, and sprint outcomes showed moderate heterogeneity (I² = 59%).",
+  "reviewed": false
+}

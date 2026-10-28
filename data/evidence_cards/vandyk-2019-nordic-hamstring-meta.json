@@ -1,0 +1,28 @@
+{
+  "id": "vandyk-2019-nordic-hamstring-meta",
+  "citation": "van Dyk N, Behan FP, Whiteley R (2019). Including the Nordic hamstring exercise in injury prevention programmes halves the rate of hamstring injuries: a systematic review and meta-analysis of 8459 athletes. British journal of sports medicine.",
+  "url": "https://doi.org/10.1136/bjsports-2018-100045",
+  "study_type": "systematic review and meta-analysis",
+  "population": "Athletes participating in various sports across different age groups, both women and men (total 8459 athletes).",
+  "intervention": "Nordic hamstring exercise (NHE) included as part of injury prevention programmes.",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Hamstring injury incidence rate",
+    "Injury risk ratio"
+  ],
+  "summary": "This systematic review and meta-analysis of 15 studies involving 8459 athletes found that injury prevention programmes including the Nordic hamstring exercise (NHE) reduce hamstring injury rates by approximately half compared to usual training or other prevention programmes without NHE. The overall injury risk ratio was 0.49 (95% CI 0.32–0.74), with consistent benefits in randomised controlled trials and after excluding high-risk-of-bias studies.",
+  "key_findings": [
+    "Overall injury risk ratio 0.49 (95% CI 0.32 to 0.74, p=0.0008) favouring programmes including the NHE.",
+    "In eight randomised controlled studies, the injury risk ratio was 0.52 (95% CI 0.32 to 0.85, p=0.0008) favouring the NHE.",
+    "After removing studies with high risk of bias (n=8), the injury risk ratio was 0.55 (95% CI 0.34 to 0.89, p=0.006) still favouring the NHE.",
+    "Programmes including the NHE reduce hamstring injuries by up to 51% across multiple sports and athlete populations."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "RR = 0.49, 95% CI 0.32-0.74",
+  "exercise_tags": [
+    "nordic-hamstring-curl"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Only abstract available; full text not freely accessible. Meta-analysis includes heterogeneous sports, age groups, and study designs (randomised and non-randomised). Some included studies had high risk of bias.",
+  "reviewed": false
+}

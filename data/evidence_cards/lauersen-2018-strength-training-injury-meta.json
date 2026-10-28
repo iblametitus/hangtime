@@ -1,0 +1,31 @@
+{
+  "id": "lauersen-2018-strength-training-injury-meta",
+  "citation": "Lauersen JB, Andersen TE, Andersen LB (2018). Strength training as superior, dose-dependent and safe prevention of acute and overuse sports injuries: a systematic review, qualitative analysis and meta-analysis. British journal of sports medicine.",
+  "url": "https://doi.org/10.1136/bjsports-2018-099078",
+  "study_type": "meta-analysis",
+  "population": "7738 participants aged 12-40 years, athletes across various sports",
+  "intervention": "Strength training exercises as primary prevention of sports injuries",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "Relative risk of acute and overuse sports injuries",
+    "Injury incidence"
+  ],
+  "summary": "This systematic review and meta-analysis of six RCTs found that strength training substantially reduces the risk of acute and overuse sports injuries. The cluster-adjusted intention-to-treat analysis showed a relative risk of 0.338, indicating a 66% reduction in injury risk, with high strength of evidence and no publication bias.",
+  "key_findings": [
+    "Cluster-adjusted intention-to-treat analysis established RR 0.338 (95% CI 0.238-0.480) for strength training preventing sports injuries.",
+    "A 10% increase in strength training volume reduced the risk of injury by more than four percentage points.",
+    "The result was consistent across robustness tests and strength of evidence was high.",
+    "Formal tests found no publication bias.",
+    "Studies were generally well designed with high compliance rates and were safe."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "RR 0.338 (95% CI 0.238-0.480)",
+  "exercise_tags": [
+    "max_strength",
+    "strength_speed",
+    "speed_strength"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Only six RCTs included with considerable heterogeneity in populations and interventions; abstract only limits detailed risk of bias assessment.",
+  "reviewed": false
+}

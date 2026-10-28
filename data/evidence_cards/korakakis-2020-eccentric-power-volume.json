@@ -1,0 +1,37 @@
+{
+  "id": "korakakis-2020-eccentric-power-volume",
+  "citation": "Korakakis V, et al. (2020). Muscle Fiber Composition, Jumping Performance, and Rate of Force Development Adaptations Induced by Different Power Training Volumes in Females. J Strength Cond Res.",
+  "url": "https://pubmed.ncbi.nlm.nih.gov/32203677/",
+  "study_type": "RCT",
+  "population": "29 females (age, training level, sport not reported)",
+  "intervention": "10 weeks of eccentric-only power training: 4 fast-velocity eccentric-only half-squats at 70% concentric 1RM followed by 3 maximum countermovement jumps per set, performed as 3 (low), 6 (moderate), or 9 (high) sets per session",
+  "duration_weeks": 10,
+  "outcome_measures": [
+    "Half-squat 1RM",
+    "CMJ height",
+    "CMJ power",
+    "Maximum isometric force",
+    "Rate of force development (RFD)",
+    "Muscle fiber cross-sectional area (CSA)",
+    "Muscle fiber type percentage (type IIx, type IIa)"
+  ],
+  "summary": "This RCT compared three volumes of eccentric-only power training in 29 females over 10 weeks. All groups improved strength, jump performance, rate of force development, and muscle fiber size, but the low-volume group (3 sets/session) achieved greater gains in countermovement jump height/power and early RFD than moderate (6 sets) or high (9 sets) volumes. Moderate and high volumes reduced type IIx fiber percentage while increasing type IIa, and fiber-type shifts correlated with performance changes.",
+  "key_findings": [
+    "All groups increased half-squat 1RM, CMJ height/power, maximum isometric force, RFD, and muscle fiber CSA (p = 0.001).",
+    "Low-volume training (3 sets) produced larger increases in CMJ height/power and early RFD than moderate (6 sets) and high (9 sets) volumes (p < 0.001).",
+    "Moderate- and high-volume training significantly decreased type IIx fiber percentage and %CSA while increasing type IIa fibers (p = 0.001).",
+    "Changes in type IIx/IIa percentages, fiber CSA, and %CSA correlated with performance changes (r = -0.787 to 0.792, p < 0.05).",
+    "Early RFD increased after low- or moderate-volume training but not after high-volume training."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "p = 0.001 for main effects; p < 0.001 for low vs moderate/high volume differences; r = -0.787 to 0.792 for fiber-performance correlations",
+  "exercise_tags": [
+    "squat",
+    "countermovement-jump",
+    "speed_strength",
+    "reactive"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Small sample (29 females) limits generalizability; only females studied; 10-week duration may not reflect long-term adaptations; no blinding or randomization details reported; single eccentric-only modality.",
+  "reviewed": false
+}

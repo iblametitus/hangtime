@@ -1,0 +1,34 @@
+{
+  "id": "li-2024-patellar-tendinopathy-nma",
+  "citation": "Li Y, Sun D, Fang Y, Lu Z, Shi F, Liu G, Gu Y (2024). Mixed comparison of intervention with eccentric, isometric, and heavy slow resistance for Victorian Institute of Sport Assessment Patella Questionnaire in adults with patellar tendinopathy: A systematic review and network meta-analysis. Heliyon.",
+  "url": "https://doi.org/10.1016/j.heliyon.2024.e39171",
+  "study_type": "network meta-analysis",
+  "population": "Adults with patellar tendinopathy (athletes, both sexes)",
+  "intervention": "Eccentric training (single-leg decline squat), isometric training (70-80% MVC at 60° knee flexion), heavy slow resistance training (hack squat, leg press, squat)",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "VISA-P",
+    "VAS",
+    "NRS"
+  ],
+  "summary": "This systematic review and network meta-analysis included 7 randomized controlled trials comparing eccentric, isometric, and heavy slow resistance training for patellar tendinopathy. The primary outcome was the VISA-P questionnaire score (0-100, higher scores indicate better function). The analysis found eccentric training ranked worst for improving VISA-P, while heavy slow resistance training was more suited for long-term improvements in knee function, and isometric or moderate slow resistance training were more beneficial than eccentric training alone.",
+  "key_findings": [
+    "Eccentric training had the lowest ranking for increasing VISA-P scores (0.01 for Rank 1 and 0.06 for Rank 8).",
+    "Moderate resistance slow training achieved the highest ranking (0.25 for Rank 1 and Rank 8).",
+    "Heavy slow resistance training was more suited for attaining long-term improvements in knee function.",
+    "Progressive tendon-loading exercises combined with isometric training or moderate slow resistance training were more beneficial than eccentric training alone.",
+    "The review could not directly compare heavy slow, eccentric, and isometric resistance training due to scarcity of head-to-head studies."
+  ],
+  "effect_direction": "mixed",
+  "effect_size": "eccentric training: 0.01 (Rank 1) and 0.06 (Rank 8); moderate resistance slow training: 0.25 (Rank 1 and Rank 8)",
+  "exercise_tags": [
+    "isometric-squat-hold",
+    "leg-press",
+    "back-squat",
+    "front-squat",
+    "single-leg-depth-jump"
+  ],
+  "evidence_path": "indirect",
+  "limitations": "Only 7 RCTs were included, limiting statistical power and direct comparisons between interventions. Risk of bias assessment revealed some studies had moderate or high risk of bias, and the inability to directly compare all three training modalities constitutes a significant drawback.",
+  "reviewed": false
+}

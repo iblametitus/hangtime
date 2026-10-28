@@ -1,0 +1,31 @@
+{
+  "id": "seitz-2014-strength-transfer-sprint-meta",
+  "citation": "Seitz LB, Reyes A, Tran TT, Saez de Villarreal E, Haff GG (2014). Increases in lower-body strength transfer positively to sprint performance: a systematic review with meta-analysis. Sports Medicine.",
+  "url": "https://doi.org/10.1007/s40279-014-0227-1",
+  "study_type": "meta-analysis",
+  "population": "510 subjects across 15 studies with 26 experimental and 11 control groups; mixed athletic populations",
+  "intervention": "Resistance training to increase lower-body strength measured via free-weight back squat exercise",
+  "duration_weeks": null,
+  "outcome_measures": [
+    "sprint performance (effect size)",
+    "sprint time improvement (%)"
+  ],
+  "summary": "This meta-analysis of 15 studies found that increases in lower-body strength, measured by back squat performance, transfer positively to sprint performance. The analysis revealed a very large correlation between squat strength gains and sprint improvements, with an overall sprint effect size of -0.87 corresponding to a 3.11% mean sprint improvement. Several subject characteristics and training variables moderated the magnitude of sprint improvement.",
+  "key_findings": [
+    "Very large significant correlation (r = -0.77; p = 0.0001) between squat strength effect size and sprint effect size.",
+    "Overall sprint improvement: sprint ES = -0.87, mean sprint improvement = 3.11%.",
+    "Sprint improvement magnitude affected by subject level of practice (p = 0.03) and body mass (r = 0.35; p = 0.011).",
+    "Sprint improvement magnitude affected by resistance-training frequency per week (r = 0.50; p = 0.001) and rest interval between sets (r = -0.47; p ≤ 0.001).",
+    "Sprint improvement magnitude not affected by age (p = 0.86), height (p = 0.08), training methods (p = 0.06), load intensity (p = 0.34), program duration (p = 0.16), exercises per session (p = 0.16), sets per exercise (p = 0.06), or repetitions per set (p = 0.48)."
+  ],
+  "effect_direction": "positive",
+  "effect_size": "sprint ES = -0.87, mean sprint improvement = 3.11%; correlation between squat strength ES and sprint ES r = -0.77 (p = 0.0001)",
+  "exercise_tags": [
+    "back-squat",
+    "sprint",
+    "max_strength"
+  ],
+  "evidence_path": "direct",
+  "limitations": "Abstract only; full text not freely available. Large differences in the number of effect sizes available for different moderator analyses may affect reliability of moderator conclusions. Heterogeneity across 15 included studies not quantified in abstract.",
+  "reviewed": false
+}
