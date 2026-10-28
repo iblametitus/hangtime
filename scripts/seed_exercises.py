@@ -11,14 +11,15 @@ import argparse
 import sys
 from pathlib import Path
 
-from pydantic import BaseModel, ValidationError, create_model
+from pydantic import ValidationError, create_model
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app.config import get_settings  # noqa: E402
 from app.exercises import load_exercises, save_exercises  # noqa: E402
 from app.llm import call_json_schema  # noqa: E402
-from app.models import CONTRAINDICATIONS, EQUIPMENT, ExerciseProfile  # noqa: E402
+from app.models import ExerciseProfile  # noqa: E402
+from app.profiling import PROFILE_PROMPT, ExerciseDraft, to_profile  # noqa: E402
 
 BATCH_SIZE = 8
 
@@ -119,56 +120,13 @@ EXERCISES: dict[str, str] = {
     "power-skip": "Power Skip",
 }
 
-SYSTEM_PROMPT = f"""You are a strength and conditioning coach building an exercise database for
-athletes who train for vertical jump, sprint speed and injury resilience.
-For each exercise you get (id + name), fill in a complete, realistic profile. Return the id exactly as given.
-
-Field guide:
-- aliases: common alternative names people use in videos and plans (English, max. 4).
-- pattern: the main movement pattern. Plyometric jumps for height = jump_vertical (also depth/drop jumps),
-  for distance = jump_horizontal, alternating single-leg = bound, repeated single-leg = hop_unilateral,
-  absorbing force only = landing. Split squats, step-ups and lunges = lunge. Olympic lifts = hinge.
-  Sprint drills and sprints = sprint. Anti-rotation and trunk work = core.
-- fv_zone: position on the force-velocity curve. max_strength (heavy, slow, >80% 1RM, also heavy
-  eccentric/isometric strength work like Nordics), strength_speed (heavy-ish but fast: Olympic lifts, loaded
-  jumps, sled sprints), speed_strength (light/bodyweight, maximal intent: squat jumps, box jumps, med ball
-  throws), reactive (fast stretch-shortening, ground contact < 250 ms: pogos, depth jumps, hurdle hops).
-- ssc: stretch-shortening cycle. none = starts from a dead stop or has no rebound (strength lifts, seated box
-  jump, squat jump), slow = countermovement > 250 ms (countermovement jump, box jump), fast = rebound < 250 ms.
-- emphasis: which muscle action the exercise mainly trains. Use mixed only for genuinely mixed actions.
-- resistance: main external resistance.
-- hardest_point: where in the range of motion the exercise is hardest.
-- load_cost.fatigue and load_cost.joint_stress: 1 (low), 2 (moderate), 3 (high). Use the full range.
-- load_cost.ground_contacts_per_rep: foot contacts with impact per rep (depth jump = 1, one bound = 1,
-  one sprint rep = roughly its number of steps). 0 for exercises without impact.
-- equipment: only from {EQUIPMENT}. Use ["none"] if nothing is needed. Only what is required, not optional.
-- min_training_age_years: years of structured strength training needed to do it safely (0 to 3).
-- rep_min / rep_max: typical reps per set in athletic training. For isometric holds, seconds per set.
-- contraindications: only from {CONTRAINDICATIONS}. An athlete with this condition is filtered away from
-  the exercise, so list a condition ONLY if the exercise is clearly a bad idea with it. Most exercises have
-  0 or 1, never more than 2. Low-impact strength and rehab exercises usually have none.
-- evidence_card_ids: always []."""
-
-
-def _draft_model() -> type[BaseModel]:
-    """ExerciseProfile without the fields the model must not decide."""
-    skip = {"reviewed", "auto_profiled"}
-    fields = {
-        name: (info.annotation, info)
-        for name, info in ExerciseProfile.model_fields.items()
-        if name not in skip
-    }
-    return create_model("ExerciseDraft", **fields)
-
-
-ExerciseDraft = _draft_model()
 ExerciseBatch = create_model("ExerciseBatch", exercises=(list[ExerciseDraft], ...))
 
 
 def draft_batch(items: list[tuple[str, str]], model: str) -> list[ExerciseProfile]:
     user = "Profile these exercises:\n" + "\n".join(f"- id: {i}, name: {n}" for i, n in items)
     batch = call_json_schema(
-        model=model, system_prompt=SYSTEM_PROMPT, user_content=user, schema_model=ExerciseBatch
+        model=model, system_prompt=PROFILE_PROMPT, user_content=user, schema_model=ExerciseBatch
     )
     names = dict(items)
     out = []
@@ -176,11 +134,8 @@ def draft_batch(items: list[tuple[str, str]], model: str) -> list[ExerciseProfil
         if d.id not in names:
             print(f"  ! unexpected id from model: {d.id}")
             continue
-        data = d.model_dump() | {"name": names[d.id], "evidence_card_ids": [], "reviewed": False}
-        data["equipment"] = [e for e in data["equipment"] if e in EQUIPMENT] or ["none"]
-        data["contraindications"] = [c for c in data["contraindications"] if c in CONTRAINDICATIONS]
         try:
-            out.append(ExerciseProfile.model_validate(data))
+            out.append(to_profile(d, name=names[d.id]))
         except ValidationError as exc:
             print(f"  ! {d.id} invalid, skipped: {exc.errors()[0]['msg']}")
     return out
