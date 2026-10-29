@@ -8,7 +8,7 @@ DEMO_PROFILE = UserProfile(
     training_age_years=2,
     sessions_per_week=3,
     injuries=[],
-    equipment=["none", "box", "barbell", "dumbbell", "band", "bench", "rack", "step", "hurdle"],
+    equipment=["none", "box", "barbell", "trap_bar", "dumbbell", "band", "bench", "rack", "step", "hurdle", "machine"],
 )
 
 

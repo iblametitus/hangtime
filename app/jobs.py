@@ -13,7 +13,7 @@ import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from app.models import CoarseScan, UserProfile
+from app.models import CoarseScan, TrainingPlan, UserProfile
 from app.pipeline import run
 from app.pipeline.video import VideoError, probe_duration
 
@@ -29,6 +29,7 @@ class Job:
     id: str
     video: Path
     user: UserProfile
+    plan: TrainingPlan
     caption: str | None
     segment: int = 0
     scan: CoarseScan | None = None
@@ -36,6 +37,8 @@ class Job:
     steps: list[str] = field(default_factory=list)  # step keys in the order they started
     result: run.AnalysisResult | None = None
     error: str | None = None
+    session_id: str = ""  # browser session that owns the plan
+    applied: bool = False
 
 
 _jobs: dict[str, Job] = {}
@@ -53,9 +56,10 @@ def get(job_id: str) -> Job | None:
         return _jobs.get(job_id)
 
 
-def start(video: Path, user: UserProfile, caption: str | None = None,
-          segment: int = 0, scan: CoarseScan | None = None) -> Job:
-    job = Job(id=uuid.uuid4().hex[:12], video=video, user=user, caption=caption, segment=segment, scan=scan)
+def start(video: Path, user: UserProfile, plan: TrainingPlan, caption: str | None = None,
+          segment: int = 0, scan: CoarseScan | None = None, session_id: str = "") -> Job:
+    job = Job(id=uuid.uuid4().hex[:12], video=video, user=user, plan=plan, caption=caption, segment=segment,
+              scan=scan, session_id=session_id)
     with _lock:
         _jobs[job.id] = job
         _prune()
@@ -80,7 +84,8 @@ def _work(job: Job) -> None:
         try:
             if probe_duration(job.video) > MAX_DURATION_S:
                 raise VideoError(f"Video is longer than {MAX_DURATION_S // 60} minutes. Please trim it.")
-            job.result = run.analyse(job.video, job.user, job.caption, job.segment, job.scan, on_step=on_step)
+            job.result = run.analyse(job.video, job.user, job.plan, job.caption, job.segment, job.scan,
+                                     on_step=on_step)
             job.status = "done"
         except VideoError as exc:
             job.error, job.status = str(exc), "error"

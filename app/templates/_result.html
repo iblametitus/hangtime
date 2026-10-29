@@ -53,13 +53,8 @@
     {% endif %}
   </section>
 
-  {# Step 3: swap (M4) #}
-  {% if v.swap_explanation %}
-  <section class="rounded-xl border border-slate-200 bg-white p-4">
-    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">3 · Where does it go in your plan?</p>
-    <p class="mt-2 text-sm text-slate-700">{{ v.swap_explanation }}</p>
-  </section>
-  {% endif %}
+  {# Step 3: swap #}
+  {% include "_swap.html" %}
 
   {% if others %}
   <section class="rounded-xl border border-slate-200 bg-white p-4">

@@ -7,9 +7,10 @@ from fastapi import APIRouter, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app import jobs
-from app.demo import DEMO_PLAN, DEMO_PROFILE
+from app import jobs, plans
+from app.demo import DEMO_PROFILE
 from app.pipeline.run import STEPS
+from app.pipeline.swap import apply_swap
 
 templates = Jinja2Templates(directory=Path(__file__).parent / "templates")
 
@@ -43,10 +44,24 @@ def home(request: Request):
     return templates.TemplateResponse(request, "home.html", {})
 
 
+def _session_id(request: Request) -> str:
+    return request.cookies.get(plans.COOKIE) or plans.new_session_id()
+
+
+def _with_cookie(response, session_id: str):
+    response.set_cookie(plans.COOKIE, session_id, max_age=7 * 24 * 3600, httponly=True, samesite="lax")
+    return response
+
+
 @router.get("/demo", response_class=HTMLResponse)
-def demo(request: Request):
-    ctx = {"profile": DEMO_PROFILE, "plan": DEMO_PLAN, "goal_label": GOALS[DEMO_PROFILE.goal.value]}
-    return templates.TemplateResponse(request, "demo.html", ctx)
+def demo(request: Request, reset: bool = False):
+    session_id = _session_id(request)
+    if reset:
+        plans.reset(session_id)
+    plan = plans.get_plan(session_id)
+    ctx = {"profile": DEMO_PROFILE, "plan": plan, "goal_label": GOALS[DEMO_PROFILE.goal.value],
+           "changed": plan != plans.get_plan("")}
+    return _with_cookie(templates.TemplateResponse(request, "demo.html", ctx), session_id)
 
 
 def _error(request: Request, message: str, status_code: int = 200):
@@ -65,8 +80,10 @@ def create_analysis(request: Request, video: UploadFile, caption: str = Form("")
     if path.stat().st_size > MAX_UPLOAD_BYTES:
         path.unlink(missing_ok=True)
         return _error(request, "The video is larger than 100 MB. Please upload a shorter clip.")
-    job = jobs.start(path, DEMO_PROFILE, caption.strip()[:MAX_CAPTION_CHARS] or None)
-    return _status(request, job)
+    session_id = _session_id(request)
+    job = jobs.start(path, DEMO_PROFILE, plans.get_plan(session_id), caption.strip()[:MAX_CAPTION_CHARS] or None,
+                     session_id=session_id)
+    return _with_cookie(_status(request, job), session_id)
 
 
 @router.get("/api/analyses/{job_id}", response_class=HTMLResponse)
@@ -85,8 +102,26 @@ def analyse_other_exercise(request: Request, job_id: str, segment: int):
         return _error(request, "This analysis has expired. Please upload the video again.")
     if not 0 <= segment < len(job.result.segments):
         raise HTTPException(status_code=404)
-    new = jobs.start(job.video, job.user, job.caption, segment, job.result.scan)
+    new = jobs.start(job.video, job.user, plans.get_plan(job.session_id), job.caption, segment, job.result.scan,
+                     session_id=job.session_id)
     return _status(request, new)
+
+
+@router.post("/api/analyses/{job_id}/apply-swap", response_class=HTMLResponse)
+def apply_analysis_swap(request: Request, job_id: str):
+    """Write the proposed swap into this browser session's plan."""
+    job = jobs.get(job_id)
+    if job is None or job.result is None or job.result.swap.proposal is None:
+        return _error(request, "This analysis has expired. Please upload the video again.")
+    if not job.applied:
+        current = plans.get_plan(job.session_id)
+        updated = apply_swap(current, job.result.swap.proposal, job.result.profile.name)
+        if updated == current:
+            return _error(request, "Your plan changed since this analysis, so the swap no longer fits. "
+                                   "Run the analysis again.")
+        plans.set_plan(job.session_id, updated)
+        job.applied = True
+    return templates.TemplateResponse(request, "_swap.html", _result_context(job))
 
 
 def _status(request: Request, job: jobs.Job):
@@ -120,6 +155,7 @@ def _result_context(job: jobs.Job) -> dict:
     sources |= {w.id: {"title": w.title, "url": w.url, "curated": False, "type": "web source"} for w in r.web}
     others = [(i, s.name) for i, s in enumerate(r.segments) if i != r.selected_segment and s.name]
     return {
+        "diff": _plan_diff(job),
         "job": job,
         "r": r,
         "v": r.verdict,
@@ -128,3 +164,20 @@ def _result_context(job: jobs.Job) -> dict:
         "sources": sources,
         "others": others,
     }
+
+
+def _plan_diff(job: jobs.Job) -> list[dict]:
+    """Rows of the next session with the swap marked: state is same | out | in."""
+    swap, new = job.result.swap, job.result.profile
+    if swap.proposal is None or swap.session is None:
+        return []
+    p = swap.proposal
+    rows = []
+    for e in swap.session.exercises:
+        prescription = f"{e.sets}×{e.reps}" + (f" · {e.load}" if e.load else "")
+        if e.exercise_id == p.replaces_exercise_id:
+            rows.append({"name": e.raw_name, "prescription": prescription, "state": "out"})
+            rows.append({"name": new.name, "prescription": p.new_prescription, "state": "in"})
+        else:
+            rows.append({"name": e.raw_name, "prescription": prescription, "state": "same"})
+    return rows

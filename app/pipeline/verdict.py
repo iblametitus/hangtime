@@ -59,6 +59,8 @@ Rules:
   equipment. personal_fit_reason: one or two sentences.
 - swap_explanation: explain the given swap in one or two sentences; never propose a different swap.
   null if no swap is given.
+- If no_swap_reason says the athlete lacks equipment, training age or has a contraindicated injury,
+  personal_fit is not_recommended and personal_fit_reason names that reason.
 - safety_notes: short, concrete, only if relevant (max. 3)."""
 
 
@@ -86,6 +88,7 @@ def build_user_message(
     user: UserProfile,
     swap: SwapProposal | None,
     other_exercises: list[str],
+    no_swap_reason: str | None = None,
 ) -> str:
     data = {
         "video": {
@@ -103,6 +106,7 @@ def build_user_message(
         "evidence_cards": _cards_block(cards),
         "web_sources_not_curated": [w.model_dump() for w in web],
         "swap": swap.model_dump() if swap else None,
+        "no_swap_reason": None if swap else no_swap_reason,
     }
     return json.dumps(data, indent=1, ensure_ascii=False)
 
@@ -117,12 +121,13 @@ def judge(
     user: UserProfile,
     swap: SwapProposal | None = None,
     other_exercises: list[str] | None = None,
+    no_swap_reason: str | None = None,
 ) -> Verdict:
     return call_json_schema(
         model=get_settings().model_reason,
         system_prompt=VERDICT_PROMPT,
         user_content=build_user_message(
-            understanding, caption, claim, profile, cards, web, user, swap, other_exercises or []
+            understanding, caption, claim, profile, cards, web, user, swap, other_exercises or [], no_swap_reason
         ),
         schema_model=Verdict,
     )

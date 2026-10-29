@@ -9,7 +9,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from app.demo import DEMO_PROFILE
+from app.demo import DEMO_PLAN, DEMO_PROFILE
 from app.pipeline.run import analyse
 
 
@@ -22,7 +22,7 @@ def main() -> None:
     args = parser.parse_args()
 
     result = analyse(
-        args.video, DEMO_PROFILE, args.caption, args.segment,
+        args.video, DEMO_PROFILE, DEMO_PLAN, args.caption, args.segment,
         on_step=lambda key, label: print(f"... {label}", file=sys.stderr),
     )
     if args.json:
@@ -37,6 +37,13 @@ def main() -> None:
     print(f"Rating:   {v.rating.value} - {v.headline}")
     print(f"Why:      {v.reasoning}")
     print(f"Fit:      {v.personal_fit.value} - {v.personal_fit_reason}")
+    s = result.swap
+    if s.proposal:
+        p = s.proposal
+        print(f"Swap:     {p.replaces_raw_name} {p.old_prescription} -> {result.profile.name} {p.new_prescription}"
+              f" in {s.session.label} (similarity {p.similarity}) - {p.volume_note}")
+    else:
+        print(f"Swap:     none - {s.note}")
     for c in v.citations:
         print(f"  [{c.source_id}] \"{c.quote}\"")
     print(f"Evidence: {len(result.cards)} cards, {len(result.web)} web sources, {result.removed_citations} citations removed")

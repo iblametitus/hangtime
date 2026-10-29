@@ -1,4 +1,4 @@
-"""Full analysis of one video: scan -> frames -> understand -> exercise -> evidence -> verdict -> citations.
+"""Full analysis of one video: scan -> frames -> understand -> exercise -> evidence -> swap -> verdict -> citations.
 
 `on_step` is called before each step with a short English label, so the web app can show
 progress (and the demo video can show the pipeline at work).
@@ -7,6 +7,7 @@ progress (and the demo video can show the pipeline at work).
 import logging
 import time
 from collections.abc import Callable
+from datetime import date
 from pathlib import Path
 
 from pydantic import BaseModel
@@ -19,7 +20,9 @@ from app.models import (
     EvidenceCard,
     ExerciseProfile,
     ExternalSource,
+    Fit,
     Segment,
+    TrainingPlan,
     UserProfile,
     Verdict,
     VideoUnderstanding,
@@ -27,6 +30,7 @@ from app.models import (
 from app.pipeline.citations import check_citations
 from app.pipeline.evidence import find_evidence
 from app.pipeline.exercise import identify
+from app.pipeline.swap import SwapResult, propose_swap
 from app.pipeline.scan import SCAN_THRESHOLD_S, coarse_scan, segments
 from app.pipeline.understand import understand
 from app.pipeline.verdict import judge
@@ -40,6 +44,7 @@ STEPS = {
     "understand": "Watching the movement",
     "exercise": "Identifying the exercise",
     "evidence": "Searching the research",
+    "swap": "Finding a slot in your plan",
     "verdict": "Weighing the evidence",
     "citations": "Checking every citation",
 }
@@ -55,6 +60,7 @@ class AnalysisResult(BaseModel):
     profile: ExerciseProfile
     cards: list[EvidenceCard]
     web: list[ExternalSource]
+    swap: SwapResult
     verdict: Verdict
     removed_citations: int
     timings_s: dict[str, float]
@@ -63,10 +69,12 @@ class AnalysisResult(BaseModel):
 def analyse(
     path: Path,
     user: UserProfile,
+    plan: TrainingPlan,
     caption: str | None = None,
     segment: int = 0,
     scan: CoarseScan | None = None,
     on_step: Callable[[str, str], None] | None = None,
+    today: int | None = None,
 ) -> AnalysisResult:
     """Analyse one exercise of the video (`segment` 0 = main exercise). Pass the `scan` of an
     earlier run to check another exercise of the same video without scanning again."""
@@ -102,16 +110,24 @@ def analyse(
     done("understand")
 
     step("exercise")
-    claim, profile = identify(understanding, caption, load_exercises())
+    exercises = load_exercises()
+    claim, profile = identify(understanding, caption, exercises)
     done("exercise")
 
     step("evidence")
     cards, web = find_evidence(claim, profile, load_cards())
     done("evidence")
 
+    step("swap")
+    swap = propose_swap(profile, user, plan, exercises, date.today().weekday() if today is None else today)
+    done("swap")
+
     step("verdict")
     others = [s.name for s in segs if s is not chosen and s.name]
-    verdict = judge(understanding, caption, claim, profile, cards, web, user, swap=None, other_exercises=others)
+    verdict = judge(understanding, caption, claim, profile, cards, web, user, swap=swap.proposal,
+                    other_exercises=others, no_swap_reason=swap.note)
+    if swap.blocked_reason:  # hard filter in swap.py, not the model's call
+        verdict.personal_fit = Fit.not_recommended
     done("verdict")
 
     step("citations")
@@ -131,6 +147,7 @@ def analyse(
         profile=profile,
         cards=cards,
         web=web,
+        swap=swap,
         verdict=verdict,
         removed_citations=removed,
         timings_s=timings,

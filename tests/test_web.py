@@ -3,17 +3,28 @@ import time
 import pytest
 from fastapi.testclient import TestClient
 
-from app import jobs
+from app import jobs, plans
+from app.demo import DEMO_PLAN, DEMO_PROFILE
 from app.main import app
 from app.models import Citation, ExternalSource, Segment, VideoUnderstanding
 from app.pipeline import run
+from app.pipeline.swap import SwapResult
 from tests.test_evidence import CLAIM, make_card, make_verdict
 from tests.test_exercises import make_exercise
 
 client = TestClient(app)
 
 
-def fake_result(segment: int = 0) -> run.AnalysisResult:
+def demo_swap() -> SwapResult:
+    """Real swap: a depth jump into the demo plan on a Monday replaces the box jump."""
+    from app.exercises import load_exercises
+    from app.pipeline.swap import propose_swap
+    exercises = load_exercises()
+    depth_jump = next(e for e in exercises if e.id == "depth-jump")
+    return propose_swap(depth_jump, DEMO_PROFILE, DEMO_PLAN, exercises, 0)
+
+
+def fake_result(segment: int = 0, swap: SwapResult | None = None) -> run.AnalysisResult:
     verdict = make_verdict([
         Citation(source_id="doe-2020", quote="Plyometric training improved CMJ height (ES = 0.84)."),
         Citation(source_id="web-1", quote="Depth jumps increased jump height."),
@@ -26,25 +37,31 @@ def fake_result(segment: int = 0) -> run.AnalysisResult:
         scan=None,
         understanding=VideoUnderstanding(movement_description="", on_screen_text=[], equipment_seen=[], execution_notes=""),
         claim=CLAIM,
-        profile=make_exercise(),
+        profile=make_exercise(id="depth-jump", name="Depth Jump") if swap else make_exercise(),
         cards=[make_card("doe-2020", ["box-jump"])],
         web=[ExternalSource(id="web-1", title="Depth jump study", url="https://pubmed.ncbi.nlm.nih.gov/1",
                             snippet="Depth jumps increased jump height.")],
+        swap=swap or SwapResult(proposal=None, session=None, blocked_reason=None,
+                                note="No equivalent slot in your next session (Friday - Max strength)."),
         verdict=verdict,
         removed_citations=1,
         timings_s={"total": 17.2},
     )
 
 
+class Calls(list):
+    pass
+
+
 @pytest.fixture(autouse=True)
 def fake_pipeline(monkeypatch):
-    calls = []
+    calls = Calls()
 
-    def analyse(path, user, caption=None, segment=0, scan=None, on_step=None):
-        calls.append({"caption": caption, "segment": segment})
+    def analyse(path, user, plan, caption=None, segment=0, scan=None, on_step=None):
+        calls.append({"caption": caption, "segment": segment, "plan": plan})
         for key in ["frames", "understand", "verdict"]:
             on_step(key, run.STEPS[key])
-        return fake_result(segment)
+        return fake_result(segment, calls.swap if hasattr(calls, "swap") else None)
 
     monkeypatch.setattr(run, "analyse", analyse)
     monkeypatch.setattr(jobs, "probe_duration", lambda path: 30.0)
@@ -88,6 +105,7 @@ def test_upload_shows_progress_then_result_card(fake_pipeline):
     assert "web source, not curated" in result
     assert "1 unverifiable quote was removed" in result
     assert "Check Pogo Hops" in result and "Check Box Jump" not in result
+    assert "No equivalent slot" in result
     assert fake_pipeline[0]["caption"] == "+10 cm in 2 weeks"
 
 
@@ -110,7 +128,8 @@ def test_rejects_non_video_and_long_video(monkeypatch):
 
 
 def test_progress_marks_steps():
-    job = jobs.Job(id="x", video=jobs.new_video_path(".mp4"), user=None, caption=None, steps=["frames", "understand"])
+    job = jobs.Job(id="x", video=jobs.new_video_path(".mp4"), user=None, plan=None, caption=None,
+                   steps=["frames", "understand"])
     from app.web import _progress
     states = dict(_progress(job))
     assert states[run.STEPS["frames"]] == "done"
@@ -121,3 +140,26 @@ def test_progress_marks_steps():
 
 def test_unknown_analysis_expired():
     assert "expired" in client.get("/api/analyses/nope").text
+
+
+def test_apply_swap_updates_only_this_sessions_plan(fake_pipeline):
+    fake_pipeline.swap = demo_swap()
+    client.cookies.set(plans.COOKIE, "session-a")
+    try:
+        upload()
+        job = only_job()
+        result = wait_done(job.id)
+        assert "Apply swap to next session" in result
+        assert "<s>Box Jump</s>" in result and "Depth Jump" in result
+        applied = client.post(f"/api/analyses/{job.id}/apply-swap").text
+        assert "Added to your plan" in applied
+        assert [e.exercise_id for e in plans.get_plan("session-a").sessions[0].exercises][0] == "depth-jump"
+        assert plans.get_plan("someone-else").sessions[0].exercises[0].exercise_id == "box-jump"
+        page = client.get("/demo").text
+        assert "updated" in page and "Reset demo plan" in page
+        assert "Added to your plan" in client.post(f"/api/analyses/{job.id}/apply-swap").text  # idempotent
+        client.get("/demo?reset=1")
+        assert plans.get_plan("session-a").sessions[0].exercises[0].exercise_id == "box-jump"
+    finally:
+        client.cookies.clear()
+        plans.reset("session-a")
