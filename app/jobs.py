@@ -19,7 +19,7 @@ from app.pipeline.video import VideoError, probe_duration
 
 logger = logging.getLogger(__name__)
 
-MAX_DURATION_S = 60
+MAX_DURATION_S = 180  # the coarse scan takes 16 frames regardless of length
 MAX_JOBS = 20  # oldest jobs (and their videos) are dropped beyond this
 _RUNNING = threading.Semaphore(2)  # Render free has 512 MB RAM; ffmpeg + images per run
 
@@ -79,7 +79,7 @@ def _work(job: Job) -> None:
         job.status = "running"
         try:
             if probe_duration(job.video) > MAX_DURATION_S:
-                raise VideoError(f"Video is longer than {MAX_DURATION_S} seconds. Please trim it.")
+                raise VideoError(f"Video is longer than {MAX_DURATION_S // 60} minutes. Please trim it.")
             job.result = run.analyse(job.video, job.user, job.caption, job.segment, job.scan, on_step=on_step)
             job.status = "done"
         except VideoError as exc:

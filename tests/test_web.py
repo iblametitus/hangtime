@@ -104,9 +104,9 @@ def test_check_other_exercise_reuses_video(fake_pipeline):
 
 def test_rejects_non_video_and_long_video(monkeypatch):
     assert "Please upload a video file" in upload("notes.txt")
-    monkeypatch.setattr(jobs, "probe_duration", lambda path: 75.0)
+    monkeypatch.setattr(jobs, "probe_duration", lambda path: 200.0)
     upload()
-    assert "longer than 60 seconds" in wait_done(only_job().id)
+    assert "longer than 3 minutes" in wait_done(only_job().id)
 
 
 def test_progress_marks_steps():
