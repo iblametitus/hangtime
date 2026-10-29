@@ -1,0 +1,82 @@
+<article class="space-y-4">
+  <div class="rounded-xl border border-slate-200 bg-white p-4">
+    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Exercise</p>
+    <h2 class="mt-1 text-xl font-bold">{{ r.profile.name }}</h2>
+    {% if r.profile.auto_profiled %}
+    <p class="mt-1 text-xs text-slate-500">Not in our database yet: profiled by AI for this check.</p>
+    {% endif %}
+    {% if v.promise %}
+    <blockquote class="mt-3 border-l-4 border-slate-300 pl-3 text-sm italic text-slate-700">“{{ v.promise }}”</blockquote>
+    {% endif %}
+  </div>
+
+  {# Step 1: general verdict #}
+  <section class="rounded-xl border border-slate-200 bg-white p-4">
+    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">1 · Is it any good?</p>
+    <span class="mt-2 inline-block rounded-full px-3 py-1 text-sm font-semibold ring-1 {{ rating[1] }}">{{ rating[0] }}</span>
+    <p class="mt-3 font-semibold leading-snug">{{ v.headline }}</p>
+    {% if v.exercise_take %}<p class="mt-2 text-sm text-slate-700">{{ v.exercise_take }}</p>{% endif %}
+    <p class="mt-2 text-sm text-slate-700">{{ v.reasoning }}</p>
+
+    {% if v.citations %}
+    <h3 class="mt-4 text-sm font-semibold">Sources</h3>
+    <ul class="mt-2 space-y-3">
+      {% for c in v.citations %}
+      {% set s = sources.get(c.source_id) %}
+      <li class="rounded-lg bg-slate-50 p-3 text-sm">
+        <p class="text-slate-800">“{{ c.quote }}”</p>
+        {% if s %}
+        <p class="mt-1 text-xs text-slate-500">
+          <a href="{{ s.url }}" target="_blank" rel="noopener" class="underline hover:text-indigo-600">{{ s.title }}</a>
+          · {% if s.curated %}{{ s.type }}{% else %}<span class="text-amber-700">web source, not curated</span>{% endif %}
+        </p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <p class="mt-3 text-xs text-slate-500">
+      ✓ Every quote was checked word for word against its source{% if r.removed_citations %}:
+      {{ r.removed_citations }} unverifiable {{ "quote was" if r.removed_citations == 1 else "quotes were" }} removed{% endif %}.
+    </p>
+  </section>
+
+  {# Step 2: personal fit #}
+  <section class="rounded-xl border border-slate-200 bg-white p-4">
+    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">2 · Is it right for you?</p>
+    <span class="mt-2 inline-block rounded-full px-3 py-1 text-sm font-semibold ring-1 {{ fit[1] }}">{{ fit[0] }}</span>
+    <p class="mt-3 text-sm text-slate-700">{{ v.personal_fit_reason }}</p>
+    {% if v.safety_notes %}
+    <ul class="mt-3 space-y-1 text-sm text-amber-800">
+      {% for note in v.safety_notes %}<li>⚠ {{ note }}</li>{% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+
+  {# Step 3: swap (M4) #}
+  {% if v.swap_explanation %}
+  <section class="rounded-xl border border-slate-200 bg-white p-4">
+    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">3 · Where does it go in your plan?</p>
+    <p class="mt-2 text-sm text-slate-700">{{ v.swap_explanation }}</p>
+  </section>
+  {% endif %}
+
+  {% if others %}
+  <section class="rounded-xl border border-slate-200 bg-white p-4">
+    <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">Also in this video</p>
+    <div class="mt-2 flex flex-wrap gap-2">
+      {% for i, name in others %}
+      <button hx-post="/api/analyses/{{ job.id }}/segments/{{ i }}" hx-target="#analysis" hx-swap="innerHTML"
+              class="rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-700 hover:bg-indigo-100">
+        Check {{ name }}
+      </button>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <p class="text-center text-xs text-slate-500">
+    Analysed in {{ r.timings_s.total }} s · {{ r.cards|length }} curated {{ "study" if r.cards|length == 1 else "studies" }}{% if r.web %} · {{ r.web|length }} web {{ "source" if r.web|length == 1 else "sources" }} via Tavily{% endif %}
+    · NVIDIA Nemotron on Nebius Token Factory
+  </p>
+</article>

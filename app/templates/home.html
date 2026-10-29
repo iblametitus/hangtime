@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="mx-auto max-w-xl px-4 py-10">
+  <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600">Hangtime</p>
+  <h1 class="mt-2 text-3xl font-bold leading-tight">Saw a jump drill on TikTok? Check it before you train it.</h1>
+  <p class="mt-4 text-slate-600">
+    Upload the video. Hangtime watches the movement, finds the exercise, checks the promise against
+    real studies and tells you whether it fits your training.
+  </p>
+
+  <ol class="mt-8 space-y-4">
+    <li class="flex gap-3">
+      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">1</span>
+      <div><p class="font-semibold">Is the exercise any good?</p>
+        <p class="text-sm text-slate-600">An evidence rating with every quote checked against its source.</p></div>
+    </li>
+    <li class="flex gap-3">
+      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">2</span>
+      <div><p class="font-semibold">Is it right for you?</p>
+        <p class="text-sm text-slate-600">Matched to your goal, training age, injuries and equipment.</p></div>
+    </li>
+    <li class="flex gap-3">
+      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">3</span>
+      <div><p class="font-semibold">Where does it go in your plan?</p>
+        <p class="text-sm text-slate-600">A swap for your next session that keeps the plan balanced.</p></div>
+    </li>
+  </ol>
+
+  <a href="/demo" class="mt-10 block rounded-xl bg-indigo-600 px-5 py-4 text-center font-semibold text-white shadow hover:bg-indigo-700">
+    Try it with the demo athlete
+  </a>
+  <p class="mt-3 text-center text-xs text-slate-500">
+    Powered by NVIDIA Nemotron on Nebius Token Factory · research search by Tavily
+  </p>
+</main>
+{% endblock %}

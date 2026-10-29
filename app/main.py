@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 
-from app import admin
+from app import admin, web
 from app.exercises import load_exercises
 from app.models import ExerciseProfile
 
 app = FastAPI(title="Hangtime")
+app.include_router(web.router)
 app.include_router(admin.router)
 
 
