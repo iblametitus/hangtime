@@ -30,7 +30,7 @@ from app.pipeline.exercise import identify
 from app.pipeline.scan import SCAN_THRESHOLD_S, coarse_scan, segments
 from app.pipeline.understand import understand
 from app.pipeline.verdict import judge
-from app.pipeline.video import extract_frames, frame_times, probe_duration
+from app.pipeline.video import extract_window, probe_duration
 
 logger = logging.getLogger(__name__)
 
@@ -94,7 +94,7 @@ def analyse(
     chosen = segs[min(segment, len(segs) - 1)]
 
     step("frames")
-    frames = extract_frames(path, frame_times(chosen.start_s, chosen.end_s))
+    frames = extract_window(path, chosen.start_s, chosen.end_s)
     done("frames")
 
     step("understand")

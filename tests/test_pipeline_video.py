@@ -8,7 +8,7 @@ from app.pipeline import exercise as exercise_step
 from app.pipeline.exercise import identify, slugify
 from app.pipeline.scan import MAX_WINDOW_S, exercise_window, longest_run, merge_parts, segments
 from app.pipeline.understand import merge_text
-from app.pipeline.video import extract_frames, frame_times, probe_duration
+from app.pipeline.video import extract_frames, extract_window, frame_times, probe_duration
 from app.profiling import ExerciseDraft
 from tests.test_exercises import make_exercise
 
@@ -135,3 +135,18 @@ def test_extract_frames_from_synthetic_video(tmp_path):
     frames = extract_frames(video, frame_times(0.0, duration), max_edge=384)
     assert len(frames) == 8
     assert all(f.startswith(b"\xff\xd8") for f in frames)  # JPEG magic bytes
+
+
+@pytest.mark.skipif(shutil.which("ffmpeg") is None, reason="ffmpeg not installed")
+def test_extract_window_single_pass_matches_frame_count(tmp_path):
+    video = tmp_path / "clip.mp4"
+    subprocess.run(
+        ["ffmpeg", "-v", "error", "-f", "lavfi", "-i", "testsrc=duration=12:size=576x1024:rate=30",
+         "-pix_fmt", "yuv420p", "-g", "150", str(video)],
+        check=True,
+    )
+    frames = extract_window(video, 2.0, 10.0)
+    assert len(frames) == 8
+    assert all(f.startswith(b"\xff\xd8") and f.endswith(b"\xff\xd9") for f in frames)
+    assert len(set(frames)) == 8  # testsrc changes every frame, so no duplicates
+    assert len(extract_frames(video, [1.0, 5.0], max_edge=384, fast=True)) == 2

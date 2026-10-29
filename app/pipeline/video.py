@@ -39,11 +39,19 @@ def frame_times(start: float, end: float, count: int = FRAME_COUNT) -> list[floa
     return [round(start + (i + 0.5) * step, 3) for i in range(count)]
 
 
-def extract_frame(path: Path, t: float, max_edge: int) -> bytes:
-    scale = f"scale='if(gt(iw,ih),min({max_edge},iw),-2)':'if(gt(iw,ih),-2,min({max_edge},ih))'"
+# Cheaper decoding for the coarse scan: no deblocking, skip non-reference frames (the next
+# reference frame is shown instead). ~2x faster; fine for 384 px "which exercise is this" frames.
+FAST_DECODE = ["-skip_loop_filter:v", "all", "-skip_frame:v", "noref"]
+
+
+def _scale(max_edge: int) -> str:
+    return f"scale='if(gt(iw,ih),min({max_edge},iw),-2)':'if(gt(iw,ih),-2,min({max_edge},ih))'"
+
+
+def extract_frame(path: Path, t: float, max_edge: int, fast: bool = False) -> bytes:
     result = subprocess.run(
-        ["ffmpeg", "-v", "error", "-ss", f"{t:.3f}", "-i", str(path), "-frames:v", "1",
-         "-vf", scale, "-q:v", "4", "-f", "image2pipe", "-vcodec", "mjpeg", "-"],
+        ["ffmpeg", "-v", "error", *(FAST_DECODE if fast else []), "-ss", f"{t:.3f}", "-i", str(path),
+         "-frames:v", "1", "-vf", _scale(max_edge), "-q:v", "4", "-f", "image2pipe", "-vcodec", "mjpeg", "-"],
         capture_output=True, check=False, timeout=60,
     )
     if result.returncode != 0 or not result.stdout:
@@ -51,8 +59,26 @@ def extract_frame(path: Path, t: float, max_edge: int) -> bytes:
     return result.stdout
 
 
-def extract_frames(path: Path, times: list[float], max_edge: int = FULL_RES) -> list[bytes]:
-    return [extract_frame(path, t, max_edge) for t in times]
+def extract_frames(path: Path, times: list[float], max_edge: int = FULL_RES, fast: bool = False) -> list[bytes]:
+    return [extract_frame(path, t, max_edge, fast) for t in times]
+
+
+def extract_window(path: Path, start: float, end: float, count: int = FRAME_COUNT,
+                   max_edge: int = FULL_RES) -> list[bytes]:
+    """The `count` frames of frame_times(start, end) in ONE decode pass instead of one seek per
+    frame (each seek decodes again from the previous keyframe, 3-8 s back in TikTok videos).
+    ~3.5x faster on Render's small CPU. Falls back to single seeks if a frame is missing."""
+    fps = count / (end - start)
+    result = subprocess.run(
+        ["ffmpeg", "-v", "error", "-ss", f"{start + 0.5 / fps:.3f}", "-t", f"{end - start:.3f}", "-i", str(path),
+         "-vf", f"fps={fps:.5f}:round=up,{_scale(max_edge)}", "-frames:v", str(count), "-q:v", "4",
+         "-f", "image2pipe", "-vcodec", "mjpeg", "-"],
+        capture_output=True, check=False, timeout=60,
+    )
+    frames = [f + b"\xff\xd9" for f in result.stdout.split(b"\xff\xd9") if f.startswith(b"\xff\xd8")]
+    if result.returncode != 0 or len(frames) != count:
+        return extract_frames(path, frame_times(start, end, count), max_edge)
+    return frames
 
 
 def to_data_uri(jpeg: bytes) -> str:

@@ -105,7 +105,7 @@ def segments(scan: CoarseScan, duration: float) -> list[Segment]:
 
 def coarse_scan(path: Path, duration: float) -> CoarseScan:
     times = frame_times(0.0, duration, SCAN_FRAMES)
-    frames = extract_frames(path, times, max_edge=SCAN_RES)
+    frames = extract_frames(path, times, max_edge=SCAN_RES, fast=True)
     parts: list[ScanPart] = []
     for part in range(2):
         batch = frames[part * FRAME_COUNT : (part + 1) * FRAME_COUNT]
