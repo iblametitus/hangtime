@@ -7,12 +7,11 @@ from fastapi import APIRouter, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app import jobs, plans
+from app import chrono, jobs, plans
 from app.config import get_settings
 from app.evidence_cards import load_cards
 from app.exercises import load_exercises
 from app.demo import TEMPLATES
-from app.hoop import net_paths
 from app.pipeline.run import STEPS
 from app.pipeline.swap import apply_swap
 
@@ -35,12 +34,11 @@ GOALS = {
 }
 
 router = APIRouter()
-NET = net_paths()
 
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return templates.TemplateResponse(request, "home.html", {"net": NET, "nav": "home"})
+    return templates.TemplateResponse(request, "home.html", {"chrono": chrono.svg(), "nav": "home"})
 
 
 def _session_id(request: Request) -> str:

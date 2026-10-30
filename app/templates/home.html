@@ -1,33 +1,22 @@
 {% extends "layout.html" %}
 {% block main %}
-{# The one loud moment: a rim seen from below in an open blue sky, cut by the edge, text running round it. #}
-<section class="hero relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pb-12 pt-[96vw] text-white sm:px-10 sm:pb-16 sm:pt-28">
-  <svg class="rim pointer-events-none absolute -right-[38vw] top-[72px] w-[118vw] max-w-none sm:-right-40 sm:-top-6 sm:w-[920px]"
-       viewBox="0 0 600 600" fill="none" aria-hidden="true">
-    <defs><path id="ring" d="M0 170a300 108 0 1 0 600 0a300 108 0 1 0 -600 0"/></defs>
-    <path d="{{ net.far }}" stroke="#F4F2ED" stroke-opacity=".35" stroke-width="2"/>
-    <ellipse cx="300" cy="170" rx="250" ry="70" stroke="#F4F2ED" stroke-width="14"/>
-    <path d="{{ net.near }}" stroke="#F4F2ED" stroke-opacity=".9" stroke-width="2.5" stroke-linejoin="round"/>
-    <ellipse cx="300" cy="420" rx="128" ry="34" stroke="#F4F2ED" stroke-opacity=".8" stroke-width="2.5"/>
-    <text font-family="Barlow Condensed, Impact, sans-serif" font-weight="700" font-size="25" letter-spacing="2" fill="#F4F2ED" stroke="#1E3BD1" stroke-width="7" paint-order="stroke" stroke-linejoin="round">
-      <textPath href="#ring" startOffset="0%" textLength="1330" lengthAdjust="spacing">check it before you train it&#160;&#160;&#160; check it before you train it&#160;&#160;&#160; check it before you train it&#160;&#160;&#160; check it before you train it&#160;&#160;&#160;
-        <animate class="ring-spin" attributeName="startOffset" from="22%" to="0%" dur="1.8s" fill="freeze"
-                 calcMode="spline" keyTimes="0;1" keySplines=".2 .8 .2 1"/>
-      </textPath>
-    </text>
-  </svg>
+{# The one loud moment: a jump in five exposures on a seamless studio sweep, only the hang is sharp. #}
+<section class="hero relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pb-12 pt-[100vw] sm:px-10 sm:pb-16 sm:pt-40">
+  <div class="pointer-events-none absolute -left-[56vw] top-[72px] w-[160vw] sm:left-auto sm:-right-[6vw] sm:bottom-0 sm:top-auto sm:w-[min(1180px,86vw,128svh)]">
+    {{ chrono|safe }}
+  </div>
 
-  <h1 class="display relative max-w-[11ch] text-[clamp(76px,23vw,176px)] italic leading-[0.84]">
+  <h1 class="display relative max-w-[11ch] text-[clamp(76px,21vw,176px)] italic leading-[0.84]">
     Saw it on TikTok? Check&#160;it.
   </h1>
-  <p class="relative mt-6 max-w-[34ch] text-lg text-white/90">
+  <p class="relative mt-6 max-w-[34ch] text-lg">
     Upload a jump drill. Hangtime watches the movement, checks the promise against real studies and fits it into your plan.
   </p>
   <div class="relative mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
     <a href="/demo" class="btn-primary">Check a drill</a>
-    <a href="/about" class="flex min-h-[44px] items-center font-medium text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">Read the story</a>
+    <a href="/about" class="flex min-h-[44px] items-center font-medium underline decoration-ink/30 underline-offset-4 hover:decoration-ink">Read the story</a>
   </div>
-  <p class="relative mt-4 text-sm text-white/80">No sign-up: try it with the demo athlete.</p>
+  <p class="relative mt-4 text-sm text-mute">No sign-up: try it with the demo athlete.</p>
 </section>
 
 <section id="how" class="mx-auto max-w-5xl px-5 pt-24 sm:px-8 sm:pt-32">
@@ -50,14 +39,15 @@
 
 {% block scripts %}
 <style>
-  /* Sky: lighter towards the horizon, with a little print grain */
-  .hero { background: linear-gradient(180deg, var(--royal) 0%, var(--royal) 45%, var(--royal-sky) 100%); }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .18; mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-  .rim { animation: rim-in 1100ms var(--spring) both; transform-origin: 70% 20%; }
-  @keyframes rim-in { from { opacity: 0; transform: translateY(-48px) scale(.92); } to { opacity: 1; transform: none; } }
+  /* Seamless studio sweep: white wall rolling into a slightly darker floor, with print grain */
+  .hero { background: linear-gradient(180deg, #FBFAF7 0%, #FBFAF7 62%, #EEEBE4 100%); }
+  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .22; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .chrono { display: block; width: 100%; height: auto; }
+  /* The exposures land one after another, the sharp one last */
+  .chrono .phase { transform-box: fill-box; animation: expose 620ms var(--spring) both; animation-delay: calc(var(--i) * 150ms + 120ms); }
+  .chrono .trail { animation: trail 900ms ease-out 700ms both; }
+  @keyframes expose { from { opacity: 0; transform: translateX(-36px); } }
+  @keyframes trail { from { opacity: 0; } }
 </style>
-<script>
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.querySelectorAll(".ring-spin").forEach((a) => a.remove());
-</script>
 {% endblock %}

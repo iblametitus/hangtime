@@ -177,3 +177,11 @@ def test_picking_an_athlete_changes_profile_and_plan(fake_pipeline):
         assert "Spanish Squat" in client.get("/demo?athlete=veteran").text
     finally:
         client.cookies.clear()
+
+
+def test_home_shows_jump_sequence():
+    from app.chrono import POSES
+
+    html = client.get("/").text
+    assert html.count('class="phase"') == len(POSES)
+    assert "nan" not in html.split('class="chrono"')[1].split("</svg>")[0]
