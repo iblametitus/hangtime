@@ -165,3 +165,15 @@ def test_apply_swap_updates_only_this_sessions_plan(fake_pipeline):
     finally:
         client.cookies.clear()
         plans.reset("session-a")
+
+
+def test_picking_an_athlete_changes_profile_and_plan(fake_pipeline):
+    client.cookies.set(plans.COOKIE, "session-b")
+    try:
+        page = client.get("/demo?athlete=beginner").text
+        assert "Goblet Squat" in page and "Back Squat" not in page
+        upload()
+        assert only_job().user.training_age_years == 0.5
+        assert "Spanish Squat" in client.get("/demo?athlete=veteran").text
+    finally:
+        client.cookies.clear()

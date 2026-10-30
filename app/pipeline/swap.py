@@ -52,11 +52,13 @@ def family(pattern: Pattern) -> int | None:
 
 def user_block_reason(new: ExerciseProfile, user: UserProfile) -> str | None:
     """Step 1, athlete filters. None = the athlete may do the exercise."""
-    missing = [e for e in new.equipment if e != "none" and e not in user.equipment]
-    if missing:
-        return f"needs equipment you don't have: {', '.join(missing).replace('_', ' ')}"
+    # The data lists alternatives ("dumbbell, kettlebell" for a goblet squat), so one is enough.
+    needed = [e for e in new.equipment if e != "none"]
+    if needed and not any(e in user.equipment for e in needed):
+        return f"needs equipment you don't have: {' or '.join(needed).replace('_', ' ')}"
     if new.min_training_age_years > user.training_age_years:
-        return (f"needs at least {new.min_training_age_years:g} years of strength training "
+        years = "year" if new.min_training_age_years == 1 else "years"
+        return (f"needs at least {new.min_training_age_years:g} {years} of strength training "
                 f"(you have {user.training_age_years:g})")
     clash = [c for c in new.contraindications if c in user.injuries]
     if clash:

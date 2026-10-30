@@ -11,7 +11,7 @@ from app import jobs, plans
 from app.config import get_settings
 from app.evidence_cards import load_cards
 from app.exercises import load_exercises
-from app.demo import DEMO_PROFILE
+from app.demo import TEMPLATES
 from app.pipeline.run import STEPS
 from app.pipeline.swap import apply_swap
 
@@ -74,13 +74,15 @@ def about(request: Request):
 
 
 @router.get("/demo", response_class=HTMLResponse)
-def demo(request: Request, reset: bool = False):
+def demo(request: Request, reset: bool = False, athlete: str = ""):
     session_id = _session_id(request)
-    if reset:
+    if athlete in TEMPLATES:
+        plans.select(session_id, athlete)
+    elif reset:
         plans.reset(session_id)
-    plan = plans.get_plan(session_id)
-    ctx = {"profile": DEMO_PROFILE, "plan": plan, "goal_label": GOALS[DEMO_PROFILE.goal.value], "nav": "demo",
-           "changed": plan != plans.get_plan("")}
+    template, plan = plans.get_template(session_id), plans.get_plan(session_id)
+    ctx = {"templates": TEMPLATES.values(), "template": template, "profile": template.profile, "plan": plan,
+           "goal_label": GOALS[template.profile.goal.value], "nav": "demo", "changed": plan != template.plan}
     return _with_cookie(templates.TemplateResponse(request, "demo.html", ctx), session_id)
 
 
@@ -101,7 +103,7 @@ def create_analysis(request: Request, video: UploadFile, caption: str = Form("")
         path.unlink(missing_ok=True)
         return _error(request, "The video is larger than 100 MB. Please upload a shorter clip.")
     session_id = _session_id(request)
-    job = jobs.start(path, DEMO_PROFILE, plans.get_plan(session_id), caption.strip()[:MAX_CAPTION_CHARS] or None,
+    job = jobs.start(path, plans.get_template(session_id).profile, plans.get_plan(session_id), caption.strip()[:MAX_CAPTION_CHARS] or None,
                      session_id=session_id)
     return _with_cookie(_status(request, job), session_id)
 

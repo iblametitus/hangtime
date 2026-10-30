@@ -2,19 +2,36 @@
 {% block title %}Check a drill · Hangtime{% endblock %}
 {% block main %}
 <div class="flex justify-between">
-  <span class="chip">DEMO ATHLETE</span>
+  <span class="chip">DEMO · {{ template.name|upper }}</span>
   <span class="chip">GOAL · {{ goal_label|upper }}</span>
 </div>
 
 <h1 class="display mt-6 text-6xl sm:text-7xl">Check<br><span class="glow text-ember">a drill</span></h1>
 
 <section class="mt-8">
-  <p class="label">Athlete · basketball player</p>
-  <div class="mt-3 grid grid-cols-3 gap-2">
-    <div class="panel p-3"><p class="label">Years</p><p class="display mt-1 text-4xl">{{ profile.training_age_years|int }}</p></div>
-    <div class="panel p-3"><p class="label">Per week</p><p class="display mt-1 text-4xl">{{ profile.sessions_per_week }}</p></div>
-    <div class="panel p-3"><p class="label">Injuries</p><p class="display mt-1 text-4xl">{{ profile.injuries|length }}</p></div>
+  <p class="label">Pick an athlete</p>
+  <p class="mt-1 text-sm text-cream/60">Same video, different athlete, different answer.</p>
+  <div class="mt-3 grid gap-2 sm:grid-cols-3">
+    {% for t in templates %}
+    <a href="/demo?athlete={{ t.id }}"
+       class="block border p-3 transition {% if t.id == template.id %}border-ember bg-ember/10{% else %}border-line bg-panel/80 hover:border-cream/40{% endif %}">
+      <span class="flex items-center justify-between gap-2">
+        <span class="font-display text-lg font-black uppercase leading-tight">{{ t.name }}</span>
+        {% if t.id == template.id %}<span class="font-mono text-xs text-ember">✓</span>{% endif %}
+      </span>
+      <span class="mt-1 block text-xs text-cream/60">{{ t.tagline }}</span>
+    </a>
+    {% endfor %}
   </div>
+
+  <div class="mt-3 grid grid-cols-3 gap-2">
+    <div class="panel p-3"><p class="label">Years</p><p class="display mt-1 text-4xl">{{ "%g"|format(profile.training_age_years) }}</p></div>
+    <div class="panel p-3"><p class="label">Per week</p><p class="display mt-1 text-4xl">{{ profile.sessions_per_week }}</p></div>
+    <div class="panel p-3"><p class="label">Injuries</p><p class="display mt-1 text-4xl {% if profile.injuries %}text-amber-200{% endif %}">{{ profile.injuries|length }}</p></div>
+  </div>
+  <p class="mt-2 font-mono text-xs text-cream/50">
+    {% if profile.injuries %}<span class="text-amber-200">{{ profile.injuries|join(", ")|replace("_", " ") }}</span> · {% endif %}equipment: {{ profile.equipment|reject("equalto", "none")|join(", ")|replace("_", " ") }}
+  </p>
 
   <details class="panel mt-3">
     <summary class="flex cursor-pointer items-center justify-between px-4 py-3">
