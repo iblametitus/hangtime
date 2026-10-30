@@ -8,6 +8,9 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app import jobs, plans
+from app.config import get_settings
+from app.evidence_cards import load_cards
+from app.exercises import load_exercises
 from app.demo import DEMO_PROFILE
 from app.pipeline.run import STEPS
 from app.pipeline.swap import apply_swap
@@ -51,6 +54,23 @@ def _session_id(request: Request) -> str:
 def _with_cookie(response, session_id: str):
     response.set_cookie(plans.COOKIE, session_id, max_age=7 * 24 * 3600, httponly=True, samesite="lax")
     return response
+
+
+@router.get("/about", response_class=HTMLResponse)
+def about(request: Request):
+    """Launch-style explainer for the judges. Counts come from the data, so they stay true."""
+    cards, exercises, settings = load_cards(), load_exercises(), get_settings()
+    ctx = {
+        "nav": "about",
+        "n_cards": len(cards),
+        "n_meta": sum("meta" in c.study_type or "review" in c.study_type for c in cards),
+        "n_exercises": len(exercises),
+        "n_reviewed": sum(c.reviewed for c in cards) + sum(e.reviewed for e in exercises),
+        "model_vision": settings.model_vision.split("/")[-1],
+        "model_fast": settings.model_fast.split("/")[-1],
+        "model_reason": settings.model_reason.split("/")[-1],
+    }
+    return templates.TemplateResponse(request, "about.html", ctx)
 
 
 @router.get("/demo", response_class=HTMLResponse)

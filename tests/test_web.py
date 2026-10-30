@@ -93,6 +93,8 @@ def test_pages_render():
     assert "demo athlete" in client.get("/").text
     page = client.get("/demo").text
     assert "Box Jump" in page and "Analyse video" in page
+    about = client.get("/about").text
+    assert "Nemotron" in about and "Honest limits" in about
 
 
 def test_upload_shows_progress_then_result_card(fake_pipeline):

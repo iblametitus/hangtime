@@ -1,0 +1,199 @@
+{% extends "layout.html" %}
+{% block title %}About · Hangtime{% endblock %}
+{% block main %}
+{# Launch-style explainer for the judges: what, how, why, and how it came together. #}
+
+<section class="relative overflow-hidden">
+  <div aria-hidden="true" class="pointer-events-none absolute -right-24 -top-10 h-80 w-80 rounded-full bg-ember/20 blur-3xl"></div>
+  <div class="relative flex justify-between">
+    <span class="chip">INTRODUCING</span>
+    <span class="chip sm:hidden">NEBIUS × NVIDIA</span>
+    <span class="chip hidden sm:inline-block">NEBIUS × NVIDIA HACKATHON · OCT 2026</span>
+  </div>
+  <h1 class="display relative mt-8 text-[14vw] sm:text-8xl">Hang<span class="glow text-ember">time</span></h1>
+  <p class="relative mt-6 max-w-2xl font-display text-2xl font-bold leading-snug sm:text-3xl">
+    A training partner that watches the drill from your feed, checks it against the research
+    and finds its place in your plan.
+  </p>
+  <div class="relative mt-8 grid max-w-md gap-3 sm:grid-cols-2">
+    <a href="/demo" class="btn-primary">Try the demo</a>
+    <a href="https://github.com/iblametitus/hangtime" target="_blank" rel="noopener" class="btn-ghost">Source code</a>
+  </div>
+</section>
+
+<section class="mt-12 grid grid-cols-2 gap-2 sm:grid-cols-4">
+  <div class="panel p-4"><p class="label">Study cards</p><p class="display mt-2 text-5xl">{{ n_cards }}</p><p class="mt-1 text-xs text-cream/50">{{ n_meta }} meta-analyses & reviews</p></div>
+  <div class="panel p-4"><p class="label">Exercises</p><p class="display mt-2 text-5xl">{{ n_exercises }}</p><p class="mt-1 text-xs text-cream/50">profiled on 6 dimensions</p></div>
+  <div class="panel p-4"><p class="label">Nemotron models</p><p class="display mt-2 text-5xl">3</p><p class="mt-1 text-xs text-cream/50">vision, fast, reasoning</p></div>
+  <div class="panel p-4"><p class="label">Quotes verified</p><p class="display mt-2 text-5xl">100<span class="text-2xl">%</span></p><p class="mt-1 text-xs text-cream/50">or they are removed</p></div>
+</section>
+
+{# ---------- problem ---------- #}
+<section class="mt-16 border-t border-line pt-8">
+  <div class="flex items-center justify-between"><p class="label">The problem</p><span class="chip">01 / 05</span></div>
+  <h2 class="display mt-4 text-4xl sm:text-5xl">Your feed is<br>a training plan<br><span class="text-ember">nobody checked.</span></h2>
+  <div class="mt-6 grid gap-6 text-cream/80 sm:grid-cols-2">
+    <p>Every day athletes see new jump drills on TikTok and Instagram, usually with a promise attached:
+      <em class="text-cream">“I added 6 inches to my vertical.”</em> Some of these drills are great. Some are filler.
+      From the clip alone, nobody can tell which.</p>
+    <p>And even a good drill can hurt when it lands in the wrong place: a third plyometric session in a week,
+      a reactive drill on top of a heavy squat day. The question is never only <em class="text-cream">“does it work?”</em>
+      but also <em class="text-cream">“does it work for me, and what does it replace?”</em></p>
+  </div>
+</section>
+
+{# ---------- three answers ---------- #}
+<section class="mt-16 border-t border-line pt-8">
+  <div class="flex items-center justify-between"><p class="label">What Hangtime does</p><span class="chip">02 / 05</span></div>
+  <h2 class="display mt-4 text-4xl sm:text-5xl">One video.<br><span class="text-ember">Three answers.</span></h2>
+  <div class="mt-6 grid gap-3 sm:grid-cols-3">
+    {% for n, title, text in [
+      ("01", "Is it any good?", "An evidence rating from well supported to myth. Promises are put in perspective, not dismissed: results in videos can be real, but what can this drill alone do?"),
+      ("02", "Is it for you?", "Matched to the athlete's goal, training age, injuries and equipment. Hard rules, such as a contraindicated injury, are enforced by code, not left to the model."),
+      ("03", "Where does it go?", "A concrete swap in the next session with the volume converted, shown as a plan diff. One tap applies it."),
+    ] %}
+    <div class="panel p-4">
+      <span class="chip">{{ n }} / 03</span>
+      <h3 class="display mt-4 text-2xl">{{ title }}</h3>
+      <p class="mt-2 text-sm text-cream/70">{{ text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{# ---------- pipeline ---------- #}
+<section class="mt-16 border-t border-line pt-8">
+  <div class="flex items-center justify-between"><p class="label">Under the hood</p><span class="chip">03 / 05</span></div>
+  <h2 class="display mt-4 text-4xl sm:text-5xl">From pixels<br><span class="text-ember">to a plan diff.</span></h2>
+  <p class="mt-4 max-w-2xl text-cream/80">Every analysis makes live calls to NVIDIA Nemotron models on Nebius Token Factory.
+    Every model answer is structured JSON, validated against a schema.</p>
+
+  <ol class="mt-6 border-l-2 border-line">
+    {% for step, what, who, kind in [
+      ("Scan", "16 low-res frames across the whole video find every exercise and all on-screen text. The promise often sits in the intro.", model_vision, "model"),
+      ("Watch", "8 full-res frames from the window of the main exercise: movement, equipment, execution.", model_vision, "model"),
+      ("Identify", "Match to the exercise database, or profile a new exercise on the fly.", model_fast, "model"),
+      ("Research", "Pick the fitting study cards. Fewer than two? Search PubMed and journals with Tavily, labelled as uncurated.", model_fast ~ " + Tavily", "model"),
+      ("Swap", "Deterministic algorithm: filters, similarity score, volume conversion. No model involved.", "Python", "code"),
+      ("Judge", "Rating, personal fit and an explanation of the given swap, with thinking on.", model_reason, "model"),
+      ("Verify", "Every quote is matched word for word against its source. Invented quotes are removed; no valid quote left means “unsupported”.", "Python", "code"),
+    ] %}
+    <li class="relative pb-5 pl-6">
+      <span class="absolute -left-[7px] top-1.5 h-3 w-3 {% if kind == 'code' %}bg-court{% else %}bg-ember{% endif %}"></span>
+      <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h3 class="font-display text-xl font-black uppercase">{{ step }}</h3>
+        <span class="font-mono text-xs {% if kind == 'code' %}text-court{% else %}text-ember{% endif %}">{{ who }}</span>
+      </div>
+      <p class="mt-1 text-sm text-cream/70">{{ what }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  <p class="font-mono text-xs text-cream/50"><span class="mr-1 inline-block h-2 w-2 bg-ember"></span>Nemotron on Token Factory
+    <span class="ml-4 mr-1 inline-block h-2 w-2 bg-court"></span>deterministic code</p>
+</section>
+
+{# ---------- principles + swap ---------- #}
+<section class="mt-16 border-t border-line pt-8">
+  <div class="flex items-center justify-between"><p class="label">Design principles</p><span class="chip">04 / 05</span></div>
+  <h2 class="display mt-4 text-4xl sm:text-5xl">The model understands.<br><span class="text-ember">The algorithm decides.</span></h2>
+  <div class="mt-6 grid gap-3 sm:grid-cols-2">
+    <div class="panel p-4">
+      <h3 class="font-display text-lg font-black uppercase">No quote without proof</h3>
+      <p class="mt-2 text-sm text-cream/70">Models invent citations. Hangtime only lets a quote through if it appears verbatim in the study card or search result it claims to come from.</p>
+    </div>
+    <div class="panel p-4">
+      <h3 class="font-display text-lg font-black uppercase">Direct vs. indirect evidence</h3>
+      <p class="mt-2 text-sm text-cream/70">Injury prevention or tendon studies can back a long-term benefit, never a promise like “+10 cm in 4 weeks”. Every card carries that label.</p>
+    </div>
+    <div class="panel p-4">
+      <h3 class="font-display text-lg font-black uppercase">Same input, same swap</h3>
+      <p class="mt-2 text-sm text-cream/70">Changing someone's training plan is a decision, not a vibe. The swap is plain, unit-tested code that the model may explain but never overrule.</p>
+    </div>
+    <div class="panel p-4">
+      <h3 class="font-display text-lg font-black uppercase">Fair to creators</h3>
+      <p class="mt-2 text-sm text-cream/70">Hangtime never calls a video a lie. It says what the drill is good for and what it can realistically do on its own.</p>
+    </div>
+  </div>
+
+  <div class="panel mt-6 p-4">
+    <div class="flex items-center justify-between gap-2">
+      <h3 class="font-display text-lg font-black uppercase">How the swap scores a match</h3><span class="chip">THRESHOLD 60%</span>
+    </div>
+    <div class="mt-4 space-y-3">
+      {% for name, weight, note in [
+        ("Force-velocity zone", 30, "max strength → reactive"),
+        ("Movement pattern", 25, "same pattern or family"),
+        ("Stretch-shortening cycle", 15, "none, slow, fast"),
+        ("Laterality", 10, "one or two legs"),
+        ("Contraction emphasis", 10, "eccentric, isometric, concentric"),
+        ("Load", 10, "fatigue and joint stress"),
+      ] %}
+      <div>
+        <div class="flex items-baseline justify-between text-sm"><span>{{ name }} <span class="text-xs text-cream/40">· {{ note }}</span></span><span class="font-mono">{{ weight }}%</span></div>
+        <div class="mt-1 h-1.5 bg-cream/10"><div class="h-full bg-ember" style="width: {{ weight * 3 }}%"></div></div>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="mt-4 text-sm text-cream/70">Before scoring, hard filters drop anything the athlete lacks the equipment, training age or health for.
+      Volume is converted on equal ground contacts for jumps and equal fatigue for strength work.</p>
+  </div>
+</section>
+
+{# ---------- story ---------- #}
+<section class="mt-16 border-t border-line pt-8">
+  <div class="flex items-center justify-between"><p class="label">The story</p><span class="chip">05 / 05</span></div>
+  <h2 class="display mt-4 text-4xl sm:text-5xl">From a study folder<br><span class="text-ember">to a product.</span></h2>
+  <p class="mt-4 max-w-2xl text-cream/80">Hangtime is built by Titus, who played two seasons in Germany's U19 basketball Bundesliga
+    and spent a year as a basketball coach. Jumping higher has been the goal of every athlete in that world, and so has
+    the flood of drills that promise it.</p>
+
+  <ol class="mt-8 space-y-3">
+    {% for date, title, text in [
+      ("Oct 16–19", "A study corpus looking for a product", "The starting point: a folder of jump-training meta-analyses and the idea of an evidence-based coach. As a plain study chatbot, it was too generic."),
+      ("Oct 16–19", "Shazam for drills", "The twist: send a video instead of a question. The answer is an evidence verdict on exactly the drill you just saw."),
+      ("Oct 16–19", "It has to know your plan", "A verdict alone doesn't change training. Exercise profiles (pattern, force-velocity zone, load) make a safe swap into the next session possible."),
+      ("Oct 21", "Nemotron on Token Factory", "Model IDs confirmed on the account. The vision model takes 8 images per call, so the video pipeline became two passes: scan, then watch."),
+      ("Oct 23", "82 exercises, 39 studies", "Exercise database and study cards drafted with Nemotron from the original papers, with a review page to check them."),
+      ("Oct 28", "End to end, 8× faster", "Video in, checked verdict out. Turning thinking off for extraction steps cut a run from up to three minutes to under 30 seconds."),
+      ("Oct 29", "The swap and the app", "Deterministic swap with unit tests, plan diff, one-tap apply, and the web app you are looking at."),
+      ("Oct 30", "Submission", "Live, open source and ready for the next drill in your feed."),
+    ] %}
+    <li class="flex gap-4">
+      <span class="chip h-fit w-24 text-center">{{ date|upper }}</span>
+      <div>
+        <h3 class="font-display text-lg font-black uppercase leading-tight">{{ title }}</h3>
+        <p class="mt-1 text-sm text-cream/70">{{ text }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# ---------- built with + limits ---------- #}
+<section class="mt-16 grid gap-3 border-t border-line pt-8 sm:grid-cols-2">
+  <div class="panel p-4">
+    <p class="label">Built with</p>
+    <ul class="mt-3 space-y-2 text-sm">
+      <li><span class="font-semibold">NVIDIA Nemotron</span> <span class="text-cream/60">· {{ model_vision }}, {{ model_fast }}, {{ model_reason }}</span></li>
+      <li><span class="font-semibold">Nebius Token Factory</span> <span class="text-cream/60">· every model call, OpenAI-compatible API</span></li>
+      <li><span class="font-semibold">Tavily</span> <span class="text-cream/60">· research search when the study cards run thin</span></li>
+      <li><span class="font-semibold">FastAPI, HTMX, ffmpeg</span> <span class="text-cream/60">· one app, no JS framework</span></li>
+      <li><span class="font-semibold">Claude Code</span> <span class="text-cream/60">· pair programming</span></li>
+    </ul>
+  </div>
+  <div class="panel p-4">
+    <p class="label">Honest limits</p>
+    <ul class="mt-3 space-y-2 text-sm text-cream/70">
+      <li>Study cards and exercise profiles were drafted with AI from the original papers; {{ n_reviewed }} of {{ n_cards + n_exercises }} have been checked by hand so far.</li>
+      <li>Focused on jumping and athletic performance. Not medical advice.</li>
+      <li>The demo uses one prepared athlete and plan. Your own profile and plan from a photo are next.</li>
+      <li>Runs on a free server: an analysis takes up to a minute, the first one after a break a little longer.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="mt-16 text-center">
+  <h2 class="display text-5xl sm:text-6xl">Got a drill<br><span class="glow text-ember">in your feed?</span></h2>
+  <a href="/demo" class="btn-primary mx-auto mt-8 max-w-sm">Check it now</a>
+</section>
+{% endblock %}

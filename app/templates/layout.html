@@ -4,7 +4,7 @@
   <header class="flex items-center justify-between border-b border-line px-5 py-4 sm:px-8">
     <a href="/" class="font-display text-2xl font-black uppercase tracking-tight">Hangtime</a>
     <nav class="flex items-center gap-5 text-sm">
-      <a href="/#how" class="hidden text-cream/80 hover:text-cream sm:inline">How it works</a>
+      <a href="/about" class="border-b-2 pb-0.5 {% if nav == 'about' %}border-ember text-cream{% else %}border-transparent text-cream/80 hover:text-cream{% endif %}">About</a>
       <a href="/demo" class="border-b-2 pb-0.5 {% if nav == 'demo' %}border-ember text-cream{% else %}border-transparent text-cream/80 hover:text-cream{% endif %}">Demo</a>
       <a href="/demo" class="hidden border border-cream/70 px-4 py-2 hover:bg-cream hover:text-ink sm:inline">Check a drill</a>
     </nav>
