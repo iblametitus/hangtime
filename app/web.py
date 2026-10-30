@@ -19,15 +19,15 @@ VIDEO_SUFFIXES = {".mp4", ".mov", ".m4v", ".webm"}
 MAX_CAPTION_CHARS = 2000
 
 RATINGS = {
-    "well_supported": ("Well supported", "bg-emerald-100 text-emerald-800 ring-emerald-300"),
-    "partly_supported": ("Partly supported", "bg-amber-100 text-amber-800 ring-amber-300"),
-    "unsupported": ("Unsupported", "bg-slate-200 text-slate-700 ring-slate-300"),
-    "myth": ("Myth", "bg-rose-100 text-rose-800 ring-rose-300"),
+    "well_supported": ("Well supported", "border-emerald-400/70 bg-emerald-400/10 text-emerald-300"),
+    "partly_supported": ("Partly supported", "border-amber-300/70 bg-amber-300/10 text-amber-200"),
+    "unsupported": ("Unsupported", "border-cream/40 bg-cream/5 text-cream/80"),
+    "myth": ("Myth", "border-rose-400/70 bg-rose-400/10 text-rose-300"),
 }
 FITS = {
-    "good_fit": ("Good fit for you", "bg-emerald-100 text-emerald-800 ring-emerald-300"),
-    "conditional": ("Fits with conditions", "bg-amber-100 text-amber-800 ring-amber-300"),
-    "not_recommended": ("Not for you right now", "bg-rose-100 text-rose-800 ring-rose-300"),
+    "good_fit": ("Good fit for you", "border-emerald-400/70 bg-emerald-400/10 text-emerald-300"),
+    "conditional": ("Fits with conditions", "border-amber-300/70 bg-amber-300/10 text-amber-200"),
+    "not_recommended": ("Not for you right now", "border-rose-400/70 bg-rose-400/10 text-rose-300"),
 }
 GOALS = {
     "vertical_jump": "Vertical jump",
@@ -59,7 +59,7 @@ def demo(request: Request, reset: bool = False):
     if reset:
         plans.reset(session_id)
     plan = plans.get_plan(session_id)
-    ctx = {"profile": DEMO_PROFILE, "plan": plan, "goal_label": GOALS[DEMO_PROFILE.goal.value],
+    ctx = {"profile": DEMO_PROFILE, "plan": plan, "goal_label": GOALS[DEMO_PROFILE.goal.value], "nav": "demo",
            "changed": plan != plans.get_plan("")}
     return _with_cookie(templates.TemplateResponse(request, "demo.html", ctx), session_id)
 

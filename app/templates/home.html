@@ -1,36 +1,53 @@
-{% extends "base.html" %}
-{% block body %}
-<main class="mx-auto max-w-xl px-4 py-10">
-  <p class="text-sm font-semibold uppercase tracking-wider text-indigo-600">Hangtime</p>
-  <h1 class="mt-2 text-3xl font-bold leading-tight">Saw a jump drill on TikTok? Check it before you train it.</h1>
-  <p class="mt-4 text-slate-600">
-    Upload the video. Hangtime watches the movement, finds the exercise, checks the promise against
-    real studies and tells you whether it fits your training.
-  </p>
+{% extends "layout.html" %}
+{% block main %}
+<section class="relative overflow-hidden">
+  {# half court lines + glow instead of a photo #}
+  <svg aria-hidden="true" viewBox="0 0 400 300" class="pointer-events-none absolute -right-24 top-6 w-[150%] max-w-none opacity-25 sm:-right-10 sm:w-[70%]" fill="none" stroke="#f3eee6" stroke-width="1.2">
+    <rect x="20" y="10" width="360" height="280"/>
+    <rect x="140" y="10" width="120" height="150"/>
+    <circle cx="200" cy="160" r="60"/>
+    <path d="M60 10 V90 A140 140 0 0 0 340 90 V10"/>
+    <circle cx="200" cy="38" r="8" stroke="#ff6b1a" stroke-width="2"/>
+    <line x1="180" y1="26" x2="220" y2="26" stroke="#ff6b1a" stroke-width="2"/>
+  </svg>
+  <div aria-hidden="true" class="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full bg-ember/25 blur-3xl"></div>
 
-  <ol class="mt-8 space-y-4">
-    <li class="flex gap-3">
-      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">1</span>
-      <div><p class="font-semibold">Is the exercise any good?</p>
-        <p class="text-sm text-slate-600">An evidence rating with every quote checked against its source.</p></div>
-    </li>
-    <li class="flex gap-3">
-      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">2</span>
-      <div><p class="font-semibold">Is it right for you?</p>
-        <p class="text-sm text-slate-600">Matched to your goal, training age, injuries and equipment.</p></div>
-    </li>
-    <li class="flex gap-3">
-      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">3</span>
-      <div><p class="font-semibold">Where does it go in your plan?</p>
-        <p class="text-sm text-slate-600">A swap for your next session that keeps the plan balanced.</p></div>
-    </li>
-  </ol>
+  <div class="relative flex justify-between">
+    <span class="chip">01 / 03</span>
+    <span class="chip">NEMOTRON × TAVILY</span>
+  </div>
 
-  <a href="/demo" class="mt-10 block rounded-xl bg-indigo-600 px-5 py-4 text-center font-semibold text-white shadow hover:bg-indigo-700">
-    Try it with the demo athlete
-  </a>
-  <p class="mt-3 text-center text-xs text-slate-500">
-    Powered by NVIDIA Nemotron on Nebius Token Factory · research search by Tavily
+  <h1 class="display relative mt-8 text-[11.5vw] sm:text-7xl lg:text-8xl">
+    Saw it<br>on TikTok?<br><span class="glow text-ember">Check it.</span>
+  </h1>
+  <p class="relative mt-6 max-w-md text-lg text-cream/85">
+    Upload a jump drill. Hangtime watches the movement, checks the promise against real studies and fits it into your plan.
   </p>
-</main>
+  <div class="relative mt-8 grid max-w-md gap-3 sm:grid-cols-2">
+    <a href="/demo" class="btn-primary">Check a drill</a>
+    <a href="#how" class="btn-ghost">How it works</a>
+  </div>
+  <p class="relative mt-3 text-sm text-cream/60">No sign-up: try it with the demo athlete.</p>
+</section>
+
+<section id="how" class="mt-16 border-t border-line pt-8">
+  <p class="label">How it works</p>
+  <div class="mt-4 grid gap-3 sm:grid-cols-3">
+    {% for n, title, text in [
+      ("01", "Is it any good?", "An evidence rating from curated studies. Every quote is checked word for word."),
+      ("02", "Is it for you?", "Matched to your goal, training age, injuries and equipment."),
+      ("03", "Where does it go?", "A swap in your next session that keeps stimulus and volume balanced."),
+    ] %}
+    <div class="panel p-4">
+      <span class="chip">{{ n }} / 03</span>
+      <h2 class="display mt-4 text-2xl">{{ title }}</h2>
+      <p class="mt-2 text-sm text-cream/70">{{ text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="mt-8 flex justify-between">
+    <span class="chip">39 STUDIES</span>
+    <span class="chip">NVIDIA NEMOTRON · NEBIUS</span>
+  </div>
+</section>
 {% endblock %}

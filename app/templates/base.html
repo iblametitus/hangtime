@@ -3,12 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0b0c">
   <meta name="htmx-config" content='{"responseHandling":[{"code":"204","swap":false},{"code":"[23]..","swap":true},{"code":"422","swap":true},{"code":"[45]..","swap":false,"error":true}]}'>
   <title>{% block title %}Hangtime{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0b0b0c",
+            panel: "#141415",
+            line: "rgba(243,238,230,0.12)",
+            cream: "#f3eee6",
+            ember: "#ff6b1a",
+            court: "#3d5afe",
+          },
+          fontFamily: {
+            display: ["Archivo", "Inter", "sans-serif"],
+            sans: ["Inter", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .display { @apply font-display font-black uppercase leading-[0.9] tracking-tight; }
+      .glow { text-shadow: 0 0 28px rgba(255, 107, 26, 0.55); }
+      .chip { @apply inline-block shrink-0 whitespace-nowrap border border-line px-2.5 py-1 font-mono text-xs text-cream/70; }
+      .panel { @apply border border-line bg-panel/80; }
+      .btn-primary { @apply block w-full bg-ember px-5 py-4 text-center font-display text-lg font-extrabold uppercase tracking-wide text-ink transition hover:brightness-110 disabled:opacity-50; }
+      .btn-ghost { @apply block w-full border border-cream/70 px-5 py-4 text-center font-display text-lg font-extrabold uppercase tracking-wide text-cream transition hover:bg-cream hover:text-ink; }
+      .label { @apply font-mono text-xs uppercase tracking-widest text-cream/50; }
+    }
+  </style>
   <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
+<body class="{% block body_class %}min-h-screen bg-ink font-sans text-cream antialiased{% endblock %}">
   {% block body %}{% endblock %}
 </body>
 </html>
