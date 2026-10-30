@@ -7,7 +7,7 @@ from fastapi import APIRouter, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from app import chrono, jobs, plans
+from app import jobs, plans
 from app.config import get_settings
 from app.evidence_cards import load_cards
 from app.exercises import load_exercises
@@ -38,7 +38,7 @@ router = APIRouter()
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return templates.TemplateResponse(request, "home.html", {"chrono": chrono.svg(), "nav": "home"})
+    return templates.TemplateResponse(request, "home.html", {"nav": "home"})
 
 
 def _session_id(request: Request) -> str:

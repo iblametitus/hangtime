@@ -179,9 +179,8 @@ def test_picking_an_athlete_changes_profile_and_plan(fake_pipeline):
         client.cookies.clear()
 
 
-def test_home_shows_jump_sequence():
-    from app.chrono import POSES
-
+def test_home_hero_photo_is_served():
     html = client.get("/").text
-    assert html.count('class="phase"') == len(POSES)
-    assert "nan" not in html.split('class="chrono"')[1].split("</svg>")[0]
+    for src in ["/static/img/hero-tall-1080.webp", "/static/img/hero-wide-2400.webp"]:
+        assert src in html
+        assert client.get(src).status_code == 200

@@ -1,22 +1,29 @@
 {% extends "layout.html" %}
 {% block main %}
-{# The one loud moment: a jump in five exposures on a seamless studio sweep, only the hang is sharp. #}
-<section class="hero relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pb-12 pt-[100vw] sm:px-10 sm:pb-16 sm:pt-40">
-  <div class="pointer-events-none absolute -left-[56vw] top-[72px] w-[160vw] sm:left-auto sm:-right-[6vw] sm:bottom-0 sm:top-auto sm:w-[min(1180px,86vw,128svh)]">
-    {{ chrono|safe }}
-  </div>
+{# The one loud moment: a full-bleed photo of a jump, motion in the body, the shoes as the only colour.
+   Mobile: portrait crop, text on the concrete below the feet. Desktop: the photo is cut by the
+   page on the right, the headline sits on paper and runs into it. #}
+<section class="hero relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pb-12 pt-[146vw] sm:px-10 sm:pb-16 sm:pt-40">
+  <picture class="absolute inset-x-0 top-0 -z-10 block sm:inset-y-0 sm:left-[38%] sm:right-0">
+    <source media="(min-width: 640px)" sizes="100vw"
+            srcset="/static/img/hero-wide-1440.webp 1440w, /static/img/hero-wide-2400.webp 2400w">
+    <img src="/static/img/hero-tall-1080.webp" sizes="100vw" width="1080" height="1935"
+         srcset="/static/img/hero-tall-720.webp 720w, /static/img/hero-tall-1080.webp 1080w"
+         alt="A basketball player in mid-air reaching up with the ball, body blurred by the motion, light blue shoes"
+         fetchpriority="high" class="photo block h-auto w-full sm:h-full sm:object-cover sm:object-[74%_center]">
+  </picture>
 
   <h1 class="display relative max-w-[11ch] text-[clamp(76px,21vw,176px)] italic leading-[0.84]">
     Saw it on TikTok? Check&#160;it.
   </h1>
-  <p class="relative mt-6 max-w-[34ch] text-lg">
+  <p class="relative mt-6 max-w-[34ch] text-lg font-medium">
     Upload a jump drill. Hangtime watches the movement, checks the promise against real studies and fits it into your plan.
   </p>
   <div class="relative mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
     <a href="/demo" class="btn-primary">Check a drill</a>
-    <a href="/about" class="flex min-h-[44px] items-center font-medium underline decoration-ink/30 underline-offset-4 hover:decoration-ink">Read the story</a>
+    <a href="/about" class="flex min-h-[44px] items-center font-semibold underline decoration-ink/40 underline-offset-4 hover:decoration-ink">Read the story</a>
   </div>
-  <p class="relative mt-4 text-sm text-mute">No sign-up: try it with the demo athlete.</p>
+  <p class="relative mt-4 text-sm font-medium">No sign-up: try it with the demo athlete.</p>
 </section>
 
 <section id="how" class="mx-auto max-w-5xl px-5 pt-24 sm:px-8 sm:pt-32">
@@ -39,15 +46,14 @@
 
 {% block scripts %}
 <style>
-  /* Seamless studio sweep: white wall rolling into a slightly darker floor, with print grain */
-  .hero { background: linear-gradient(180deg, #FBFAF7 0%, #FBFAF7 62%, #EEEBE4 100%); }
-  .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .22; mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-  .chrono { display: block; width: 100%; height: auto; }
-  /* The exposures land one after another, the sharp one last */
-  .chrono .phase { transform-box: fill-box; animation: expose 620ms var(--spring) both; animation-delay: calc(var(--i) * 150ms + 120ms); }
-  .chrono .trail { animation: trail 900ms ease-out 700ms both; }
-  @keyframes expose { from { opacity: 0; transform: translateX(-36px); } }
-  @keyframes trail { from { opacity: 0; } }
+  /* Hero ground is the concrete of the photo, so the portrait crop runs out into it without an edge */
+  .hero { background: rgb(134 150 145); }
+  @media (min-width: 640px) { .hero { background: var(--paper); } }
+  @media (max-width: 639px) {
+    .photo { -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%); mask-image: linear-gradient(180deg, #000 78%, transparent 100%); }
+  }
+  /* The photo settles into place once, on a spring */
+  .photo { animation: settle 1100ms var(--spring) both; transform-origin: 70% 30%; }
+  @keyframes settle { from { opacity: 0; transform: scale(1.06); } }
 </style>
 {% endblock %}
