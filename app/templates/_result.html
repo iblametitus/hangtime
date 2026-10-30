@@ -1,78 +1,84 @@
-<article class="space-y-6">
-  <div>
-    <div class="flex flex-wrap justify-between gap-2">
-      <span class="chip">RESULT</span>
-      {% if r.profile.auto_profiled %}<span class="chip">NEW EXERCISE · PROFILED BY AI</span>{% endif %}
+{# A verdict is a position on a scale, weakest on the left. #}
+{% macro scale(steps, active, label) %}
+<div class="mt-5" role="img" aria-label="{{ label }}: {{ dict(steps)[active] }}">
+  <div class="grid gap-1" style="grid-template-columns: repeat({{ steps|length }}, minmax(0, 1fr))">
+    {% for key, name in steps %}
+    {% set on = key == active %}
+    <div>
+      <div class="h-2 {% if loop.first %}rounded-l-full{% endif %} {% if loop.last %}rounded-r-full{% endif %} {% if on %}bg-royal{% else %}bg-stone{% endif %}"></div>
+      <p class="mt-2 text-xs leading-tight {% if on %}font-semibold text-ink{% elif loop.first or loop.last %}text-mute{% else %}hidden text-mute sm:block{% endif %} {% if loop.last and not loop.first %}text-right sm:text-left{% endif %}">{{ name }}</p>
     </div>
-    <h2 class="display mt-4 text-5xl sm:text-6xl">{{ r.profile.name }}</h2>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}
+
+<article class="space-y-6" aria-labelledby="result-h">
+  <header class="pb-2">
+    <h2 id="result-h" class="display text-5xl sm:text-6xl">{{ r.profile.name }}</h2>
+    {% if r.profile.auto_profiled %}<p class="mt-2 text-sm text-mute">New to our database, so this exercise was profiled by AI for this check.</p>{% endif %}
     {% if v.promise %}
-    <blockquote class="mt-4 border-l-4 border-ember pl-3 font-display text-lg font-bold italic text-cream/90">“{{ v.promise }}”</blockquote>
+    <blockquote class="mt-6 max-w-[30ch] text-xl italic leading-snug">“{{ v.promise }}”</blockquote>
     {% endif %}
-  </div>
+  </header>
 
-  <div class="grid grid-cols-3 gap-2">
-    <div class="panel p-3"><p class="label">Studies</p><p class="display mt-1 text-4xl">{{ r.cards|length + r.web|length }}</p></div>
-    <div class="panel p-3"><p class="label">Quotes</p><p class="display mt-1 text-4xl">{{ v.citations|length }}<span class="text-lg text-ember"> ✓</span></p></div>
-    <div class="panel p-3"><p class="label">Seconds</p><p class="display mt-1 text-4xl">{{ r.timings_s.total|round|int }}</p></div>
-  </div>
-
-  {# Step 1: general verdict #}
-  <section class="panel p-4">
-    <div class="flex items-center justify-between gap-2">
-      <h3 class="display text-2xl">Is it any good?</h3><span class="chip">01 / 03</span>
-    </div>
-    <p class="mt-4 inline-block border px-3 py-1.5 font-display text-xl font-black uppercase tracking-wide {{ rating[1] }}">{{ rating[0] }}</p>
-    <p class="mt-4 font-display text-lg font-bold leading-snug">{{ v.headline }}</p>
-    {% if v.exercise_take %}<p class="mt-2 text-sm text-cream/80">{{ v.exercise_take }}</p>{% endif %}
-    <p class="mt-2 text-sm text-cream/80">{{ v.reasoning }}</p>
+  {# Answer 1 #}
+  <section class="surface p-6 sm:p-8" aria-labelledby="a1">
+    <h3 id="a1" class="text-lg font-semibold"><span class="display mr-2 text-2xl text-royal">1</span>Is it any good?</h3>
+    {{ scale(rating_scale, v.rating.value, "Evidence") }}
+    <p class="mt-6 text-xl font-semibold leading-snug">{{ v.headline }}</p>
+    {% if v.exercise_take %}<p class="mt-3 max-w-[62ch]">{{ v.exercise_take }}</p>{% endif %}
+    <p class="mt-3 max-w-[62ch] text-mute">{{ v.reasoning }}</p>
 
     {% if v.citations %}
-    <p class="label mt-6">Sources</p>
-    <ul class="mt-2 space-y-2">
+    <h4 class="mt-8 text-sm font-semibold">Sources</h4>
+    <ul class="mt-2">
       {% for c in v.citations %}
       {% set s = sources.get(c.source_id) %}
-      <li class="border-l-2 border-court bg-cream/[0.03] p-3 text-sm">
-        <p class="text-cream/90">“{{ c.quote }}”</p>
+      <li class="border-t border-line py-4">
+        <p class="max-w-[62ch]">“{{ c.quote }}”</p>
         {% if s %}
-        <p class="mt-2 font-mono text-xs text-cream/50">
-          <a href="{{ s.url }}" target="_blank" rel="noopener" class="underline hover:text-ember">{{ s.title }}</a>
-          · {% if s.curated %}{{ s.type }}{% else %}<span class="text-amber-300">web source, not curated</span>{% endif %}
+        <p class="mt-2 text-sm text-mute">
+          <a href="{{ s.url }}" target="_blank" rel="noopener" class="link">{{ s.title }}</a>
+          {% if s.curated %}<span class="ml-1">({{ s.type }})</span>{% else %}<span class="ml-1 font-medium text-ink">(web source, not curated)</span>{% endif %}
         </p>
         {% endif %}
       </li>
       {% endfor %}
     </ul>
     {% endif %}
-    <p class="mt-3 font-mono text-xs text-cream/50">
-      <span class="text-ember">✓</span> Every quote was checked word for word against its source{% if r.removed_citations %}:
-      {{ r.removed_citations }} unverifiable {{ "quote was" if r.removed_citations == 1 else "quotes were" }} removed{% endif %}.
+    <p class="mt-2 flex gap-2 border-t border-line pt-4 text-sm text-mute">
+      <svg class="mt-0.5 h-4 w-4 shrink-0 text-royal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>
+      <span>Every quote was checked word for word against its source{% if r.removed_citations %}: {{ r.removed_citations }} unverifiable {{ "quote was" if r.removed_citations == 1 else "quotes were" }} removed{% endif %}.</span>
     </p>
   </section>
 
-  {# Step 2: personal fit #}
-  <section class="panel p-4">
-    <div class="flex items-center justify-between gap-2">
-      <h3 class="display text-2xl">Is it for you?</h3><span class="chip">02 / 03</span>
-    </div>
-    <p class="mt-4 inline-block border px-3 py-1.5 font-display text-xl font-black uppercase tracking-wide {{ fit[1] }}">{{ fit[0] }}</p>
-    <p class="mt-4 text-sm text-cream/80">{{ v.personal_fit_reason }}</p>
+  {# Answer 2 #}
+  <section class="surface p-6 sm:p-8" aria-labelledby="a2">
+    <h3 id="a2" class="text-lg font-semibold"><span class="display mr-2 text-2xl text-royal">2</span>Is it for you?</h3>
+    {{ scale(fit_scale, v.personal_fit.value, "Personal fit") }}
+    <p class="mt-6 max-w-[62ch]">{{ v.personal_fit_reason }}</p>
     {% if v.safety_notes %}
-    <ul class="mt-3 space-y-1 text-sm text-amber-200">
-      {% for note in v.safety_notes %}<li>⚠ {{ note }}</li>{% endfor %}
+    <ul class="mt-4 space-y-2">
+      {% for note in v.safety_notes %}
+      <li class="flex gap-2 text-sm">
+        <svg class="mt-0.5 h-4 w-4 shrink-0 text-ink" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M8 2.5l6 11H2l6-11z M8 7v3 M8 12v.01"/></svg>
+        <span>{{ note }}</span>
+      </li>
+      {% endfor %}
     </ul>
     {% endif %}
   </section>
 
-  {# Step 3: swap #}
+  {# Answer 3 #}
   {% include "_swap.html" %}
 
   {% if others %}
-  <section>
-    <p class="label">Also in this video</p>
-    <div class="mt-2 flex flex-wrap gap-2">
+  <section aria-labelledby="others-h">
+    <h3 id="others-h" class="eyebrow">Also in this video</h3>
+    <div class="mt-3 flex flex-wrap gap-2">
       {% for i, name in others %}
-      <button hx-post="/api/analyses/{{ job.id }}/segments/{{ i }}" hx-target="#analysis" hx-swap="innerHTML"
-              class="border border-cream/50 px-3 py-2 font-display text-sm font-extrabold uppercase hover:border-ember hover:text-ember">
+      <button hx-post="/api/analyses/{{ job.id }}/segments/{{ i }}" hx-target="#analysis" hx-swap="innerHTML" class="btn-quiet">
         Check {{ name }}
       </button>
       {% endfor %}
@@ -80,8 +86,7 @@
   </section>
   {% endif %}
 
-  <p class="text-center font-mono text-xs text-cream/40">
-    Analysed in {{ r.timings_s.total }} s · {{ r.cards|length }} curated {{ "study" if r.cards|length == 1 else "studies" }}{% if r.web %} · {{ r.web|length }} web {{ "source" if r.web|length == 1 else "sources" }} via Tavily{% endif %}
-    · NVIDIA Nemotron on Nebius Token Factory
+  <p class="num text-sm text-mute">
+    Analysed in {{ r.timings_s.total }} s with {{ r.cards|length }} curated {{ "study" if r.cards|length == 1 else "studies" }}{% if r.web %} and {{ r.web|length }} web {{ "source" if r.web|length == 1 else "sources" }} via Tavily{% endif %}.
   </p>
 </article>

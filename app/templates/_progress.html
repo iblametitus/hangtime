@@ -1,21 +1,24 @@
 {% set done = steps|selectattr(1, "equalto", "done")|list|length %}
-<div class="panel p-4" hx-get="/api/analyses/{{ job.id }}" hx-trigger="load delay:1500ms" hx-swap="outerHTML">
-  <div class="flex items-center justify-between">
+<div class="surface p-6 sm:p-8" hx-get="/api/analyses/{{ job.id }}" hx-trigger="load delay:1500ms" hx-swap="outerHTML"
+     role="status" aria-label="Analysing, step {{ done + 1 }} of {{ steps|length }}">
+  <div class="flex items-baseline justify-between gap-4">
     <h2 class="display text-3xl">Analysing</h2>
-    <span class="chip">{{ "%02d"|format(done) }} / {{ "%02d"|format(steps|length) }}</span>
+    <p class="num text-sm text-mute">Step {{ done + 1 }} of {{ steps|length }}</p>
   </div>
-  <div class="mt-4 h-2 overflow-hidden bg-cream/10">
-    <div class="h-full bg-ember transition-all duration-700" style="width: {{ ((done + 0.5) / steps|length * 100)|round|int }}%"></div>
+  <div class="mt-5 h-1 overflow-hidden rounded-full bg-stone">
+    <div class="h-full rounded-full bg-royal transition-[width] duration-700" style="width: {{ ((done + 0.5) / steps|length * 100)|round|int }}%"></div>
   </div>
-  <ol class="mt-4 space-y-2 font-mono text-sm">
+  <ol class="mt-6 space-y-3 text-sm">
     {% for label, state in steps %}
-    <li class="flex items-center gap-3 {% if state == 'pending' %}text-cream/35{% elif state == 'done' %}text-cream/70{% endif %}">
-      {% if state == "done" %}<span class="w-5 text-ember">✓</span>
-      {% elif state == "current" %}<span class="h-3.5 w-3.5 animate-spin rounded-full border-2 border-ember/30 border-t-ember"></span><span class="-ml-1.5"></span>
-      {% else %}<span class="w-5">·</span>{% endif %}
-      <span class="{% if state == 'current' %}text-cream{% endif %}">{{ label }}</span>
+    <li class="flex items-center gap-3 {% if state == 'pending' %}text-mute/70{% elif state == 'done' %}text-mute{% else %}font-semibold{% endif %}">
+      <span class="flex h-5 w-5 shrink-0 items-center justify-center" aria-hidden="true">
+        {% if state == "done" %}<svg class="h-4 w-4 text-royal" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8.5l3 3 7-7"/></svg>
+        {% elif state == "current" %}<span class="h-4 w-4 animate-spin rounded-full border-2 border-royal/25 border-t-royal"></span>
+        {% else %}<span class="h-1.5 w-1.5 rounded-full bg-mute/40"></span>{% endif %}
+      </span>
+      {{ label }}
     </li>
     {% endfor %}
   </ol>
-  <p class="mt-4 text-xs text-cream/50">Usually under a minute. NVIDIA Nemotron models on Nebius Token Factory.</p>
+  <p class="mt-6 text-sm text-mute">Usually under a minute. NVIDIA Nemotron models on Nebius Token Factory.</p>
 </div>

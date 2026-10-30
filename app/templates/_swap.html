@@ -1,53 +1,46 @@
 {% set s = r.swap %}
-<section id="swap" class="panel p-4">
-  <div class="flex items-center justify-between gap-2">
-    <h3 class="display text-2xl">Where does it go?</h3><span class="chip">03 / 03</span>
-  </div>
+<section id="swap" class="surface p-6 sm:p-8" aria-labelledby="a3">
+  <h3 id="a3" class="text-lg font-semibold"><span class="display mr-2 text-2xl text-royal">3</span>Where does it go?</h3>
   {% if s.proposal %}
   {% set p = s.proposal %}
-  <table class="mt-4 w-full text-sm">
-    <thead>
-      <tr class="bg-ember text-left text-ink">
-        <th class="px-2 py-1.5 font-display font-extrabold uppercase">{{ s.session.label }}</th>
-        <th class="px-2 py-1.5 text-right font-mono text-xs font-medium">NEXT SESSION</th>
-      </tr>
-    </thead>
+  <table class="mt-6 w-full text-sm">
+    <caption class="pb-2 text-left">
+      <span class="font-semibold">{{ s.session.label|replace(" - ", ": ") }}</span>
+      <span class="ml-1 text-mute">(your next session)</span>
+    </caption>
     <tbody>
       {% for row in diff %}
-      <tr class="border-b border-line {% if row.state == 'out' %}bg-rose-500/10 text-rose-300{% elif row.state == 'in' %}bg-emerald-400/10 font-semibold text-emerald-300{% endif %}">
-        <td class="px-2 py-2">
-          {% if row.state == "out" %}<span aria-label="removed" class="mr-1">−</span><s>{{ row.name }}</s>
-          {% elif row.state == "in" %}<span aria-label="added" class="mr-1">+</span>{{ row.name }}
-          {% else %}<span class="mr-1 text-cream/30">·</span>{{ row.name }}{% endif %}
+      <tr class="border-t border-line {% if row.state == 'in' %}bg-royal/[0.07]{% endif %}">
+        <td class="py-3 pl-2 pr-4">
+          {% if row.state == "out" %}<span class="sr-only">Removed: </span><s class="text-mute decoration-ink/50">{{ row.name }}</s>
+          {% elif row.state == "in" %}<span class="sr-only">Added: </span><span class="font-semibold text-royal">{{ row.name }}</span>
+          {% else %}{{ row.name }}{% endif %}
         </td>
-        <td class="whitespace-nowrap px-2 py-2 text-right align-top font-mono text-xs {% if row.state == 'out' %}line-through{% elif row.state == 'same' %}text-cream/60{% endif %}">{{ row.prescription }}</td>
+        <td class="num whitespace-nowrap py-3 pr-2 text-right align-top {% if row.state == 'out' %}text-mute line-through{% elif row.state == 'in' %}font-semibold text-royal{% else %}text-mute{% endif %}">{{ row.prescription }}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 
-  <div class="mt-4">
-    <div class="flex items-baseline justify-between">
-      <p class="label">Similarity</p><p class="font-display text-2xl font-black">{{ (p.similarity * 100)|round|int }}%</p>
-    </div>
-    <div class="mt-1 h-2 overflow-hidden bg-cream/10"><div class="h-full bg-ember" style="width: {{ (p.similarity * 100)|round|int }}%"></div></div>
-    {% if p.matched_on %}
-    <p class="mt-2 font-mono text-xs text-cream/50">same {{ p.matched_on|join(", ")|replace("fv_zone", "force-velocity zone")|replace("ssc", "stretch-shortening cycle") }}</p>
-    {% endif %}
+  <div class="mt-6 flex items-end gap-4">
+    <p class="display num text-5xl text-royal">{{ (p.similarity * 100)|round|int }}<span class="text-2xl">%</span></p>
+    <p class="pb-1 text-sm text-mute">similar{% if p.matched_on %}: same {{ p.matched_on|join(", ")|replace("fv_zone", "force-velocity zone")|replace("ssc", "stretch-shortening cycle") }}{% endif %}</p>
   </div>
 
-  <p class="mt-4 text-sm text-cream/80">{{ v.swap_explanation or p.volume_note }}</p>
-  {% if v.swap_explanation %}<p class="mt-1 font-mono text-xs text-cream/50">{{ p.volume_note }}</p>{% endif %}
+  <p class="mt-4 max-w-[62ch]">{{ v.swap_explanation or p.volume_note }}</p>
+  {% if v.swap_explanation %}<p class="mt-2 max-w-[62ch] text-sm text-mute">{{ p.volume_note }}</p>{% endif %}
 
   {% if job.applied %}
-  <p class="mt-5 bg-emerald-400 px-5 py-4 text-center font-display text-lg font-extrabold uppercase text-ink">✓ Added to your plan</p>
-  <a href="/demo" class="mt-2 block text-center font-mono text-xs text-cream/60 underline">See updated plan</a>
+  <p class="swap-done mt-6 flex items-center gap-2 font-semibold text-royal" role="status">
+    <svg class="h-5 w-5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>
+    Added to your plan
+  </p>
+  <a href="/demo" class="link mt-2 inline-block text-sm">See updated plan</a>
   {% else %}
-  <button hx-post="/api/analyses/{{ job.id }}/apply-swap" hx-target="#swap" hx-swap="outerHTML" class="btn-primary mt-5">
-    Apply swap to next session
-  </button>
+  <button hx-post="/api/analyses/{{ job.id }}/apply-swap" hx-target="#swap" hx-swap="outerHTML" hx-disabled-elt="this"
+          class="btn-primary mt-6 w-full sm:w-auto">Apply swap to next session</button>
   {% endif %}
   {% else %}
-  <p class="mt-4 text-sm text-cream/80">{{ s.note }}</p>
+  <p class="mt-4 max-w-[62ch]">{{ s.note }}</p>
   {% endif %}
 </section>

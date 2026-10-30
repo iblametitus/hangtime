@@ -12,6 +12,7 @@ from app.config import get_settings
 from app.evidence_cards import load_cards
 from app.exercises import load_exercises
 from app.demo import TEMPLATES
+from app.hoop import net_paths
 from app.pipeline.run import STEPS
 from app.pipeline.swap import apply_swap
 
@@ -21,17 +22,11 @@ MAX_UPLOAD_BYTES = 100 * 1024 * 1024
 VIDEO_SUFFIXES = {".mp4", ".mov", ".m4v", ".webm"}
 MAX_CAPTION_CHARS = 2000
 
-RATINGS = {
-    "well_supported": ("Well supported", "border-emerald-400/70 bg-emerald-400/10 text-emerald-300"),
-    "partly_supported": ("Partly supported", "border-amber-300/70 bg-amber-300/10 text-amber-200"),
-    "unsupported": ("Unsupported", "border-cream/40 bg-cream/5 text-cream/80"),
-    "myth": ("Myth", "border-rose-400/70 bg-rose-400/10 text-rose-300"),
-}
-FITS = {
-    "good_fit": ("Good fit for you", "border-emerald-400/70 bg-emerald-400/10 text-emerald-300"),
-    "conditional": ("Fits with conditions", "border-amber-300/70 bg-amber-300/10 text-amber-200"),
-    "not_recommended": ("Not for you right now", "border-rose-400/70 bg-rose-400/10 text-rose-300"),
-}
+# Verdicts are shown as a position on a scale (weakest first), not as traffic-light colours.
+RATING_SCALE = [("myth", "Myth"), ("unsupported", "Unsupported"), ("partly_supported", "Partly supported"),
+                ("well_supported", "Well supported")]
+FIT_SCALE = [("not_recommended", "Not for you right now"), ("conditional", "Fits with conditions"),
+             ("good_fit", "Good fit for you")]
 GOALS = {
     "vertical_jump": "Vertical jump",
     "sprint_speed": "Sprint speed",
@@ -40,11 +35,12 @@ GOALS = {
 }
 
 router = APIRouter()
+NET = net_paths()
 
 
 @router.get("/", response_class=HTMLResponse)
 def home(request: Request):
-    return templates.TemplateResponse(request, "home.html", {})
+    return templates.TemplateResponse(request, "home.html", {"net": NET, "nav": "home"})
 
 
 def _session_id(request: Request) -> str:
@@ -181,8 +177,10 @@ def _result_context(job: jobs.Job) -> dict:
         "job": job,
         "r": r,
         "v": r.verdict,
-        "rating": RATINGS[r.verdict.rating.value],
-        "fit": FITS[r.verdict.personal_fit.value],
+        "rating_scale": RATING_SCALE,
+        "fit_scale": FIT_SCALE,
+        "rating": dict(RATING_SCALE)[r.verdict.rating.value],
+        "fit": dict(FIT_SCALE)[r.verdict.personal_fit.value],
         "sources": sources,
         "others": others,
     }

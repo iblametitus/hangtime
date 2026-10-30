@@ -1,88 +1,80 @@
 {% extends "layout.html" %}
 {% block title %}Check a drill · Hangtime{% endblock %}
 {% block main %}
-<div class="flex justify-between">
-  <span class="chip">DEMO · {{ template.name|upper }}</span>
-  <span class="chip">GOAL · {{ goal_label|upper }}</span>
-</div>
+<main class="mx-auto max-w-3xl px-5 pt-32 sm:px-8 sm:pt-40">
+  <h1 class="display text-5xl sm:text-6xl">Check a drill</h1>
+  <p class="mt-4 max-w-[46ch] text-lg text-mute">Pick an athlete, upload a video. Same video, different athlete, different answer.</p>
 
-<h1 class="display mt-6 text-6xl sm:text-7xl">Check<br><span class="glow text-ember">a drill</span></h1>
-
-<section class="mt-8">
-  <p class="label">Pick an athlete</p>
-  <p class="mt-1 text-sm text-cream/60">Same video, different athlete, different answer.</p>
-  <div class="mt-3 grid gap-2 sm:grid-cols-3">
-    {% for t in templates %}
-    <a href="/demo?athlete={{ t.id }}"
-       class="block border p-3 transition {% if t.id == template.id %}border-ember bg-ember/10{% else %}border-line bg-panel/80 hover:border-cream/40{% endif %}">
-      <span class="flex items-center justify-between gap-2">
-        <span class="font-display text-lg font-black uppercase leading-tight">{{ t.name }}</span>
-        {% if t.id == template.id %}<span class="font-mono text-xs text-ember">✓</span>{% endif %}
-      </span>
-      <span class="mt-1 block text-xs text-cream/60">{{ t.tagline }}</span>
-    </a>
-    {% endfor %}
-  </div>
-
-  <div class="mt-3 grid grid-cols-3 gap-2">
-    <div class="panel flex flex-col justify-between p-3"><p class="label leading-snug">Years of training</p><p class="display mt-2 text-4xl">{{ "%g"|format(profile.training_age_years) }}</p></div>
-    <div class="panel flex flex-col justify-between p-3"><p class="label leading-snug">Workouts / week</p><p class="display mt-2 text-4xl">{{ profile.sessions_per_week }}</p></div>
-    <div class="panel flex flex-col justify-between p-3"><p class="label leading-snug">Injuries</p><p class="display mt-2 text-4xl {% if profile.injuries %}text-amber-200{% endif %}">{{ profile.injuries|length }}</p></div>
-  </div>
-  <p class="mt-2 font-mono text-xs text-cream/50">
-    {% if profile.injuries %}<span class="text-amber-200">{{ profile.injuries|join(", ")|replace("_", " ") }}</span> · {% endif %}equipment: {{ profile.equipment|reject("equalto", "none")|join(", ")|replace("_", " ") }}
-  </p>
-
-  <details class="panel mt-3">
-    <summary class="flex cursor-pointer items-center justify-between px-4 py-3">
-      <span class="font-display text-lg font-extrabold uppercase">Training plan</span>
-      <span class="font-mono text-xs text-cream/60">{{ plan.sessions|length }} sessions{% if changed %} · <span class="text-ember">updated</span>{% endif %} ▾</span>
-    </summary>
-    <div class="space-y-4 px-4 pb-4">
-      {% for s in plan.sessions %}
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="bg-ember text-left text-ink">
-            <th class="px-2 py-1.5 font-display font-extrabold uppercase" colspan="2">{{ s.label }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for e in s.exercises %}
-          <tr class="border-b border-line {% if loop.index is even %}bg-cream/[0.03]{% endif %}">
-            <td class="px-2 py-1.5">{{ e.raw_name }}</td>
-            <td class="px-2 py-1.5 text-right font-mono text-xs text-cream/70">{{ e.sets }}×{{ e.reps }}{% if e.load %} · {{ e.load }}{% endif %}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+  <section class="mt-12" aria-labelledby="athlete-h">
+    <h2 id="athlete-h" class="eyebrow">Athlete</h2>
+    <div class="mt-3 grid grid-cols-3 gap-1 rounded-full bg-stone p-1" role="tablist" aria-label="Demo athlete">
+      {% for t in templates %}
+      <a href="/demo?athlete={{ t.id }}" role="tab" aria-selected="{{ 'true' if t.id == template.id else 'false' }}"
+         class="flex min-h-[44px] items-center justify-center rounded-full px-2 text-center text-sm leading-tight transition
+                {% if t.id == template.id %}bg-white font-semibold text-ink shadow-[0_1px_2px_rgba(22,26,46,.12)]{% else %}text-mute hover:text-ink{% endif %}">{{ t.name }}</a>
       {% endfor %}
-      {% if changed %}<a href="/demo?reset=1" class="inline-block font-mono text-xs text-cream/60 underline">Reset demo plan</a>{% endif %}
     </div>
-  </details>
-</section>
+    <p class="mt-3 text-sm text-mute">{{ template.tagline }}. Goal: {{ goal_label|lower }}.</p>
 
-<form class="mt-8"
-      hx-post="/api/analyses" hx-encoding="multipart/form-data" hx-target="#analysis" hx-swap="innerHTML"
-      hx-disabled-elt="find button">
-  <p class="label">Upload</p>
-  <label class="mt-3 block cursor-pointer border border-dashed border-cream/30 p-5 text-center hover:border-ember">
-    <span class="font-display text-xl font-extrabold uppercase" id="file-name">Choose a video</span>
-    <span class="mt-1 block font-mono text-xs text-cream/50">mp4, mov or webm · up to 3 min</span>
-    <input type="file" name="video" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.m4v,.webm" required class="sr-only"
-           onchange="document.getElementById('file-name').textContent = this.files[0] ? this.files[0].name : 'Choose a video'">
-  </label>
-  <label class="mt-3 block">
-    <span class="label">Caption (optional)</span>
-    <textarea name="caption" rows="2" maxlength="2000" placeholder="Paste the post's caption, it often holds the promise"
-              class="mt-2 block w-full border border-line bg-panel px-3 py-2 text-sm text-cream placeholder:text-cream/40 focus:border-ember focus:outline-none"></textarea>
-  </label>
-  <button type="submit" class="btn-primary mt-4">Analyse video</button>
-  <div id="upload-bar" class="mt-3 hidden h-1.5 overflow-hidden bg-cream/10">
-    <div class="h-full w-0 bg-ember transition-all"></div>
-  </div>
-</form>
+    <dl class="mt-8 grid grid-cols-3 gap-4 border-t border-line pt-6">
+      <div class="flex flex-col"><dt class="mt-1 text-sm text-mute">Years of training</dt><dd class="display num order-first text-5xl">{{ "%g"|format(profile.training_age_years) }}</dd></div>
+      <div class="flex flex-col"><dt class="mt-1 text-sm text-mute">Workouts / week</dt><dd class="display num order-first text-5xl">{{ profile.sessions_per_week }}</dd></div>
+      <div class="flex flex-col"><dt class="mt-1 text-sm text-mute">Injuries</dt><dd class="display num order-first text-5xl">{{ profile.injuries|length }}</dd></div>
+    </dl>
+    <p class="mt-4 text-sm text-mute">
+      {% if profile.injuries %}<span class="font-medium text-ink">Injury: {{ profile.injuries|join(", ")|replace("_", " ") }}.</span> {% endif %}
+      Equipment: {{ profile.equipment|reject("equalto", "none")|join(", ")|replace("_", " ") }}.
+    </p>
 
-<section id="analysis" class="mt-8"></section>
+    <details class="group mt-8 border-y border-line">
+      <summary class="flex min-h-[56px] cursor-pointer list-none items-center justify-between gap-4">
+        <span class="font-semibold">Training plan</span>
+        <span class="flex items-center gap-3 text-sm text-mute">
+          {% if changed %}<span class="rounded-full bg-royal/10 px-2.5 py-0.5 font-medium text-royal">Updated</span>{% endif %}
+          {{ plan.sessions|length }} sessions
+          <svg class="h-4 w-4 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6"/></svg>
+        </span>
+      </summary>
+      <div class="space-y-8 pb-6 pt-2">
+        {% for s in plan.sessions %}
+        <table class="w-full text-sm">
+          <caption class="pb-2 text-left font-semibold text-ink">{{ s.label|replace(" - ", ": ") }}</caption>
+          <tbody>
+            {% for e in s.exercises %}
+            <tr class="border-t border-line">
+              <td class="py-2.5 pr-4">{{ e.raw_name }}</td>
+              <td class="num whitespace-nowrap py-2.5 text-right text-mute">{{ e.sets }} × {{ e.reps }}{% if e.load %}<span class="ml-2 text-mute/80">{{ e.load }}</span>{% endif %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endfor %}
+        {% if changed %}<a href="/demo?reset=1" class="link text-sm">Reset demo plan</a>{% endif %}
+      </div>
+    </details>
+  </section>
+
+  <form class="mt-12" hx-post="/api/analyses" hx-encoding="multipart/form-data" hx-target="#analysis" hx-swap="innerHTML"
+        hx-disabled-elt="find button" aria-labelledby="upload-h">
+    <h2 id="upload-h" class="eyebrow">Video</h2>
+    <label class="mt-3 flex min-h-[160px] cursor-pointer flex-col items-center justify-center rounded-surface bg-stone px-6 text-center transition hover:bg-[#DEDAD1] focus-within:outline focus-within:outline-[3px] focus-within:outline-offset-2 focus-within:outline-signal">
+      <svg class="h-8 w-8 text-royal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5l5 5M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+      <span class="mt-3 text-lg font-semibold" id="file-name">Choose a video</span>
+      <span class="mt-1 text-sm text-mute">mp4, mov or webm, up to 3 minutes</span>
+      <input type="file" name="video" accept="video/mp4,video/quicktime,video/webm,.mp4,.mov,.m4v,.webm" required class="sr-only"
+             onchange="document.getElementById('file-name').textContent = this.files[0] ? this.files[0].name : 'Choose a video'">
+    </label>
+    <label for="caption" class="mt-6 block text-sm font-medium">Caption <span class="font-normal text-mute">(optional)</span></label>
+    <textarea id="caption" name="caption" rows="2" maxlength="2000" placeholder="Paste the post's caption. It often holds the promise."
+              class="mt-2 block w-full rounded-input border-0 bg-white px-4 py-3 text-base shadow-[inset_0_0_0_1px_var(--line)] placeholder:text-mute/70 focus:outline-none focus:shadow-[inset_0_0_0_2px_var(--royal)]"></textarea>
+    <button type="submit" class="btn-primary mt-6 w-full sm:w-auto">Analyse video</button>
+    <div id="upload-bar" class="mt-4 hidden h-1 overflow-hidden rounded-full bg-stone">
+      <div class="h-full w-0 rounded-full bg-royal transition-[width] duration-200"></div>
+    </div>
+  </form>
+
+  <section id="analysis" class="mt-12" aria-live="polite"></section>
+</main>
 {% endblock %}
 
 {% block scripts %}

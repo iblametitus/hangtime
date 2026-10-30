@@ -152,13 +152,13 @@ def test_apply_swap_updates_only_this_sessions_plan(fake_pipeline):
         job = only_job()
         result = wait_done(job.id)
         assert "Apply swap to next session" in result
-        assert "<s>Box Jump</s>" in result and "Depth Jump" in result
+        assert "Box Jump</s>" in result and "Depth Jump" in result
         applied = client.post(f"/api/analyses/{job.id}/apply-swap").text
         assert "Added to your plan" in applied
         assert [e.exercise_id for e in plans.get_plan("session-a").sessions[0].exercises][0] == "depth-jump"
         assert plans.get_plan("someone-else").sessions[0].exercises[0].exercise_id == "box-jump"
         page = client.get("/demo").text
-        assert "updated" in page and "Reset demo plan" in page
+        assert "Updated" in page and "Reset demo plan" in page
         assert "Added to your plan" in client.post(f"/api/analyses/{job.id}/apply-swap").text  # idempotent
         client.get("/demo?reset=1")
         assert plans.get_plan("session-a").sessions[0].exercises[0].exercise_id == "box-jump"

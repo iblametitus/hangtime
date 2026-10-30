@@ -159,9 +159,9 @@ VETERAN_PLAN = TrainingPlan(
 TEMPLATES = {
     t.id: t
     for t in [
-        Template("beginner", "Beginner", "Half a year in, home setup, 2 sessions a week", BEGINNER_PROFILE, BEGINNER_PLAN),
-        Template("athlete", "Basketball athlete", "Two years in the gym, 3 sessions a week", DEMO_PROFILE, DEMO_PLAN),
-        Template("veteran", "Veteran, jumper's knee", "Five years in, patellar tendinopathy", VETERAN_PROFILE, VETERAN_PLAN),
+        Template("beginner", "Beginner", "Half a year of training, home setup, 2 sessions a week", BEGINNER_PROFILE, BEGINNER_PLAN),
+        Template("athlete", "Athlete", "Basketball player, two years in the gym, 3 sessions a week", DEMO_PROFILE, DEMO_PLAN),
+        Template("veteran", "Veteran", "Five years in the gym, living with jumper's knee", VETERAN_PROFILE, VETERAN_PLAN),
     ]
 }
 DEFAULT_TEMPLATE = "athlete"

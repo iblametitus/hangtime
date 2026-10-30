@@ -3,48 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0b0c">
+  <meta name="theme-color" content="#F4F2ED">
   <meta name="htmx-config" content='{"responseHandling":[{"code":"204","swap":false},{"code":"[23]..","swap":true},{"code":"422","swap":true},{"code":"[45]..","swap":false,"error":true}]}'>
   <title>{% block title %}Hangtime{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Design tokens. One leading colour (royal), one colour for action and focus (signal). */
+    :root {
+      /* RGB channels so Tailwind can add opacity (bg-ink/5); hex in comments */
+      --paper-rgb: 244 242 237;   /* #F4F2ED */
+      --ink-rgb: 22 26 46;        /* #161A2E */
+      --royal-rgb: 30 59 209;     /* #1E3BD1 */
+      --sky-rgb: 74 104 238;      /* #4A68EE */
+      --signal-rgb: 212 42 31;    /* #D42A1F */
+      --stone-rgb: 231 228 221;   /* #E7E4DD */
+      --mute-rgb: 86 90 107;      /* #565A6B */
+      --paper: rgb(var(--paper-rgb));
+      --ink: rgb(var(--ink-rgb));
+      --royal: rgb(var(--royal-rgb));
+      --royal-sky: rgb(var(--sky-rgb));
+      --signal: rgb(var(--signal-rgb));
+      --stone: rgb(var(--stone-rgb));
+      --mute: rgb(var(--mute-rgb));
+      --line: rgba(22, 26, 46, 0.12);
+      --spring: cubic-bezier(.34, 1.56, .64, 1);
+      --r-surface: 28px;
+      --r-card: 20px;
+      --r-input: 14px;
+    }
+  </style>
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            ink: "#0b0b0c",
-            panel: "#141415",
-            line: "rgba(243,238,230,0.12)",
-            cream: "#f3eee6",
-            ember: "#ff6b1a",
-            court: "#3d5afe",
+            paper: "rgb(var(--paper-rgb) / <alpha-value>)", ink: "rgb(var(--ink-rgb) / <alpha-value>)",
+            royal: "rgb(var(--royal-rgb) / <alpha-value>)", sky: "rgb(var(--sky-rgb) / <alpha-value>)",
+            signal: "rgb(var(--signal-rgb) / <alpha-value>)", stone: "rgb(var(--stone-rgb) / <alpha-value>)",
+            mute: "rgb(var(--mute-rgb) / <alpha-value>)", line: "var(--line)",
           },
           fontFamily: {
-            display: ["Archivo", "Inter", "sans-serif"],
-            sans: ["Inter", "system-ui", "sans-serif"],
-            mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+            display: ['"Barlow Condensed"', "Impact", "sans-serif"],
+            sans: ["-apple-system", "BlinkMacSystemFont", '"SF Pro Text"', "Inter", "system-ui", "sans-serif"],
           },
+          // 1.25 scale on a 17 px base
+          fontSize: {
+            xs: ["13px", "18px"], sm: ["15px", "22px"], base: ["17px", "26px"], lg: ["21px", "28px"],
+            xl: ["27px", "32px"], "2xl": ["33px", "36px"], "3xl": ["42px", "44px"], "4xl": ["52px", "52px"],
+            "5xl": ["65px", "62px"], "6xl": ["81px", "76px"],
+          },
+          borderRadius: { surface: "var(--r-surface)", card: "var(--r-card)", input: "var(--r-input)" },
         },
       },
     };
   </script>
   <style type="text/tailwindcss">
+    @layer base {
+      body { font-feature-settings: "kern"; }
+      :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 8px; }
+    }
     @layer components {
-      .display { @apply font-display font-black uppercase leading-[0.9] tracking-tight; }
-      .glow { text-shadow: 0 0 28px rgba(255, 107, 26, 0.55); }
-      .chip { @apply inline-block shrink-0 whitespace-nowrap border border-line px-2.5 py-1 font-mono text-xs text-cream/70; }
-      .panel { @apply border border-line bg-panel/80; }
-      .btn-primary { @apply block w-full bg-ember px-5 py-4 text-center font-display text-lg font-extrabold uppercase tracking-wide text-ink transition hover:brightness-110 disabled:opacity-50; }
-      .btn-ghost { @apply block w-full border border-cream/70 px-5 py-4 text-center font-display text-lg font-extrabold uppercase tracking-wide text-cream transition hover:bg-cream hover:text-ink; }
-      .label { @apply font-mono text-xs uppercase tracking-widest text-cream/50; }
+      /* Display type: condensed, tight, sentence case */
+      .display { font-family: "Barlow Condensed", Impact, sans-serif; font-weight: 800; letter-spacing: -0.01em; line-height: 0.92; }
+      .num { font-variant-numeric: tabular-nums; }
+      /* Buttons: two levels. Press = scale .97 with spring return. */
+      .btn { @apply inline-flex min-h-[48px] items-center justify-center rounded-full px-7 text-base font-semibold; transition: transform 250ms var(--spring), background-color 150ms, opacity 150ms; }
+      .btn:active { transform: scale(.97); transition-duration: 80ms; }
+      .btn:disabled { @apply cursor-not-allowed opacity-50; }
+      .btn-primary { @apply btn bg-signal text-white hover:bg-[#B9221A]; }
+      .btn-quiet { @apply btn bg-ink/5 text-ink hover:bg-ink/10; }
+      .link { @apply font-medium text-royal underline decoration-royal/30 underline-offset-4 hover:decoration-royal; }
+      /* Material: translucent, saturated blur, 1 px inner edge */
+      .material { background: rgba(244, 242, 237, .72); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); box-shadow: inset 0 0 0 1px rgba(22, 26, 46, .08); }
+      .surface { @apply rounded-surface bg-white; box-shadow: inset 0 0 0 1px var(--line); }
+      .eyebrow { @apply text-sm font-medium text-mute; }
+      /* Confirmation: the changed thing answers with a short spring */
+      .swap-done { animation: pop 320ms var(--spring) both; }
+    }
+    @keyframes pop { from { transform: scale(.92); opacity: 0; } to { transform: none; opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }
   </style>
   <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
-<body class="{% block body_class %}min-h-screen bg-ink font-sans text-cream antialiased{% endblock %}">
+<body class="{% block body_class %}min-h-screen bg-paper font-sans text-base text-ink antialiased{% endblock %}">
   {% block body %}{% endblock %}
 </body>
 </html>
