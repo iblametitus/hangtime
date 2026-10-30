@@ -6,9 +6,9 @@
     <div class="flex items-center gap-1 sm:gap-2">
       {% for href, label, key in [("/about", "About", "about"), ("/demo", "Demo", "demo")] %}
       <a href="{{ href }}" {% if nav == key %}aria-current="page"{% endif %}
-         class="flex min-h-[44px] items-center rounded-full px-3 text-sm {% if nav == key %}font-semibold text-ink{% else %}text-mute hover:text-ink{% endif %}">{{ label }}</a>
+         class="flex min-h-[44px] items-center rounded-full px-2 text-sm sm:px-3 {% if nav == key %}font-semibold text-ink{% else %}text-mute hover:text-ink{% endif %}">{{ label }}</a>
       {% endfor %}
-      {% if nav != "demo" %}<a href="/demo" class="btn-primary ml-1 min-h-[40px] px-5 text-sm {% if nav == 'home' %}hidden sm:inline-flex{% endif %}">Check a drill</a>{% endif %}
+      {% if nav != "demo" %}<a href="/demo" class="btn-primary ml-1 min-h-[40px] whitespace-nowrap px-4 text-sm sm:px-5 {% if nav == 'home' %}hidden sm:inline-flex{% endif %}">Check a drill</a>{% endif %}
     </div>
   </nav>
 </header>
@@ -18,6 +18,7 @@
 <footer class="mx-auto max-w-5xl px-5 pb-12 pt-24 text-sm text-mute sm:px-8">
   <p>Hangtime runs on NVIDIA Nemotron via Nebius Token Factory, with research search by Tavily.
     <a class="link" href="https://github.com/iblametitus/hangtime">Source code</a></p>
+  <p class="mt-2">All photos on this site are AI-generated with Google Gemini.</p>
 </footer>
 {% block scripts %}{% endblock %}
 {% endblock %}

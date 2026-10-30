@@ -1,0 +1,12 @@
+{# A page photo kept in the background: washed with paper so the text on top stays readable. #}
+{% macro backdrop(name) %}
+<div class="backdrop pointer-events-none absolute inset-x-0 top-0 -z-10 h-[100svh] overflow-hidden" aria-hidden="true">
+  <picture>
+    <source media="(min-width: 640px)" sizes="100vw"
+            srcset="/static/img/{{ name }}-wide-1440.webp 1440w, /static/img/{{ name }}-wide-2400.webp 2400w">
+    <img src="/static/img/{{ name }}-tall-1080.webp" sizes="100vw" alt=""
+         srcset="/static/img/{{ name }}-tall-720.webp 720w, /static/img/{{ name }}-tall-1080.webp 1080w"
+         class="h-full w-full object-cover object-[60%_center]">
+  </picture>
+</div>
+{% endmacro %}

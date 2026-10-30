@@ -154,6 +154,7 @@ docs/                  SPEC, PLAN and deployment notes (partly German)
 - Focused on jumping and athletic performance. Hangtime is not medical advice.
 - The demo uses three prepared athletes. Your own profile, and a training plan read from a photo, are next.
 - Sessions live in memory: a server restart resets applied swaps.
+- The photos on the site (`app/static/img/`) are AI-generated with Google Gemini, not real athletes.
 
 ## License
 

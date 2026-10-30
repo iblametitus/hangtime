@@ -82,6 +82,13 @@
       .eyebrow { @apply text-sm font-medium text-mute; }
       /* Confirmation: the changed thing answers with a short spring */
       .swap-done { animation: pop 320ms var(--spring) both; }
+      /* Background photo: paper wash, strongest where the text column sits, fading out at the bottom */
+      .backdrop::after { content: ""; position: absolute; inset: 0;
+        background: linear-gradient(180deg, rgb(var(--paper-rgb) / .80) 0%, rgb(var(--paper-rgb) / .88) 55%, var(--paper) 100%); }
+      @media (min-width: 640px) {
+        .backdrop::after { background: linear-gradient(180deg, transparent 0%, transparent 55%, var(--paper) 100%),
+          linear-gradient(90deg, rgb(var(--paper-rgb) / .94) 0%, rgb(var(--paper-rgb) / .86) 55%, rgb(var(--paper-rgb) / .62) 100%); }
+      }
     }
     @keyframes pop { from { transform: scale(.92); opacity: 0; } to { transform: none; opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {

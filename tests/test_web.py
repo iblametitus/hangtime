@@ -184,3 +184,10 @@ def test_home_hero_photo_is_served():
     for src in ["/static/img/hero-tall-1080.webp", "/static/img/hero-wide-2400.webp"]:
         assert src in html
         assert client.get(src).status_code == 200
+
+
+def test_about_and_demo_have_background_photo():
+    for path, name in [("/about", "about"), ("/demo", "demo")]:
+        html = client.get(path).text
+        assert f"/static/img/{name}-wide-2400.webp" in html
+        assert "AI-generated with Google Gemini" in html

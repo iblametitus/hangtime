@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block title %}Check a drill · Hangtime{% endblock %}
 {% block main %}
+{% from "_backdrop.html" import backdrop %}
+{{ backdrop("demo") }}
 <main class="mx-auto max-w-3xl px-5 pt-32 sm:px-8 sm:pt-40">
   <h1 class="display text-5xl sm:text-6xl">Check a drill</h1>
   <p class="mt-4 max-w-[46ch] text-lg text-mute">Pick an athlete, upload a video. Same video, different athlete, different answer.</p>
